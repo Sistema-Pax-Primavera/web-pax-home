@@ -4,7 +4,7 @@ const singleSpaDefaults = require("webpack-config-single-spa-react");
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
     orgName: "pax",
-    projectName: "pax-login",
+    projectName: "pax-home",
     webpackConfigEnv,
     argv,
   });

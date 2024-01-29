@@ -1,5 +1,5 @@
 {
-  "name": "@pax/pax-login",
+  "name": "@pax/pax-home",
   "scripts": {
     "start": "webpack serve",
     "start:standalone": "webpack serve --env standalone",

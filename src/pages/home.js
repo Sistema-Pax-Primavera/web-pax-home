@@ -69,7 +69,7 @@ const Home = () => {
         // Limpar o localStorage
         localStorage.clear();
         // Redirecionar para a tela de login
-        navigate("/login");
+        navigate("/");
     };
 
     const chartOptions = {
@@ -119,22 +119,22 @@ const Home = () => {
                 >
                     <label>Atendimento</label>
                     <button
-                        onClick={() => handleMenuClick("/associado")}
-                        className={activeRoute === "/associado" ? "active" : ""}
+                        onClick={() => handleMenuClick("/pax-primavera/associado")}
+                        className={activeRoute === "/pax-primavera/associado" ? "active" : ""}
                     >
                         <AccountCircleIcon fontSize={"small"} />
                         Associados
                     </button>
                     <button
-                        onClick={() => handleMenuClick("/vendas")}
-                        className={activeRoute === "/vendas" ? "active" : ""}
+                        onClick={() => handleMenuClick("/pax-primavera/vendas")}
+                        className={activeRoute === "/pax-primavera/vendas" ? "active" : ""}
                     >
                         <MonetizationOnIcon fontSize={"small"} />
                         Vendas
                     </button>
                     <button
-                        onClick={() => handleMenuClick("/financeiro")}
-                        className={activeRoute === "/financeiro" ? "active" : ""}
+                        onClick={() => handleMenuClick("/pax-primavera/financeiro")}
+                        className={activeRoute === "/pax-primavera/financeiro" ? "active" : ""}
                     >
                         <AddBusinessIcon fontSize={"small"} />
                         Financeiro
@@ -163,7 +163,7 @@ const Home = () => {
                         {/* Adicione um ícone se desejar */}
                     </MenuItem>
                 </Menu>
-                {activeRoute === '/associado' ? (
+                {activeRoute === '/pax-primavera/associado' ? (
                     <Parcel config={() => System.import('@pax/pax-associado')} />
                 ) : (
                     <>
