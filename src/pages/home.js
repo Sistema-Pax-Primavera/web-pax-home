@@ -110,7 +110,7 @@ const Home = () => {
         <div className="container-dashboard">
             <div className="container-menus">
                 <img
-                    onClick={() => handleMenuClick("/home")}
+                    onClick={() => handleMenuClick("/pax-primavera")}
                     src={Logo}
                     alt="Logo"
                 ></img>
