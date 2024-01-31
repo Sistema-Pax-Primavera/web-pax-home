@@ -87,6 +87,7 @@
     background-color: var(--vermelho);
     color: var(--branco);
     padding: 2px;
+    width: 3%;
 }
 
 .floating-window2{
