@@ -69,7 +69,7 @@ const Home = () => {
         // Limpar o localStorage
         localStorage.clear();
         // Redirecionar para a tela de login
-        navigate("/");
+        navigate("/login");
     };
 
     const chartOptions = {
