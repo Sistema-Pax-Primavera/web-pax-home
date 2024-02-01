@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Logo from "../../assets/logo-pax-branco.svg";
-import Chart from "react-apexcharts";
 import "./home.css";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import AddBusinessIcon from "@mui/icons-material/AddBusiness";
 import { Menu, MenuItem } from "@mui/material";
-import FloatingWindow from "../components/recebimento";
+import FloatingWindow from "../components/modal/recebimento";
 import BemVindo from "../../assets/bem-vindo.png";
 import Dinheiro from "../../assets/dinheiro.png";
 import Chat from "../../assets/chat.png";
