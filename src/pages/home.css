@@ -61,21 +61,43 @@
 
 .perfil {
     display: flex;
-    align-items: end;
     justify-content: end;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.cidade-home{
+    background-color: var(--verde);
+    width: 70%;
+    margin-left: 20px;
+}
+
+.cidade-home select{
     width: 100%;
 }
 
-.perfil a {
-    cursor: pointer;
-    color: var(--branco);
-    width: 3%;
-    background-color: var(--verde);
+.perfil-localizacao{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    gap: 10px;
     border-bottom-left-radius: 10px;
+    width: 20%;
+    height: 50px;
+    background-color: var(--verde);
+}
+
+
+.perfil a {
+    cursor: pointer;
+    background-color: var(--verde);
+    color: var(--branco);
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 10px;
 }
 
 .container-dashboard.menu-collapsed .menus-lateral {
@@ -99,17 +121,31 @@
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.slide-noticias{
+    width: 50%;
+}
+
 .mixed-chart {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 100px;
+    width: 100%;
+    gap: 20px;
+}
+
+.tabela-adesoes{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
 }
 
 .mixed-chart>div {
     flex-direction: column;
     justify-content: center;
-    gap: 50px;
+    gap: 10px;
 }
 
 /* .mixed-chart {

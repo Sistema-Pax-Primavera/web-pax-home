@@ -155,10 +155,20 @@ const Home = () => {
                 </div>
             </div>
             <div className="container-dashboard2">
+
                 <div className="perfil">
-                    <a onClick={handleMenuOpen}>
-                        <AccountCircleIcon />
-                    </a>
+                    <div className="perfil-localizacao">
+                        <div className="cidade-home">
+                            <select>
+                                <option>Dourados</option>
+                                <option>Itaporã</option>
+                            </select>
+                        </div>
+                        <a onClick={handleMenuOpen}>
+                            <AccountCircleIcon />
+                        </a>
+                    </div>
+
                 </div>
                 <Menu
                     anchorEl={anchorEl}
@@ -218,11 +228,14 @@ const Home = () => {
                             </button>
                         </div>
                         <div className="mixed-chart">
-                            <div>
+                            <div className="tabela-adesoes">
                                 <AdesaoTable />
                                 <PromocaoTable />
                             </div>
+                            <div className="slide-noticias">
                             <NewsTicker news={newsData} />
+                            </div>
+                            
 
                         </div>
 

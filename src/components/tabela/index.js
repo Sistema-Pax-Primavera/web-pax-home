@@ -1,6 +1,6 @@
 // Tables.js
 import React from 'react';
-import './tabela.css';
+import './tabelas.css';
 
 const AdesaoTable = () => {
     return (
@@ -38,7 +38,7 @@ const AdesaoTable = () => {
 
 const PromocaoTable = () => {
     return (
-        <div className="table-container">
+        <div className="table-container2">
             <h4 className="table-title">PROMOÇÕES</h4>
             <table>
                 <thead>
