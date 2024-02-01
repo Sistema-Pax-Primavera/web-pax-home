@@ -1,0 +1,33 @@
+.tables-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.table-container {
+    margin: 5px;
+}
+
+.table-title {
+    text-align: center;
+    /* Centraliza o título */
+    margin-bottom: 10px;
+    /* Adiciona espaço abaixo do título */
+}
+
+table {
+    border-collapse: collapse;
+    width: 200px;
+    margin-right: 20px;
+}
+
+th,
+td {
+    font-size: 12px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}

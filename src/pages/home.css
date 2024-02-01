@@ -102,9 +102,22 @@
 .mixed-chart {
     display: flex;
     align-items: center;
-    gap: 30px;
     justify-content: center;
+    gap: 100px;
 }
+
+.mixed-chart>div {
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+}
+
+/* .mixed-chart {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    justify-content: center;
+} */
 
 .container-menus img {
     width: 60%;

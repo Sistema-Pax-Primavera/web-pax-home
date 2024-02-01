@@ -14,16 +14,30 @@ import Atendimento from "../../assets/atendimento.png";
 import Atendimento2 from "../../assets/atendimento2.png";
 import { useNavigate } from "react-router-dom";
 import Parcel from "single-spa-react/parcel";
+import NewsTicker from "../components/noticias";
+import { AdesaoTable, PromocaoTable } from "../components/tabela";
+import Index from "../components/menu";
 
-const Donut = ({ series, labels }) => {
-    const options = {};
+const newsData = [
+    {
+        title: 'Título da Notícia 1',
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa.
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+        Nulla at risus. Quisque purus magna, auctor et, sagittis ac, posuere eu, lectus. Nam mattis, felis ut adipiscing.`,
+    },
+    {
+        title: 'Título da Notícia 2',
+        text: 'Texto da notícia 2.',
+    },
+    {
+        title: 'Título da Notícia 3',
+        text: 'I AM IRON MAN',
+    },
+];
 
-    return (
-        <div className="donut">
-            <Chart options={options} series={series} type="donut" width="380" />
-        </div>
-    );
-};
+const manualLink = 'link_para_o_manual_do_sistema';
+const paxLink = 'link_sobre_a_pax';
 
 const Home = () => {
     const [page, setPage] = useState(null);
@@ -205,14 +219,14 @@ const Home = () => {
                             </button>
                         </div>
                         <div className="mixed-chart">
-                            <Chart
-                                options={chartOptions}
-                                series={chartSeries}
-                                type="bar"
-                                width="450"
-                            />
-                            <Donut series={donutSeries} labels={donutLabels} />
+                            <div>
+                                <AdesaoTable />
+                                <PromocaoTable />
+                            </div>
+                            <NewsTicker news={newsData} />
+
                         </div>
+
                     </>
                 )}
             </div>

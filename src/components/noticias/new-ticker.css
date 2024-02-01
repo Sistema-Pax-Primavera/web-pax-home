@@ -1,0 +1,38 @@
+.news-ticker {
+    width: 300px;
+    height: 300PX;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.ticker-content {
+    display: flex;
+    flex-direction: column;
+    animation: tickerAnimation 20s linear infinite;
+    /* Ajuste a duração conforme necessário */
+}
+
+@keyframes tickerAnimation {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+.ticker-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.news-title {
+    margin-bottom: 5px;
+}
+
+.news-text {
+    margin-top: 5px;
+    margin-bottom: 0;
+}

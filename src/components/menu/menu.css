@@ -1,0 +1,29 @@
+.index-container {
+    border: 2px solid red;
+    /* Adicione uma borda vermelha temporária */
+    padding: 10px;
+    /* Adicione um preenchimento temporário */
+}
+
+.button-container {
+    margin-bottom: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #007bff;
+    /* Cor de fundo do botão (substitua pela cor desejada) */
+    color: #ffffff;
+    /* Cor do texto do botão (substitua pela cor desejada) */
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    /* Cor de fundo ao passar o mouse (substitua pela cor desejada) */
+}
