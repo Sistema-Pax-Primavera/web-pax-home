@@ -64,20 +64,20 @@
     justify-content: end;
     align-items: center;
     width: 100%;
-    
+
 }
 
-.cidade-home{
+.cidade-home {
     background-color: var(--verde);
     width: 70%;
     margin-left: 20px;
 }
 
-.cidade-home select{
+.cidade-home select {
     width: 100%;
 }
 
-.perfil-localizacao{
+.perfil-localizacao {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -121,31 +121,37 @@
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.slide-noticias{
+.slide-noticias {
     width: 50%;
+}
+
+.noticias-title {
+    text-align: center;
+    /* Centraliza horizontalmente */
+    line-height: 2;
+    /* Ajusta a altura da linha para centralizar verticalmente */
 }
 
 .mixed-chart {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
     width: 100%;
-    gap: 20px;
-}
-
-.tabela-adesoes{
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
+    gap: 10px;
 }
 
 .mixed-chart>div {
     flex-direction: column;
     justify-content: center;
     gap: 10px;
+}
+
+.button-group-container {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+    /* Ajuste conforme necessário para a separação desejada entre os botões */
 }
 
 /* .mixed-chart {
@@ -204,8 +210,8 @@
     gap: 20px;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    font-size: 20px;
+    font-weight: 600;
+    font-size: 16px;
     color: var(--verde);
 }
 

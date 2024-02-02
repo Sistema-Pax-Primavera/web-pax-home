@@ -14,8 +14,15 @@ import Atendimento2 from "../../assets/atendimento2.png";
 import { useNavigate } from "react-router-dom";
 import Parcel from "single-spa-react/parcel";
 import NewsTicker from "../components/noticias";
-import { AdesaoTable, PromocaoTable } from "../components/tabela";
-import Index from "../components/menu";
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 const newsData = [
     {
@@ -35,18 +42,47 @@ const newsData = [
     },
 ];
 
-const manualLink = 'link_para_o_manual_do_sistema';
-const paxLink = 'link_sobre_a_pax';
-
 const Home = () => {
     const [page, setPage] = useState(null);
     const [usuario, setUsuario] = useState("");
-    const donutSeries = [44, 55, 41, 17, 15];
-    const donutLabels = ["A", "B", "C", "D", "E"];
     const [anchorEl, setAnchorEl] = useState(null);
     const navigate = useNavigate();
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
     const [activeRoute, setActiveRoute] = useState("");
+    const [selectedOption, setSelectedOption] = useState(null);
+    const [showTable, setShowTable] = useState(false);
+
+    const dadosAdesao = [
+        {
+            estado: 'MS', planos: [
+                { nome: 'Plano 1', valor: 120.00 },
+                { nome: 'Plano 2', valor: 180.00 },
+            ]
+        },
+        {
+            estado: 'PR', planos: [
+                { nome: 'Plano 1', valor: 130.00 },
+                { nome: 'Plano 2', valor: 110.00 },
+                { nome: 'Plano 3', valor: 160.00 },
+            ]
+        },
+        {
+            estado: 'GO', planos: [
+                { nome: 'Plano 1', valor: 160.00 },
+            ]
+        },
+    ];
+
+    const dadosPromocao = [
+        { parcela: 1, valor: 10.00 },
+        { parcela: 2, valor: 13.00 },
+    ];
+
+    const handleButtonClick = (option) => {
+        setSelectedOption(option);
+        setShowTable(true);
+    };
+
 
     const handleMenuClick = (route) => {
         // Navegar para a rota específica
@@ -84,23 +120,6 @@ const Home = () => {
         // Redirecionar para a tela de login
         navigate("/login");
     };
-
-    const chartOptions = {
-        chart: {
-            id: "basic-bar",
-        },
-        xaxis: {
-            categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
-        },
-        colors: ["#0A8645"],
-    };
-
-    const chartSeries = [
-        {
-            name: "series-1",
-            data: [30, 40, 45, 50, 49, 60, 70, 91],
-        },
-    ];
 
     const toggleSidebar = () => {
         setIsSidebarCollapsed(!isSidebarCollapsed);
@@ -193,7 +212,7 @@ const Home = () => {
                         <div className="bem-vindo">
                             <div className="bem-vindo2">
                                 <h1>Bem vindo, {usuario}</h1>
-                                <label>Acesse o menu para as opções !</label>
+                                <label>Acesse o menu para as opções !</label><br></br>
                             </div>
                             <img src={BemVindo} alt="Bem-vindo"></img>
                         </div>
@@ -226,19 +245,100 @@ const Home = () => {
                                     <img src={Chat} alt="Atendimento2"></img>Chat
                                 </a>
                             </button>
+                            <button>
+                                <a className="dinheiro-recebimento">
+                                    <img src={Atendimento2} alt="Manual"></img>Manual do Sistema
+                                </a>
+                            </button>
+                            <button>
+                                <a className="dinheiro-recebimento">
+                                    <img src={Atendimento2} alt="Manual"></img>Pax Primavera
+                                </a>
+                            </button>
                         </div>
                         <div className="mixed-chart">
-                            <div className="tabela-adesoes">
-                                <AdesaoTable />
-                                <PromocaoTable />
+                            <div className="button-group-container">
+                                <ButtonGroup
+                                    disableElevation
+                                    variant="contained"
+                                    aria-label=" elevation buttons"
+                                    style={{ background: "#006b33", }}
+                                >
+                                    <Button
+                                        onClick={() => handleButtonClick("Promoção")}
+                                        style={{
+                                            border: "3px white",
+                                            background: "#006b33",
+                                            borderBottom: selectedOption === "Promoção" ? "3px solid yellow" : "",
+                                        }}
+                                    >
+                                        Promoções
+                                    </Button>
+                                    <Button
+                                        onClick={() => handleButtonClick("Adesão")}
+                                        style={{
+                                            background: "#006b33",
+                                            borderBottom: selectedOption === "Adesão" ? "3px solid yellow" : "",
+                                        }}
+                                    >
+                                        Adesão
+                                    </Button>
+                                </ButtonGroup>
                             </div>
+
+                            {showTable && selectedOption === 'Adesão' && (
+                                <div className="tabela-abaixo-botoes">
+                                    <TableContainer component={Paper} className="TableContainer">
+                                        <Table sx={{ maxWidth: 1100 }} aria-label='simple table'>
+                                            <TableHead className="TableHead">
+                                                <TableCell align='center'>Estado</TableCell>
+                                                {dadosAdesao[0]?.planos.map((plano, index) => (
+                                                    <TableCell key={index} align='center'>{plano.nome}</TableCell>
+                                                ))}
+                                            </TableHead>
+                                            <TableBody className="TableBody">
+                                                {dadosAdesao.map((row, index) => (
+                                                    <TableRow key={index}>
+                                                        <TableCell align='center'>{row.estado}</TableCell>
+                                                        {row.planos.map((plano, planoIndex) => (
+                                                            <TableCell key={planoIndex} align='center'>{plano.valor}</TableCell>
+                                                        ))}
+                                                    </TableRow>
+                                                ))}
+                                            </TableBody>
+                                        </Table>
+                                    </TableContainer>
+
+                                </div>
+                            )}
+                            {showTable && selectedOption === 'Promoção' && (
+                                <div className="tabela-abaixo-botoes">
+                                    <TableContainer component={Paper} className="TableContainer">
+                                        <Table sx={{ maxWidth: 1100 }} aria-label='simple table'>
+                                            <TableHead className="TableHead">
+                                                <TableRow>
+                                                    <TableCell align='center'>Parcela</TableCell>
+                                                    <TableCell align='center'>Valor R$</TableCell>
+                                                </TableRow>
+                                            </TableHead>
+                                            <TableBody className="TableBody">
+                                                {dadosPromocao.map((row, index) => (
+                                                    <TableRow key={index}>
+                                                        <TableCell align='center'>{row.parcela}</TableCell>
+                                                        <TableCell align='center'>{row.valor}</TableCell>
+                                                    </TableRow>
+                                                ))}
+                                            </TableBody>
+                                        </Table>
+                                    </TableContainer>
+
+                                </div>
+                            )}
                             <div className="slide-noticias">
-                            <NewsTicker news={newsData} />
+                                <h3 className="noticias-title">Avisos</h3>
+                                <NewsTicker news={newsData} />
                             </div>
-                            
-
                         </div>
-
                     </>
                 )}
             </div>

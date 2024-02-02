@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './recebimento.css';
 import PaidIcon from '@mui/icons-material/Paid';
 import SearchIcon from '@mui/icons-material/Search';
-import Pesquisar from '../../assets/pesquisar.png';
+import Pesquisar from '../../../assets/pesquisar.png';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';

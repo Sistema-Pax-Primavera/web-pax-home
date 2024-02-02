@@ -1,6 +1,7 @@
 // NewsTicker.js
 import React, { useState, useEffect } from 'react';
 import './new-ticker.css';
+import Noticia from '../../../assets/logo-pax-verde.svg'
 
 const NewsTicker = ({ news }) => {
     const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
@@ -17,13 +18,13 @@ const NewsTicker = ({ news }) => {
 
     return (
         <div className="news-ticker-container">
-
             <div className="news-ticker">
                 <div className="ticker-content">
                     {news.map((item, index) => (
                         <div key={index} className="ticker-item">
                             <h3 className="news-title">{item.title}</h3>
                             <p className="news-text">{item.text}</p>
+                            <img src={Noticia} alt="Noticia"></img>
                         </div>
                     ))}
                 </div>
