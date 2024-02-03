@@ -66,7 +66,11 @@
     width: 100%;
 
 }
-
+.adesao-promocao label{
+    font-size: 10px;
+    font-size: 800;
+    cursor: pointer;
+}
 .cidade-home {
     background-color: var(--verde);
     width: 70%;
@@ -144,14 +148,18 @@
 .mixed-chart>div {
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
 }
 
 .button-group-container {
     display: flex;
-    gap: 10px;
+    width: 50%;
     flex-shrink: 0;
     /* Ajuste conforme necessário para a separação desejada entre os botões */
+}
+
+
+.tabela-abaixo-botoes{
+    width: 100%;
 }
 
 /* .mixed-chart {
