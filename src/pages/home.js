@@ -26,6 +26,12 @@ import Paper from '@mui/material/Paper';
 import ChatPax from '../../assets/chat-pax.png'
 import Manual from '../../assets/manual.png'
 import Site from '../../assets/site.png'
+import LockIcon from '@mui/icons-material/Lock';
+import LogoutIcon from '@mui/icons-material/Logout';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import HttpsIcon from '@mui/icons-material/Https';
 
 const newsData = [
     {
@@ -45,6 +51,17 @@ const newsData = [
     },
 ];
 
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 250,
+    bgcolor: 'background.paper',
+    borderRadius: 5,
+    p: 4,
+};
+
 const Home = () => {
     const [page, setPage] = useState(null);
     const [usuario, setUsuario] = useState("");
@@ -54,6 +71,9 @@ const Home = () => {
     const [activeRoute, setActiveRoute] = useState("");
     const [selectedOption, setSelectedOption] = useState(null);
     const [showTable, setShowTable] = useState(false);
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     const dadosAdesao = [
         {
@@ -184,18 +204,21 @@ const Home = () => {
                 </div>
             </div>
             <div className="container-dashboard2">
-
                 <div className="perfil">
                     <div className="perfil-localizacao">
                         <div className="cidade-home">
+                            <label>Unidade Atual</label>
                             <select>
                                 <option>Dourados</option>
                                 <option>Itaporã</option>
                             </select>
                         </div>
-                        <a onClick={handleMenuOpen}>
-                            <AccountCircleIcon />
-                        </a>
+                        <div className="perfil-acessos">
+                            <a onClick={handleMenuOpen}>
+                                <AccountCircleIcon />
+                            </a>
+                        </div>
+
                     </div>
 
                 </div>
@@ -206,12 +229,44 @@ const Home = () => {
                 >
                     {/* Opção: Mudar Senha */}
                     <MenuItem onClick={handleMenuClose}>
-                        <span> Mudar Senha</span>
+                        <div className='icones-nome'>
+                            <label onClick={handleOpen}><LockIcon fontSize={'small'} /> Alterar Senha</label>
+                            <Modal
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="modal-modal-title"
+                                aria-describedby="modal-modal-description"
+                            >
+                                <Box sx={style}>
+                                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                                        <div className='icones-nome'>
+                                            <label><HttpsIcon fontSize={'small'} />Alterar Senha </label>
+                                        </div>
+                                    </Typography>
+                                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                        <div className="alterar-senha">
+                                            <div className="campos-alterasenha">
+                                                <label>Senha Atual</label>
+                                                <input type="password"></input>
+                                            </div>
+                                            <div className="campos-alterasenha">
+                                                <label>Nova Senha</label>
+                                                <input type="password"></input>
+                                            </div>
+                                            <button>CONFIRMAR</button>
+                                        </div>
+                                    </Typography>
+                                </Box>
+                            </Modal>
+                        </div>
                         {/* Adicione um ícone se desejar */}
                     </MenuItem>
                     {/* Opção: Sair */}
                     <MenuItem onClick={Logout}>
-                        <span> Sair</span>
+                        <div className='icones-nome'>
+                            <label>
+                                <LogoutIcon fontSize={'small'} /> Sair
+                            </label></div>
                         {/* Adicione um ícone se desejar */}
                     </MenuItem>
                 </Menu>

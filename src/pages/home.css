@@ -27,7 +27,7 @@
 }
 
 .container-menus {
-    width: 11%;
+    width: 10%;
     height: 100vh;
     background-color: var(--verde);
     display: flex;
@@ -49,9 +49,14 @@
     gap: 10px;
 }
 
+.principal-home {
+    gap: 10px;
+    width: 100%;
+}
+
 
 .container-dashboard2 {
-    width: 93%;
+    width: 90%;
     height: 100%;
     height: 100vh;
     display: flex;
@@ -66,37 +71,87 @@
     width: 100%;
 
 }
-.adesao-promocao label{
+
+.adesao-promocao label {
     font-size: 10px;
     font-size: 800;
     cursor: pointer;
 }
+
 .cidade-home {
     background-color: var(--verde);
-    width: 70%;
+    width: 80%;
+    padding: 10px;
+    border-bottom-left-radius: 10px;
     margin-left: 20px;
+}
+
+.cidade-home label {
+    color: var(--branco);
+}
+
+.perfil-acessos {
+    background-color: var(--verde);
+    display: flex;
+    align-items: center;
+    color: var(--branco);
+    justify-content: center;
+}
+
+.perfil-acessos a{
+    color: var(--branco);
 }
 
 .cidade-home select {
     width: 100%;
+    font-weight: 600;
 }
 
-.perfil-localizacao {
+
+.perfil-localizacao a {
+    width: 20%;
     display: flex;
+    background-color: var(--verde);
     align-items: center;
     justify-content: center;
+}
+
+.alterar-senha{
+    display: flex;
+    flex-direction: column;
     gap: 10px;
-    border-bottom-left-radius: 10px;
-    width: 20%;
-    height: 50px;
+    width: 100%;
+}
+
+.campos-alterasenha{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.campos-alterasenha input{
+    background-color: var(--cinza-leve);
+    font-weight: 700;
+}
+
+
+.alterar-senha button{
     background-color: var(--verde);
+    color: var(--branco);
+
+}
+.perfil-localizacao {
+    display: flex;
+    background-color: var(--verde);
+    border-bottom-left-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
 }
 
 
 .perfil a {
     cursor: pointer;
-    background-color: var(--verde);
-    color: var(--branco);
     width: 30%;
     display: flex;
     align-items: center;
@@ -158,7 +213,7 @@
 }
 
 
-.tabela-abaixo-botoes{
+.tabela-abaixo-botoes {
     width: 100%;
 }
 
@@ -231,7 +286,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    width: 100%;
+    width: 98%;
 }
 
 .container-dashboard {
