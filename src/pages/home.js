@@ -231,35 +231,8 @@ const Home = () => {
                     <MenuItem onClick={handleMenuClose}>
                         <div className='icones-nome'>
                             <label onClick={handleOpen}><LockIcon fontSize={'small'} /> Alterar Senha</label>
-                            <Modal
-                                open={open}
-                                onClose={handleClose}
-                                aria-labelledby="modal-modal-title"
-                                aria-describedby="modal-modal-description"
-                            >
-                                <Box sx={style}>
-                                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                                        <div className='icones-nome'>
-                                            <label><HttpsIcon fontSize={'small'} />Alterar Senha </label>
-                                        </div>
-                                    </Typography>
-                                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                        <div className="alterar-senha">
-                                            <div className="campos-alterasenha">
-                                                <label>Senha Atual</label>
-                                                <input type="password"></input>
-                                            </div>
-                                            <div className="campos-alterasenha">
-                                                <label>Nova Senha</label>
-                                                <input type="password"></input>
-                                            </div>
-                                            <button>CONFIRMAR</button>
-                                        </div>
-                                    </Typography>
-                                </Box>
-                            </Modal>
                         </div>
-                        {/* Adicione um ícone se desejar */}
+
                     </MenuItem>
                     {/* Opção: Sair */}
                     <MenuItem onClick={Logout}>
@@ -267,9 +240,35 @@ const Home = () => {
                             <label>
                                 <LogoutIcon fontSize={'small'} /> Sair
                             </label></div>
-                        {/* Adicione um ícone se desejar */}
                     </MenuItem>
                 </Menu>
+                <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box sx={style}>
+                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                            <div className='icones-nome'>
+                                <label><HttpsIcon fontSize={'small'} />Alterar Senha </label>
+                            </div>
+                        </Typography>
+                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                            <div className="alterar-senha">
+                                <div className="campos-alterasenha">
+                                    <label>Senha Atual</label>
+                                    <input type="password"></input>
+                                </div>
+                                <div className="campos-alterasenha">
+                                    <label>Nova Senha</label>
+                                    <input type="password"></input>
+                                </div>
+                                <button>CONFIRMAR</button>
+                            </div>
+                        </Typography>
+                    </Box>
+                </Modal>
                 {activeRoute === '/pax-primavera/associado' ? (
                     <Parcel config={() => System.import('@pax/pax-associado')} />
                 ) : (
@@ -290,7 +289,6 @@ const Home = () => {
 
                             {showFloatingWindow && (
                                 <FloatingWindow onClose={closeFloatingWindow}>
-                                    {/* Conteúdo da janela flutuante */}
                                 </FloatingWindow>
                             )}
                             <button>
@@ -316,7 +314,7 @@ const Home = () => {
                                 </a>
                             </button>
                             <button>
-                                <a className="dinheiro-recebimento">
+                                <a href="https://paxprimavera.com.br/" className="dinheiro-recebimento" target="_blank">
                                     <img src={Site} alt="Manual"></img>Pax Primavera
                                 </a>
                             </button>
@@ -407,12 +405,11 @@ const Home = () => {
                                     </div>
                                 )}
                             </div>
-
-
                             <div className="slide-noticias">
                                 <h3 className="noticias-title">Avisos</h3>
                                 <NewsTicker news={newsData} />
                             </div>
+
                         </div>
                     </>
                 )}

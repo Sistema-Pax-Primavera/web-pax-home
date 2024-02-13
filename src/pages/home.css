@@ -98,7 +98,7 @@
     justify-content: center;
 }
 
-.perfil-acessos a{
+.perfil-acessos a {
     color: var(--branco);
 }
 
@@ -116,30 +116,31 @@
     justify-content: center;
 }
 
-.alterar-senha{
+.alterar-senha {
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 100%;
 }
 
-.campos-alterasenha{
+.campos-alterasenha {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.campos-alterasenha input{
+.campos-alterasenha input {
     background-color: var(--cinza-leve);
     font-weight: 700;
 }
 
 
-.alterar-senha button{
+.alterar-senha button {
     background-color: var(--verde);
     color: var(--branco);
 
 }
+
 .perfil-localizacao {
     display: flex;
     background-color: var(--verde);
@@ -217,12 +218,9 @@
     width: 100%;
 }
 
-/* .mixed-chart {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    justify-content: center;
-} */
+a {
+    text-decoration: none;
+}
 
 .container-menus img {
     width: 60%;
