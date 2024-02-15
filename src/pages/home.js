@@ -32,6 +32,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import HttpsIcon from '@mui/icons-material/Https';
+import ManualScreen from "./manual/manual";
+import PageChat from "./chat/chat";
+import Solicitacao from "./solicitação";
 
 const newsData = [
     {
@@ -143,10 +146,6 @@ const Home = () => {
         localStorage.clear();
         // Redirecionar para a tela de login
         navigate("/login");
-    };
-
-    const toggleSidebar = () => {
-        setIsSidebarCollapsed(!isSidebarCollapsed);
     };
 
     useEffect(() => {
@@ -271,7 +270,13 @@ const Home = () => {
                 </Modal>
                 {activeRoute === '/pax-primavera/associado' ? (
                     <Parcel config={() => System.import('@pax/pax-associado')} />
-                ) : (
+                ) : activeRoute === '/pax-primavera/manual-sistema' ? (
+                    <ManualScreen />
+                ) : activeRoute === '/pax-primavera/chat' ? (
+                    <PageChat />
+                ) : activeRoute === '/pax-primavera/solicitacao' ? (
+                    <Solicitacao />
+                ) : activeRoute === '/pax-primavera' ? (
                     <>
                         <div className="bem-vindo">
                             <div className="bem-vindo2">
@@ -297,18 +302,19 @@ const Home = () => {
                                     Atendimento
                                 </a>
                             </button>
-                            <button>
+                            <button onClick={() => handleMenuClick("/pax-primavera/solicitacao")}>
                                 <a className="dinheiro-recebimento">
                                     <img src={Atendimento2} alt="Atendimento2"></img>Acompanhar
                                     Solicitações
                                 </a>
                             </button>
-                            <button>
+                            <button onClick={() => handleMenuClick("/pax-primavera/chat")}>
                                 <a className="dinheiro-recebimento">
                                     <img src={ChatPax} alt="Atendimento2"></img>Chat
                                 </a>
                             </button>
-                            <button>
+                            <button
+                                onClick={() => handleMenuClick("/pax-primavera/manual-sistema")}>
                                 <a className="dinheiro-recebimento">
                                     <img src={Manual} alt="Manual"></img>Manual do Sistema
                                 </a>
@@ -412,7 +418,7 @@ const Home = () => {
 
                         </div>
                     </>
-                )}
+                ) : (<></>)}
             </div>
         </div>
     );

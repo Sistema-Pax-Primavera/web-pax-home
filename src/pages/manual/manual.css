@@ -1,0 +1,30 @@
+.manual-screen {
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: 5%;
+}
+
+.manual-screen p {
+    font-size: 14px;
+}
+
+.slide {
+    text-align: center;
+    padding: 20px;
+}
+
+.slide p {
+    font-size: 18px;
+}
+
+.slide-image img {
+    margin-left: 30%;
+    margin-top: 10%;
+    height: auto;
+}
+
+.slide-image {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}

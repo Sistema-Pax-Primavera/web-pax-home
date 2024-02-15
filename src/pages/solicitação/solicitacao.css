@@ -1,0 +1,77 @@
+.solicitacao-tela {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.opcoes {
+    margin-bottom: 20px;
+}
+
+.opcoes h2 {
+    color: var(--verde);
+}
+
+.cards-container {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    /* Adiciona espaço entre as colunas */
+    width: 100%;
+}
+
+.column {
+    flex: 1;
+}
+
+.card {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    background-color: #ecf0f1;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #bdc3c7;
+    }
+}
+
+.formulario-flutuante {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+
+.solicitacao-tela button {
+    background-color: var(--verde);
+    color: white;
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.solicitacao-tela button:hover {
+    background-color: var(--verde-leve);
+    color: #fff;
+}
+
+.fechar-button {
+    margin-right: 10px;
+    background-color: #e74c3c;
+}
+
+.finalizar-excluir-button {
+    background-color: #2ecc71;
+}
