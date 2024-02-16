@@ -37,26 +37,7 @@ import PageChat from "./chat/chat";
 import Solicitacao from "./solicitação";
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
-
-
-const newsData = [
-    {
-        title: 'Título da Notícia 1',
-        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit
-        Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa.
-        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-        Nulla at risus. Quisque purus magna, auctor et, sagittis ac, posuere eu, lectus. Nam mattis, felis ut adipiscing.`,
-    },
-    {
-        title: 'Título da Notícia 2',
-        text: 'Texto da notícia 2.',
-    },
-    {
-        title: 'Título da Notícia 3',
-        text: 'I AM IRON MAN',
-    },
-];
-
+import { navigateToUrl } from 'single-spa';
 
 const style = {
     position: 'absolute',
@@ -81,6 +62,7 @@ const Home = () => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const [activeParcel, setActiveParcel] = useState(null);
 
     const dadosAdesao = [
         {
@@ -161,6 +143,7 @@ const Home = () => {
 
     useEffect(() => {
         const pageContent = localStorage.getItem("page");
+        console.log(pageContent)
         setActiveRoute(pageContent)
     }, [page]);
 
@@ -176,7 +159,8 @@ const Home = () => {
         // Define o estado inicial para Adesão ao carregar a tela
         setSelectedOption("Adesão");
         setShowTable(true);
-    }, []); // Executa apenas uma vez no início
+    }, []);
+
 
     return (
         <div className="container-dashboard">
@@ -210,6 +194,14 @@ const Home = () => {
                     >
                         <AddBusinessIcon fontSize={"small"} />
                         Financeiro
+                    </button>
+                    <label>Controle</label>
+                    <button
+                        onClick={() => handleMenuClick("/pax-primavera/associado")}
+                        className={activeRoute === "/pax-primavera/associado" ? "active" : ""}
+                    >
+                        <AccountCircleIcon fontSize={"small"} />
+                        CRM Cobrança
                     </button>
                 </div>
             </div>
@@ -280,7 +272,16 @@ const Home = () => {
                     </Box>
                 </Modal>
                 {activeRoute === '/pax-primavera/associado' ? (
-                    <Parcel config={() => System.import('@pax/pax-associado')} />
+                    <Parcel
+                        key={activeRoute}
+                        config={() => System.import('@pax/pax-associado')}
+
+                    />
+                ) : activeRoute === '/pax-primavera/vendas' ? (
+                    <Parcel
+                        key={activeRoute}
+                        config={() => System.import('@pax/pax-venda')}
+                    />
                 ) : activeRoute === '/pax-primavera/manual-sistema' ? (
                     <ManualScreen />
                 ) : activeRoute === '/pax-primavera/chat' ? (

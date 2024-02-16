@@ -176,11 +176,11 @@
     cursor: pointer;
     border-radius: 5px;
     padding: 5px;
-    padding-left: 10px;
-    padding-right: 30px;
-    gap: 5px;
+    padding-left: 8px;
+    padding-right: 10px;
+    gap: 2px;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 500;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -379,13 +379,13 @@ a {
     background-position: center;
 }
 
-.tabela-botao-associado{
+.tabela-botao-associado {
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-.unidade-select-prom-ad{
+.unidade-select-prom-ad {
     background-color: var(--verde);
     border-top-left-radius: 5px;
     padding: 5px;
@@ -396,14 +396,14 @@ a {
     border-top-right-radius: 5px;
 }
 
-.adesao-promocao select{
+.adesao-promocao select {
     font-weight: 700;
     background-color: var(--verde);
     color: var(--branco);
-    
+
 }
 
-.adesao-promocao option{
+.adesao-promocao option {
     color: var(--preto);
     border: none;
     padding: 5px;
@@ -411,6 +411,3 @@ a {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-
-
-
