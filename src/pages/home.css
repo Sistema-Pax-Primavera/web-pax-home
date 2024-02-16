@@ -58,11 +58,14 @@
 .container-dashboard2 {
     width: 90%;
     height: 100%;
+    overflow: auto;
     height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
+
+
 
 .perfil {
     display: flex;
@@ -182,7 +185,7 @@
 }
 
 .slide-noticias {
-    width: 50%;
+    width: 45%;
 }
 
 .noticias-title {
@@ -196,7 +199,6 @@
     display: flex;
     align-items: flex-start;
     flex-direction: row;
-    justify-content: space-between;
     width: 100%;
     gap: 10px;
 }
@@ -352,3 +354,63 @@ a {
     border-bottom: 3px solid yellow;
     /* Adapte conforme necessário */
 }
+
+.slide-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.each-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 230px;
+    /* Ajuste conforme necessário */
+}
+
+.each-slide>div {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-position: center;
+    background-size: contain;
+    /* Isso faz com que a imagem seja dimensionada para caber dentro do contêiner sem perder a proporção */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.tabela-botao-associado{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.unidade-select-prom-ad{
+    background-color: var(--verde);
+    border-top-left-radius: 5px;
+    padding: 5px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: var(--branco);
+    border-top-right-radius: 5px;
+}
+
+.adesao-promocao select{
+    font-weight: 700;
+    background-color: var(--verde);
+    color: var(--branco);
+    
+}
+
+.adesao-promocao option{
+    color: var(--preto);
+    border: none;
+    padding: 5px;
+    outline: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+
+

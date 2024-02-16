@@ -35,6 +35,9 @@ import HttpsIcon from '@mui/icons-material/Https';
 import ManualScreen from "./manual/manual";
 import PageChat from "./chat/chat";
 import Solicitacao from "./solicitação";
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css';
+
 
 const newsData = [
     {
@@ -53,6 +56,7 @@ const newsData = [
         text: 'I AM IRON MAN',
     },
 ];
+
 
 const style = {
     position: 'absolute',
@@ -100,6 +104,13 @@ const Home = () => {
         },
     ];
 
+
+    const slideImages = [
+        ChatPax,
+        Manual,
+        Site
+    ];
+
     const dadosPromocao = [
         { parcela: 1, valor: 10.00 },
         { parcela: 2, valor: 13.00 },
@@ -116,7 +127,7 @@ const Home = () => {
         navigate(route);
         // Salvar a rota no localStorage
         localStorage.setItem("page", route);
-        // Atualizar a rota ativa
+        // Atualizar a rota ativa  
         setActiveRoute(route);
     };
 
@@ -359,7 +370,23 @@ const Home = () => {
                                             </div>
 
                                         </Button>
+                                        <Button
+
+                                            style={{
+                                                background: "#006b33",
+                                                borderBottom: selectedOption === "Adesão" ? "3px solid yellow" : "",
+                                            }}
+                                        >
+                                            <div className="adesao-promocao">
+                                                <select>
+                                                    <option>Dourados</option>
+                                                    <option>Itaporã</option>
+                                                </select>
+                                            </div>
+
+                                        </Button>
                                     </ButtonGroup>
+
                                 </div>
 
                                 {showTable && selectedOption === 'Adesão' && (
@@ -412,8 +439,15 @@ const Home = () => {
                                 )}
                             </div>
                             <div className="slide-noticias">
-                                <h3 className="noticias-title">Avisos</h3>
-                                <NewsTicker news={newsData} />
+                                <div className="slide-container">
+                                    <Slide indicators={true}>
+                                        {slideImages.map((each, index) => (
+                                            <div key={index} className="each-slide">
+                                                <div style={{ 'backgroundImage': `url(${each})` }} />
+                                            </div>
+                                        ))}
+                                    </Slide>
+                                </div>
                             </div>
 
                         </div>
