@@ -142,6 +142,8 @@ const Home = () => {
     };
 
     useEffect(() => {
+        //provisorio
+        localStorage.setItem("page", '/pax-primavera');
         const pageContent = localStorage.getItem("page");
         console.log(pageContent)
         setActiveRoute(pageContent)

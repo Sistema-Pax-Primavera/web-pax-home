@@ -6,6 +6,7 @@ import Chat from "./pages/chat/chat";
 import Solicitacao from "./pages/solicitação";
 
 const RoutesApp = () => (
+
     <BrowserRouter>
         <Routes>
             <Route exact path="*" element={<Home />} />
@@ -18,6 +19,7 @@ const RoutesApp = () => (
             <Route exact path="/solicitacao" element={<Solicitacao />} />
         </Routes>
     </BrowserRouter>
+
 );
 
 export default RoutesApp;
