@@ -12,6 +12,7 @@ const RoutesApp = () => (
             <Route exact path="*" element={<Home />} />
             <Route exact path="/home" element={<Home />} />
             <Route exact path="/associado" element={<Home />} />
+            <Route exact path="/cobranca" element={<Home />} />
             <Route exact path="/vendas" element={<Home />} />
             <Route exact path="/financeiro" element={<Home />} />
             <Route exact path="/manual-sistema" element={<ManualScreen />} />

@@ -292,6 +292,11 @@ const Home = () => {
                         key={activeRoute}
                         config={() => System.import('@pax/pax-venda')}
                     />
+                ) : activeRoute === '/pax-primavera/cobranca' ? (
+                    <Parcel
+                        key={activeRoute}
+                        config={() => System.import('@pax/pax-cobranca')}
+                    />
                 ) : activeRoute === '/pax-primavera/manual-sistema' ? (
                     <ManualScreen />
                 ) : activeRoute === '/pax-primavera/chat' ? (
