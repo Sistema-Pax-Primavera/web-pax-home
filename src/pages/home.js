@@ -203,7 +203,15 @@ const Home = () => {
                         className={activeRoute === "/pax-primavera/cobranca" ? "active" : ""}
                     >
                         <AccountCircleIcon fontSize={"small"} />
-                        CRM Cobrança
+                        Cobrança
+                    </button>
+                    <label>Configurações</label>
+                    <button
+                        onClick={() => handleMenuClick("/pax-primavera/cadastro")}
+                        className={activeRoute === "/pax-primavera/cadastro" ? "active" : ""}
+                    >
+                        <AccountCircleIcon fontSize={"small"} />
+                        Cadastro
                     </button>
                 </div>
             </div>
