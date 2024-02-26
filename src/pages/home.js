@@ -188,7 +188,7 @@ const Home = () => {
                         className={activeRoute === "/pax-primavera/vendas" ? "active" : ""}
                     >
                         <MonetizationOnIcon fontSize={"small"} />
-                        Vendas
+                        Web Vendedor
                     </button>
                     <button
                         onClick={() => handleMenuClick("/pax-primavera/financeiro")}
