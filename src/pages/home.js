@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Logo from "../../assets/logo-pax-branco.svg";
 import "./home.css";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import FactCheckIcon from '@mui/icons-material/FactCheck';
+import AutoAwesomeMosaicIcon from '@mui/icons-material/AutoAwesomeMosaic';
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import AddBusinessIcon from "@mui/icons-material/AddBusiness";
 import { Menu, MenuItem } from "@mui/material";
@@ -38,13 +40,15 @@ import Solicitacao from "./solicitação";
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import { navigateToUrl } from 'single-spa';
+import Switch from '@mui/material/Switch';
+import idiomas from "../utils/info";
 
 const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 300,
+    width: 250,
     bgcolor: 'background.paper',
     borderRadius: 5,
     p: 4,
@@ -62,7 +66,7 @@ const Home = () => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const [activeParcel, setActiveParcel] = useState(null);
+    const [idioma, setIdioma] = useState(false);
 
     const dadosAdesao = [
         {
@@ -97,6 +101,10 @@ const Home = () => {
         { parcela: 1, valor: 10.00 },
         { parcela: 2, valor: 13.00 },
     ];
+
+    const SwitchIdioma = () => {
+        setIdioma(!idioma);
+    };
 
     const handleButtonClick = (option) => {
         setSelectedOption(option);
@@ -142,20 +150,24 @@ const Home = () => {
     };
 
     useEffect(() => {
-        //provisorio
-        localStorage.setItem("page", '/pax-primavera');
-        const pageContent = localStorage.getItem("page");
-        console.log(pageContent)
-        setActiveRoute(pageContent)
-    }, [page]);
+        const savedUsuario = localStorage.getItem("usuario");
+        if (savedUsuario) {
+            const pageContent = localStorage.getItem("page");
+            setActiveRoute(pageContent)
+            const usuarioObj = JSON.parse(savedUsuario);
+            setUsuario(usuarioObj);
+            setIdioma(usuarioObj.idioma === 'BR' ? false : true);
+        }
+    }, []);
 
     useEffect(() => {
         const savedUsuario = localStorage.getItem("usuario");
-        // Atualiza o estado
         if (savedUsuario) {
-            setUsuario(savedUsuario);
+            const usuarioObj = JSON.parse(savedUsuario);
+            usuarioObj.idioma = idioma ? 'PY' : 'BR';
+            localStorage.setItem("usuario", JSON.stringify(usuarioObj));
         }
-    }, []);
+    }, [idioma]);
 
     useEffect(() => {
         // Define o estado inicial para Adesão ao carregar a tela
@@ -175,43 +187,43 @@ const Home = () => {
                 <div
                     className={`menus-lateral ${isSidebarCollapsed ? "collapsed" : ""}`}
                 >
-                    <label>Atendimento</label>
+                    <label>{idioma ? idiomas.es_PY.menu.atendimento.titulo : idiomas.pt_BR.menu.atendimento.titulo}</label>
                     <button
                         onClick={() => handleMenuClick("/pax-primavera/associado")}
                         className={activeRoute === "/pax-primavera/associado" ? "active" : ""}
                     >
                         <AccountCircleIcon fontSize={"small"} />
-                        Associados
+                        {idioma ? idiomas.es_PY.menu.atendimento.botoesAcao.associado : idiomas.pt_BR.menu.atendimento.botoesAcao.associado}
                     </button>
                     <button
                         onClick={() => handleMenuClick("/pax-primavera/vendas")}
                         className={activeRoute === "/pax-primavera/vendas" ? "active" : ""}
                     >
                         <MonetizationOnIcon fontSize={"small"} />
-                        Web Vendedor
+                        {idioma ? idiomas.es_PY.menu.atendimento.botoesAcao.webVendedor : idiomas.pt_BR.menu.atendimento.botoesAcao.webVendedor}
                     </button>
                     <button
                         onClick={() => handleMenuClick("/pax-primavera/financeiro")}
                         className={activeRoute === "/pax-primavera/financeiro" ? "active" : ""}
                     >
                         <AddBusinessIcon fontSize={"small"} />
-                        Financeiro
+                        {idioma ? idiomas.es_PY.menu.atendimento.botoesAcao.financeiro : idiomas.pt_BR.menu.atendimento.botoesAcao.financeiro}
                     </button>
-                    <label>Controle</label>
+                    <label>{idioma ? idiomas.es_PY.menu.controle.titulo : idiomas.pt_BR.menu.controle.titulo}</label>
                     <button
                         onClick={() => handleMenuClick("/pax-primavera/cobranca")}
                         className={activeRoute === "/pax-primavera/cobranca" ? "active" : ""}
                     >
-                        <AccountCircleIcon fontSize={"small"} />
-                        Cobrança
+                        <AutoAwesomeMosaicIcon fontSize={"small"} />
+                        {idioma ? idiomas.es_PY.menu.controle.botoesAcao.cobranca : idiomas.pt_BR.menu.controle.botoesAcao.cobranca}
                     </button>
-                    <label>Configurações</label>
+                    <label>{idioma ? idiomas.es_PY.menu.configurações.titulo : idiomas.pt_BR.menu.configurações.titulo}</label>
                     <button
                         onClick={() => handleMenuClick("/pax-primavera/cadastro")}
                         className={activeRoute === "/pax-primavera/cadastro" ? "active" : ""}
                     >
-                        <AccountCircleIcon fontSize={"small"} />
-                        Cadastro
+                        <FactCheckIcon fontSize={"small"} />
+                        {idioma ? idiomas.es_PY.menu.configurações.botoesAcao.cadastro : idiomas.pt_BR.menu.configurações.botoesAcao.cadastro}
                     </button>
                 </div>
             </div>
@@ -219,7 +231,7 @@ const Home = () => {
                 <div className="perfil">
                     <div className="perfil-localizacao">
                         <div className="cidade-home">
-                            <label>Unidade Atual</label>
+                            <label>{idioma ? idiomas.es_PY.menuUsuario.unidade : idiomas.pt_BR.menuUsuario.unidade}</label>
                             <select>
                                 <option>Dourados</option>
                                 <option>Itaporã</option>
@@ -242,15 +254,27 @@ const Home = () => {
                     {/* Opção: Mudar Senha */}
                     <MenuItem onClick={handleMenuClose}>
                         <div className='icones-nome'>
-                            <label onClick={handleOpen}><LockIcon fontSize={'small'} /> Alterar Senha</label>
+                            <label onClick={handleOpen}><LockIcon fontSize={'small'} /> {idioma ? idiomas.es_PY.menuUsuario.senha : idiomas.pt_BR.menuUsuario.senha}</label>
                         </div>
+
+                    </MenuItem>
+                    <MenuItem onClick={handleMenuClose}>
+                        <label>{idioma ? idiomas.es_PY.menuUsuario.idioma.message : idiomas.pt_BR.menuUsuario.idioma.message}</label>
+                        <br />
+                        <label>{idioma ? idiomas.es_PY.menuUsuario.idioma.br : idiomas.pt_BR.menuUsuario.idioma.br}</label>
+                        <Switch
+                            checked={idioma}
+                            onChange={SwitchIdioma}
+                            size="small"
+                        />
+                        <label>{idioma ? idiomas.es_PY.menuUsuario.idioma.py : idiomas.pt_BR.menuUsuario.idioma.py}</label>
 
                     </MenuItem>
                     {/* Opção: Sair */}
                     <MenuItem onClick={Logout}>
                         <div className='icones-nome'>
                             <label>
-                                <LogoutIcon fontSize={'small'} /> Sair
+                                <LogoutIcon fontSize={'small'} /> {idioma ? idiomas.es_PY.menuUsuario.sair : idiomas.pt_BR.menuUsuario.sair}
                             </label></div>
                     </MenuItem>
                 </Menu>
@@ -307,15 +331,16 @@ const Home = () => {
                     <>
                         <div className="bem-vindo">
                             <div className="bem-vindo2">
-                                <h1>Bem vindo, {usuario}</h1>
-                                <label>Acesse o menu para as opções !</label><br></br>
+                                <h1>{idioma ? idiomas.es_PY.message.titulo : idiomas.pt_BR.message.titulo} {usuario.usuario}</h1>
+                                <label>{idioma ? idiomas.es_PY.message.texto : idiomas.pt_BR.message.texto}</label><br></br>
                             </div>
                             <img src={BemVindo} alt="Bem-vindo"></img>
                         </div>
                         <div className="navegacao-home">
                             <button onClick={openFloatingWindow}>
                                 <a className="dinheiro-recebimento">
-                                    <img src={Dinheiro} alt="Dinheiro"></img>Recebimento
+                                    <img src={Dinheiro} alt="Dinheiro"></img>
+                                    {idioma ? idiomas.es_PY.botoesAcao.recebimento : idiomas.pt_BR.botoesAcao.recebimento}
                                 </a>
                             </button>
 
@@ -325,30 +350,32 @@ const Home = () => {
                             )}
                             <button>
                                 <a className="dinheiro-recebimento">
-                                    <img src={Atendimento} alt="Atendimento"></img>Iniciar<br></br>
-                                    Atendimento
+                                    <img src={Atendimento} alt="Atendimento"></img>
+                                    {idioma ? idiomas.es_PY.botoesAcao.atendimento : idiomas.pt_BR.botoesAcao.atendimento}
                                 </a>
                             </button>
                             <button onClick={() => handleMenuClick("/pax-primavera/solicitacao")}>
                                 <a className="dinheiro-recebimento">
-                                    <img src={Atendimento2} alt="Atendimento2"></img>Acompanhar
-                                    Solicitações
+                                    <img src={Atendimento2} alt="Atendimento2"></img>
+                                    {idioma ? idiomas.es_PY.botoesAcao.solicitacao : idiomas.pt_BR.botoesAcao.solicitacao}
                                 </a>
                             </button>
                             <button onClick={() => handleMenuClick("/pax-primavera/chat")}>
                                 <a className="dinheiro-recebimento">
-                                    <img src={ChatPax} alt="Atendimento2"></img>Chat
+                                    <img src={ChatPax} alt="Atendimento2"></img>
+                                    Chat
                                 </a>
                             </button>
                             <button
                                 onClick={() => handleMenuClick("/pax-primavera/manual-sistema")}>
                                 <a className="dinheiro-recebimento">
-                                    <img src={Manual} alt="Manual"></img>Manual do Sistema
+                                    <img src={Manual} alt="Manual"></img>
+                                    {idioma ? idiomas.es_PY.botoesAcao.manual : idiomas.pt_BR.botoesAcao.manual}
                                 </a>
                             </button>
                             <button>
                                 <a href="https://paxprimavera.com.br/" className="dinheiro-recebimento" target="_blank">
-                                    <img src={Site} alt="Manual"></img>Pax Primavera
+                                    <img src={Site} alt="Manual"></img> Site Pax Primavera
                                 </a>
                             </button>
                         </div>
