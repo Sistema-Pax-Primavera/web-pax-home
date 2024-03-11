@@ -413,7 +413,16 @@ a {
     border-bottom-right-radius: 5px;
 }
 
-.tradutor{
+.tradutor {
     display: flex;
     flex-direction: column;
+}
+
+.loading {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }

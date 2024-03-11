@@ -1,0 +1,12 @@
+.carregando {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.carregando label {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--verde);
+}

@@ -53,6 +53,7 @@
     "@mui/material": "^5.15.11",
     "@mui/styled-engine-sc": "^6.0.0-alpha.13",
     "apexcharts": "^3.45.2",
+    "axios": "^1.6.7",
     "file-saver": "^2.0.5",
     "install": "^0.13.0",
     "mitt": "^3.0.1",
