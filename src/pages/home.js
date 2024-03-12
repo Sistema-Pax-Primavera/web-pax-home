@@ -41,6 +41,7 @@ import Switch from "@mui/material/Switch";
 import idiomas from "../utils/info";
 import { useUnidade } from "../services/api-config";
 import Carregando from "../components/carregando";
+import InactivityHOC from "../services/inactivityHOC";
 
 const style = {
     position: "absolute",
@@ -70,6 +71,8 @@ const Home = () => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const ParcelWithInactivity = InactivityHOC(Parcel);
 
 
     const dadosAdesao = [
@@ -388,22 +391,22 @@ const Home = () => {
                         :
                         <>
                             {activeRoute === "/pax-primavera/associado" ? (
-                                <Parcel
+                                <ParcelWithInactivity
                                     key={activeRoute}
                                     config={() => System.import("@pax/pax-associado")}
                                 />
                             ) : activeRoute === "/pax-primavera/vendas" ? (
-                                <Parcel
+                                <ParcelWithInactivity
                                     key={activeRoute}
                                     config={() => System.import("@pax/pax-venda")}
                                 />
                             ) : activeRoute === "/pax-primavera/cobranca" ? (
-                                <Parcel
+                                <ParcelWithInactivity
                                     key={activeRoute}
                                     config={() => System.import("@pax/pax-cobranca")}
                                 />
                             ) : activeRoute === "/pax-primavera/configuracoes/cadastro" ? (
-                                <Parcel
+                                <ParcelWithInactivity
                                     key={activeRoute}
                                     config={() => System.import("@pax/pax-cadastro")}
                                 />
