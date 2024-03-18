@@ -7,7 +7,7 @@ const httpsInstance = () => {
         const usuarioObj = JSON.parse(savedUsuario);
         token = usuarioObj.token;
     }
-    const API_URL = 'https://run.mocky.io/v3'
+    const API_URL = 'http://localhost:3333/api'
     const headers = {
         "Access-Control-Allow-Origin": "*",
     }

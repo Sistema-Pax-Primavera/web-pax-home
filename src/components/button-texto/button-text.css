@@ -1,0 +1,17 @@
+.home-button-text {
+    margin-top: 1%;
+    width: 50%;
+    margin-left: 45%;
+}
+
+.home-button-text button {
+    width: 20%;
+    display: flex;
+
+    cursor: pointer;
+
+    gap: 10px;
+    font-size: 12px;
+    background-color: var(--verde);
+    color: var(--branco);
+}

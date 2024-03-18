@@ -41,8 +41,8 @@ const idiomas = {
             senha: "Alterar Senha",
             idioma: {
                 message: "Selecione o idioma:",
-                br: "Portugues(BR)",
-                py: "Espanhol(PY)",
+                br: "BR",
+                py: "PY",
             }
         },
         tablePromocao: {
@@ -100,8 +100,8 @@ const idiomas = {
             senha: "Cambiar contraseña",
             idioma: {
                 message: "Selecciona el idioma:",
-                br: "Portugués(BR)",
-                py: "Español(PY)",
+                br: "BR",
+                py: "PY",
             }
         },
         tablePromocao: {

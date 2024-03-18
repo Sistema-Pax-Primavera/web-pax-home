@@ -1,16 +1,27 @@
+import ErrorComponent from '../components/show-message';
 import { Unidade } from '../entities/class/unidade';
 import httpsInstance from './url';
 
 export const useUnidade = () => {
     const https = httpsInstance()
 
-    const getUnidades = async () =>
-        https.get("/35bea800-d5f9-484f-8b53-290a0f730e6e")
-            .then(({ data }) =>
-                data.map((item) =>
-                    Unidade(item)
-                )
-            );
+    const getUnidades = async () => {
+        try {
+            const response = await https.get("/unidades");
+            const data = response.data;
+            if (data) {
+                return data.map((item) => Unidade(item));
+            } else {
+                return null;
+            }
+        } catch (error) {
+            if (error.response && error.response.status) {
+                throw { message: error.message, status: error.response.status };
+            } else {
+                throw error;
+            }
+        }
+    };
 
     return {
         getUnidades,
