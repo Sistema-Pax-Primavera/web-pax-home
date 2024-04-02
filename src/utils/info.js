@@ -13,12 +13,14 @@ const idiomas = {
                 titulo: "Controle",
                 botoesAcao: {
                     cobranca: "Cobrança",
+                    boleto: "Boletos"
                 },
             },
             configurações: {
                 titulo: "Configurações",
                 botoesAcao: {
                     cadastro: "Cadastro",
+                    suporte: "Suporte"
                 },
             },
 
@@ -72,12 +74,14 @@ const idiomas = {
                 titulo: "Control",
                 botoesAcao: {
                     cobranca: "Cargar",
+                    boleto: "Boletos"
                 },
             },
             configurações: {
                 titulo: "Ajustes",
                 botoesAcao: {
                     cadastro: "Registro",
+                    suporte: "Soporte"
                 },
             },
 

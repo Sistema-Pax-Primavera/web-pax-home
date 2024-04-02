@@ -43,6 +43,8 @@ import { useUnidade } from "../services/api-config";
 import Carregando from "../components/carregando";
 import InactivityHOC from "../services/inactivityHOC";
 import ErrorComponent from "../components/show-message";
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import Desenvolvimento from "../components/em-desenvolvimento";
 
 const style = {
     position: "absolute",
@@ -332,6 +334,18 @@ const Home = () => {
                                     ? idiomas.es_PY.menu.controle.botoesAcao.cobranca
                                     : idiomas.pt_BR.menu.controle.botoesAcao.cobranca}
                             </button>
+                            <button
+                                onClick={() => handleMenuClick("/pax-primavera/gerador-boletos")}
+                                className={
+                                    activeRoute === "/pax-primavera/gerador-boletos" ? "active" : ""
+                                }
+                                style={{ display: isItemActive("controle", "boleto") ? "flex" : "none" }}
+                            >
+                                <AutoAwesomeMosaicIcon fontSize={"small"} />
+                                {idioma
+                                    ? idiomas.es_PY.menu.controle.botoesAcao.boleto
+                                    : idiomas.pt_BR.menu.controle.botoesAcao.boleto}
+                            </button>
                             <label>
                                 {idioma
                                     ? idiomas.es_PY.menu.configurações.titulo
@@ -349,34 +363,52 @@ const Home = () => {
                                     ? idiomas.es_PY.menu.configurações.botoesAcao.cadastro
                                     : idiomas.pt_BR.menu.configurações.botoesAcao.cadastro}
                             </button>
+                            <button
+                                onClick={() => handleMenuClick("/pax-primavera/suporte")}
+                                className={
+                                    activeRoute === "/pax-primavera/suporte" ? "active" : ""
+                                }
+                                style={{ display: isItemActive("configuracoes", "suporte") ? "flex" : "none" }}
+                            >
+                                <SupportAgentIcon fontSize={"small"} />
+                                {idioma
+                                    ? idiomas.es_PY.menu.configurações.botoesAcao.suporte
+                                    : idiomas.pt_BR.menu.configurações.botoesAcao.suporte}
+                            </button>
                         </div>
                     </div>
                     <div className="container-dashboard2">
                         <div className="perfil">
                             <div className="perfil-localizacao">
-                                <div className="cidade-home">
-                                    <label>
-                                        {idioma
-                                            ? idiomas.es_PY.menuUsuario.unidade
-                                            : idiomas.pt_BR.menuUsuario.unidade}
-                                    </label>
-                                    <select
-                                        value={unidadeAtual}
-                                        onChange={(event) =>
-                                            setUnidadeAtual(event.target.value)
-                                        }>
-                                        {unidades.map((unidade) => (
-                                            <option key={unidade.id} value={unidade.id}>
-                                                {unidade.nome_unidade}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div className="perfil-acessos">
-                                    <a onClick={handleMenuOpen}>
-                                        <AccountCircleIcon />
-                                    </a>
-                                </div>
+                                {(activeRoute === "/pax-primavera" || activeRoute === "/pax-primavera/associado") && (
+                                    <div className="cidade-home">
+                                        <label>
+                                            {idioma
+                                                ? idiomas.es_PY.menuUsuario.unidade
+                                                : idiomas.pt_BR.menuUsuario.unidade}
+                                        </label>
+                                        <select
+                                            value={unidadeAtual}
+                                            onChange={(event) =>
+                                                setUnidadeAtual(event.target.value)
+                                            }>
+                                            {unidades.map((unidade) => (
+                                                <option key={unidade.id} value={unidade.id}>
+                                                    {unidade.nome_unidade}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                )}
+                                {(activeRoute === "/pax-primavera" || activeRoute === "/pax-primavera/associado") ? (
+                                    <div className="perfil-acessos">
+                                        <a onClick={handleMenuOpen}>
+                                            <AccountCircleIcon />
+                                        </a>
+                                    </div>
+                                ) : (
+                                    <p>Area do Usuario</p>
+                                )}
                             </div>
                         </div>
                         <Menu
@@ -481,6 +513,13 @@ const Home = () => {
                                         key={activeRoute}
                                         config={() => System.import("@pax/pax-cobranca")}
                                     />
+                                ) : activeRoute === "/pax-primavera/financeiro" ? (
+
+                                    <Desenvolvimento tela='Financeiro' />
+                                    // <ParcelWithInactivity
+                                    //     key={activeRoute}
+                                    //     config={() => System.import("@pax/pax-financeiro")}
+                                    // />
                                 ) : activeRoute === "/pax-primavera/configuracoes/cadastro" ? (
                                     <ParcelWithInactivity
                                         key={activeRoute}
@@ -492,6 +531,10 @@ const Home = () => {
                                     <PageChat />
                                 ) : activeRoute === "/pax-primavera/solicitacao" ? (
                                     <Solicitacao />
+                                ) : activeRoute === "/pax-primavera/suporte" ? (
+                                    <Desenvolvimento tela='Suporte' />
+                                ) : activeRoute === "/pax-primavera/gerador-boletos" ? (
+                                    <Desenvolvimento tela='Gerador de Boletos' />
                                 ) : activeRoute === "/pax-primavera" ? (
                                     <>
                                         <div className="bem-vindo">

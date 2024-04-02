@@ -34,8 +34,8 @@ const InactivityHOC = (WrappedComponent) => {
             const inactivityTimer = setInterval(() => {
                 const currentTime = new Date();
                 const timeDiff = currentTime - lastActivity;
-                console.log(timeDiff.toString());
-                const inactivityTimeout = 15 * 60 * 1000;
+                //console.log(timeDiff.toString());
+                const inactivityTimeout = 25 * 60 * 1000;
 
                 if (timeDiff > inactivityTimeout) {
                     handleUserInactivity();
