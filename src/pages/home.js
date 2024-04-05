@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Logo from "../../assets/logo-pax-branco.svg";
+import BoletoBranco from "../../assets/boleto-branco.svg";
 import "./home.css";
+import { toast } from "react-toastify";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 import AutoAwesomeMosaicIcon from "@mui/icons-material/AutoAwesomeMosaic";
@@ -58,7 +60,7 @@ const style = {
 };
 
 const Home = () => {
-    const { getUnidades } = useUnidade();
+    const { getUnidades, alterarSenha } = useUnidade();
     const [usuario, setUsuario] = useState("");
     const [idioma, setIdioma] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -79,6 +81,10 @@ const Home = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [errorCode, setErrorCode] = useState(null);
     const ParcelWithInactivity = InactivityHOC(Parcel);
+    const [senha, setSenha] = useState('');
+    const [senhaAtual, setSenhaAtual] = useState('');
+    const [mostrarSenhaAtual, setMostrarSenhaAtual] = useState(false);
+    const [mostrarSenha, setMostrarSenha] = useState(false);
 
 
     const dadosAdesao = [
@@ -148,6 +154,32 @@ const Home = () => {
 
     const closeFloatingWindow = () => {
         setShowFloatingWindow(false);
+    };
+
+    const atualizaSenha = async () => {
+        try {
+            const response = await alterarSenha(senhaAtual, senha, usuario.usuario);
+            if (response.ok) {
+                // Senha alterada com sucesso
+                toast.success('Senha alterada com sucesso');
+                // Limpa os campos de senha após a alteração bem-sucedida
+                setSenha('');
+                setSenhaAtual('');
+            } else {
+                // Tratar erro de alteração de senha
+                toast.error('Erro ao alterar senha');
+            }
+        } catch (error) {
+            toast.error('Erro ao realizar solicitação');
+        }
+    };
+
+    const toggleMostrarSenhaAtual = () => {
+        setMostrarSenhaAtual(!mostrarSenhaAtual);
+    };
+
+    const toggleMostrarSenha = () => {
+        setMostrarSenha(!mostrarSenha);
     };
 
     const Logout = () => {
@@ -345,6 +377,7 @@ const Home = () => {
                                 {idioma
                                     ? idiomas.es_PY.menu.controle.botoesAcao.boleto
                                     : idiomas.pt_BR.menu.controle.botoesAcao.boleto}
+
                             </button>
                             <label>
                                 {idioma
@@ -376,7 +409,7 @@ const Home = () => {
                                     : idiomas.pt_BR.menu.configurações.botoesAcao.suporte}
                             </button>
                         </div>
-                    </div>
+                    </div >
                     <div className="container-dashboard2">
                         <div className="perfil">
                             <div className="perfil-localizacao">
@@ -407,7 +440,15 @@ const Home = () => {
                                         </a>
                                     </div>
                                 ) : (
-                                    <p>Area do Usuario</p>
+                                    <>
+
+                                        <div className="perfil-acessos">
+                                            <a onClick={handleMenuOpen}>
+                                                <AccountCircleIcon />
+                                            </a>
+                                        </div>
+                                        <p style={{ color: "white" }}>{usuario.usuario}</p>
+                                    </>
                                 )}
                             </div>
                         </div>
@@ -473,7 +514,7 @@ const Home = () => {
                                     <div className="icones-nome">
                                         <label>
                                             <HttpsIcon fontSize={"small"} />
-                                            Alterar Senha{" "}
+                                            Alterar Senha
                                         </label>
                                     </div>
                                 </Typography>
@@ -481,13 +522,20 @@ const Home = () => {
                                     <div className="alterar-senha">
                                         <div className="campos-alterasenha">
                                             <label>Senha Atual</label>
-                                            <input type="password"></input>
+                                            <input
+                                                value={senhaAtual}
+                                                type={mostrarSenhaAtual ? 'text' : 'password'}
+                                                onChange={(e) => setSenhaAtual(e.target.value)}
+                                            />
                                         </div>
                                         <div className="campos-alterasenha">
                                             <label>Nova Senha</label>
-                                            <input type="password"></input>
+                                            <input
+                                                value={senha}
+                                                type={mostrarSenha ? 'text' : 'password'}
+                                                onChange={(e) => setSenha(e.target.value)} />
                                         </div>
-                                        <button>CONFIRMAR</button>
+                                        <button onClick={atualizaSenha}>CONFIRMAR</button>
                                     </div>
                                 </Typography>
                             </Box>
@@ -532,7 +580,17 @@ const Home = () => {
                                 ) : activeRoute === "/pax-primavera/solicitacao" ? (
                                     <Solicitacao />
                                 ) : activeRoute === "/pax-primavera/suporte" ? (
-                                    <Desenvolvimento tela='Suporte' />
+                                    <ParcelWithInactivity
+                                        key={activeRoute}
+                                        config={() => {
+                                            try {
+                                                return System.import("@pax/pax-suporte");
+                                            } catch (error) {
+                                                <Desenvolvimento tela='Suporte' />
+                                            }
+                                        }}
+                                    />
+
                                 ) : activeRoute === "/pax-primavera/gerador-boletos" ? (
                                     <Desenvolvimento tela='Gerador de Boletos' />
                                 ) : activeRoute === "/pax-primavera" ? (
@@ -742,7 +800,7 @@ const Home = () => {
                             </>
                         }
                     </div>
-                </div>
+                </div >
             )}
         </>
     );

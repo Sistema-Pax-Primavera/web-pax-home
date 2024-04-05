@@ -32,7 +32,7 @@ const idiomas = {
         botoesAcao: {
             recebimento: "Recebimento",
             atendimento: "Iniciar Atendimento",
-            solicitacao: "Acompanhar Solicitalçoes",
+            solicitacao: "Acompanhar Solicitaçoes",
             chat: "Chat",
             manual: "Manual do Sistema",
             site: "Site Pax Primavera",
