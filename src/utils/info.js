@@ -38,6 +38,7 @@ const idiomas = {
             site: "Site Pax Primavera",
         },
         menuUsuario: {
+            perfil: "Perfil",
             unidade: "Unidade Atual",
             sair: "Sair",
             senha: "Alterar Senha",
@@ -99,6 +100,7 @@ const idiomas = {
             site: "Site Pax Primavera"
         },
         menuUsuario: {
+            perfil: 'Perfil',
             unidade: "Unidad actual",
             sair: "Salir",
             senha: "Cambiar contraseña",

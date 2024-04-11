@@ -4,6 +4,7 @@ import Home from "../pages/home";
 import ManualScreen from "../pages/manual/manual";
 import Chat from "../pages/chat/chat";
 import Solicitacao from "../pages/solicitação";
+import Perfil from "../pages/perfil";
 
 const RoutesApp = () => {
     const login = !!localStorage.getItem("usuario");
@@ -24,6 +25,7 @@ const RoutesApp = () => {
                     <Route exact path="/manual-sistema" element={<ManualScreen />} />
                     <Route exact path="/chat" element={<Chat />} />
                     <Route exact path="/solicitacao" element={<Solicitacao />} />
+                    <Route exact path="/perfil" element={<Perfil />} />
                 </Routes>
             </BrowserRouter>
         );
