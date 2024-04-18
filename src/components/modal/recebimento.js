@@ -30,6 +30,18 @@ import CreditScoreIcon from "@mui/icons-material/CreditScore";
 import PixIcon from "@mui/icons-material/Pix";
 import SourceIcon from "@mui/icons-material/Source";
 
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -63,6 +75,25 @@ const rows = [
     "54321",
     "6778945612",
     "28/05/2024"
+  ),
+];
+
+function tabela(
+  parcela, valor, datapagamento, 
+) {
+  return { parcela, valor, datapagamento,   };
+}
+
+const tabelaValores = [
+  tabela(
+    '01',
+    "100,00",
+    "22/05/2023",
+  ),
+  tabela(
+    '02',
+    "100,00",
+    "22/07/2023",
   ),
 ];
 
@@ -322,7 +353,7 @@ ADERBAL TESTE<br>
       parseFloat(valorOriginal) - parseFloat(desconto || 0);
     const valorComDescontoFormatado = valorComDesconto.toFixed(2);
     setTotalPagar(valorComDescontoFormatado);
-    setReceberDisponivel(false);
+    setReceberDisponivel(true);
   };
   
   
@@ -580,7 +611,7 @@ ADERBAL TESTE<br>
                   <div className="container-linha-recebimento">
                     <div className="resultado-forma-pagamento">
                       <div key={1} className="pag-forma-valor-rec">
-                        <div className="forma-pagamento-recebimento">
+                        <div className="forma-pagamento-home">
                           <label>Forma de Pagamento</label>
                           <select
                             value={novaParcela.formaPagamento}
@@ -602,7 +633,7 @@ ADERBAL TESTE<br>
                         {["Dinheiro", "Débito", "Crédito"].includes(
                           novaParcela.formaPagamento
                         ) ? null : (
-                          <div className="conta-bancaria-recebimento">
+                          <div className="conta-bancaria-home">
                             <label>Conta</label>
                             <select
                               value={novaParcela.conta}
@@ -616,7 +647,7 @@ ADERBAL TESTE<br>
                             </select>
                           </div>
                         )}
-                        <div className="conta-bancaria-recebimento">
+                        <div className="conta-bancaria-home">
                           <label>Valor a Pagar</label>
                           <input
                             type="number"
@@ -626,7 +657,7 @@ ADERBAL TESTE<br>
                             }
                           />
                         </div>
-                        <div className="adicionar-recebimento-forma">
+                        <div className="adicionar-recebimento-home">
                           <button onClick={handleAdicionarParcela}>
                             <AddCircleOutlineIcon fontSize={"small"} />
                           </button>
@@ -640,15 +671,15 @@ ADERBAL TESTE<br>
                                 className="container-valores-recebimento"
                                 key={index}
                               >
-                                <div className="tipo-pagamento-recebimento">
-                                  <div className="tipo-pagamento-2">
+                                <div className="tipo-pagamento-recebimento-home">
+                                  <div className="tipo-pagamento-2-home">
                                     {renderizarIconeFormaPagamento(
                                       parcela.formaPagamento
                                     )}
                                     <label>{parcela.formaPagamento}</label>
                                   </div>
                                 </div>
-                                <div className="tipo-pagamento-recebimento-3">
+                                <div className="tipo-pagamento-recebimento-3-home">
                                   <h2> Valor $</h2>
                                   <label>{parcela.valor}</label>
                                 </div>
@@ -656,12 +687,12 @@ ADERBAL TESTE<br>
                                 {["PIX", "Cheque"].includes(
                                   parcela.formaPagamento
                                 ) && (
-                                  <div className="tipo-pagamento-recebimento-3">
+                                  <div className="tipo-pagamento-recebimento-3-home">
                                     <h2> Conta</h2>
                                     <label>{parcela.conta}</label>
                                   </div>
                                 )}
-                                <div className="remove-forma-paga">
+                                <div className="remove-forma-paga-home">
                                   <button
                                     onClick={() => handleRemoverParcela(index)}
                                   >
@@ -670,7 +701,7 @@ ADERBAL TESTE<br>
                                 </div>
                               </div>
                             ))}
-                            <div className="receber-add-recebimento">
+                            <div className="receber-add-recebimento-home">
                               {receberDisponivel ? (
                                 <>
                                   <button
@@ -729,7 +760,7 @@ ADERBAL TESTE<br>
                       )}
                     </div>
 
-                    <div className="acordion-recebimento">
+                     <div className="acordion-recebimento">
                       <div>
                         <TableContainer
                           component={Paper}
@@ -742,41 +773,43 @@ ADERBAL TESTE<br>
                             <TableHead>
                               <TableRow sx={{ backgroundColor: "#006b33" }}>
                                 <TableCell
-                                  align="center"
+                                  align="start"
                                   sx={{
-                                    fontSize: 12,
+                                    fontSize: 5,
+                                    backgroundColor: "#006b33",
                                     color: "#ffff",
                                     paddingY: 1,
                                   }}
                                 >
-                                  DATA VENCIMENTO
+                                  Data Vencimento
+                                </TableCell>
+                                <TableCell
+                                  align="start"
+                                  sx={{
+                                    fontSize: 5,
+                                    backgroundColor: "#006b33",
+                                    color: "#ffff",
+                                    paddingY: 1,
+                                  }}
+                                >
+                                  Valor
                                 </TableCell>
                                 <TableCell
                                   align="center"
-                                  sx={{
-                                    fontSize: 12,
+                                  sx={{backgroundColor: "#006b33",
+                                    fontSize: 5,
                                     color: "#ffff",
                                     paddingY: 1,
                                   }}
                                 >
-                                  VALOR
-                                </TableCell>
-                                <TableCell
-                                  align="center"
-                                  sx={{
-                                    fontSize: 12,
-                                    color: "#ffff",
-                                    paddingY: 1,
-                                  }}
-                                >
-                                  DATA PAGAMENTO
+                                  Data Pagamento
                                 </TableCell>
                               </TableRow>
                             </TableHead>
                             <TableBody>
-                              {rows.map((row) => (
+                              {tabelaValores.map((tabelaValore) => (
                                 <TableRow
-                                  key={row.parcela}
+                                  key={tabelaValore.parcela}
                                   sx={{
                                     "&:last-child td, &:last-child th": {
                                       border: 0,
@@ -785,22 +818,24 @@ ADERBAL TESTE<br>
                                 >
                                   <TableCell
                                     align="center"
-                                    sx={{ fontSize: 12 }}
+                                    sx={{ fontSize: 10 }}
                                   >
-                                    {row.datavencimento}
+                                    {tabelaValore.parcela}
                                   </TableCell>
                                   <TableCell
                                     align="center"
-                                    sx={{ fontSize: 12 }}
+                                    sx={{ fontSize: 10 }}
                                   >
-                                    {row.valor}
+                                    {tabelaValore.valor}
                                   </TableCell>
                                   <TableCell
                                     align="center"
-                                    sx={{ fontSize: 12 }}
+                                    sx={{ fontSize: 10 }}
                                   >
-                                    {row.datapagamento}
+                                    {tabelaValore.datapagamento}
                                   </TableCell>
+                                  
+                                  
                                 </TableRow>
                               ))}
                             </TableBody>

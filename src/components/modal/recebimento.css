@@ -1,241 +1,365 @@
 .floating-window {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    max-width: 80vw;
-    max-height: 80vh;
-    overflow-y: auto;
-    text-align: center;
-    z-index: 1000;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 80vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: center;
+  z-index: 1000;
 
-    /* Garante que o componente flutuante está acima do resto do conteúdo */
+  /* Garante que o componente flutuante está acima do resto do conteúdo */
 }
 
-.floating-window label{
-    display: flex;
-    align-items: center;
-    color: var(--verde);
-    gap: 10px;
-    font-size: 15PX;
-    font-weight: 900;
+.floating-window label {
+  display: flex;
+  align-items: center;
+  color: var(--verde);
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 900;
 }
 
-.clientes-recebimento{
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.clientes-recebimento {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.clientes-recebimento input{
-    background-color: var(--cinza-leve);
-    width: 40%;
-    display: flex;
-    padding: 10px;
-    font-weight: 700;
-    align-items: start;
+.clientes-recebimento input {
+  background-color: var(--cinza-leve);
+  width: 40%;
+  display: flex;
+  padding: 10px;
+  font-weight: 700;
+  align-items: start;
 }
 
-.clientes-recebimento button{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 18%;
-    background-color: var(--verde);
-    color: var(--branco);
+.clientes-recebimento button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 18%;
+  background-color: var(--verde);
+  color: var(--branco);
 }
 
-.pesquisar-cliente-recebimento{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
+.pesquisar-cliente-recebimento {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
-.pesquisar-cliente-recebimento img{
-    width: 30%;
+.pesquisar-cliente-recebimento img {
+  width: 30%;
 }
 
-.floating-window{
-    width:60%;
-    display: flex;
-    border-radius: 10px;
+.floating-window {
+  width: 60%;
+  display: flex;
+  border-radius: 10px;
 }
 
 .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
 }
 
-.window-content{
-    width: 10%;
+.window-content {
+  width: 10%;
 }
 
-.window-content button{
-    background-color: var(--vermelho);
-    color: var(--branco);
-    padding: 2px;
-    width: 3%;
+.window-content button {
+  background-color: var(--vermelho);
+  color: var(--branco);
+  padding: 2px;
+  width: 3%;
 }
 
-.floating-window2{
-    width: 100%;
-    display: flex;
-    align-items: center;
+.floating-window2 {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
-.tabela-recebimento{
-    margin-top: 10px;
+.tabela-recebimento {
+  margin-top: 10px;
 }
 
-.loading{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    flex-direction: column;
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
 }
 
-.loading p{
-    padding-top: 50px;
-    color: var(--verde);
-    font-size: 15px;
-    font-weight: 900;
+.loading p {
+  padding-top: 50px;
+  color: var(--verde);
+  font-size: 15px;
+  font-weight: 900;
 }
 
-.recebimento-home{
-    display: flex;
-    padding: 10px;
-    flex-direction: column;
-    width: 93%;
-    gap: 10px;
+.recebimento-home {
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  width: 93%;
+  gap: 10px;
 }
 
-.info-recebi-home{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-    padding: 15px;
-    justify-content: center;
-    background-color: var(--cinza-leve);
-    border-radius: 10px;;
+.info-recebi-home {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 15px;
+  justify-content: center;
+  background-color: var(--cinza-leve);
+  border-radius: 10px;
 }
 
-.aberto-home{
-    display: flex;
-    flex-direction: column;
-    width: 13%;
+.aberto-home {
+  display: flex;
+  flex-direction: column;
+  width: 13%;
 }
 
-.aberto-home label{
-    font-size: 12px;
-    font-weight: 800;
-    color: var(--preto);
+.aberto-home label {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--preto);
 }
 
 .ult-mes-pago-home {
-    display: flex;
-    flex-direction: column;
-    width: 17%;
+  display: flex;
+  flex-direction: column;
+  width: 17%;
 }
 
-.ult-mes-pago-home label{
-    font-size: 12px;
-    font-weight: 800;
-    color: var(--preto);
+.ult-mes-pago-home label {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--preto);
 }
 
-.aberto-reci-home{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 5px;
-    color: var(--verde);
-    background-color: var(--branco);
-    border-radius: 5px;
+.aberto-reci-home {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+  color: var(--verde);
+  background-color: var(--branco);
+  border-radius: 5px;
 }
 
-.aberto-reci-home input{
-    background-color: var(--branco);
-    border-radius: 5px;
-    color: rgb(63, 62, 62);
-    width: 100%;
+.aberto-reci-home input {
+  background-color: var(--branco);
+  border-radius: 5px;
+  color: rgb(63, 62, 62);
+  width: 100%;
 }
 
 .tabela-acerto-recebimento2 {
-    display: flex;
-    flex-direction: column;
-    width: 94%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .recebimento-01-home {
-    width: 20%;
-    display: flex;
-    flex-direction: column;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
 }
 
-.recebimento-01-home label{
-    font-weight: 800;
-    font-size: 12px;
+.recebimento-01-home label {
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--preto);
 }
 
 .recebimento-01-home input {
-    font-weight: 500;
-    padding: 8px;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: var(--cinza-leve);
+  font-weight: 500;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--cinza-leve);
 }
 
 .recebimento-01-home select {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .recebimento-01-homehome select {
-    width: 100%;
+  width: 100%;
 }
-
 
 .recebimento-02-home input {
-    padding: 7px;
-    font-weight: 500;
-    width: 100%;
-    background-color: var(--cinza-leve);
-    box-sizing: border-box;
+  padding: 7px;
+  font-weight: 500;
+  width: 100%;
+  background-color: var(--cinza-leve);
+  box-sizing: border-box;
 }
 
-.recebimento-02-home label{
-    font-weight: 800;
-    font-size: 12px;
+.recebimento-02-home label {
+  font-weight: 500;
+  color: var(--preto);
+  font-size: 12px;
 }
 
 .recebimento-02-home {
-    width: 13%;
-    display: flex;
-    flex-direction: column;
-
+  width: 13%;
+  display: flex;
+  flex-direction: column;
 }
 
 .linhas-recebimento-home {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
 }
 
-.linhas-recebimento-home button{
-    width: 25%;
+.linhas-recebimento-home button {
+  width: 25%;
+  background-color: var(--verde);
+}
+
+.forma-pagamento-home {
+  display: flex;
+  width: 40%;
+  flex-direction: column;
+}
+
+.forma-pagamento-home label {
+  font-weight: 500;
+  color: var(--preto);
+  font-size: 12px;
+}
+
+.forma-pagamento-home select {
+  font-weight: 500;
+  background-color: var(--cinza-leve);
+}
+
+.conta-bancaria-home {
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+}
+
+.conta-bancaria-home label {
+  font-weight: 500;
+  color: var(--preto);
+  font-size: 12px;
+}
+
+.conta-bancaria-home input {
+  font-weight: 500;
+  padding: 8px;
+  background-color: var(--cinza-leve);
+}
+
+.conta-bancaria-home select {
+    font-weight: 500;
+    padding: 8px;
+    background-color: var(--cinza-leve);
+  }
+
+.adicionar-recebimento-home {
+  display: flex;
+  width: 15%;
+  flex-direction: column;
+}
+
+.adicionar-recebimento-home button{
+    background-color: var(--verde);
+    color: var(--branco);
+    margin-top: 15px;
+    padding: 5px;
+}
+
+.tipo-pagamento-2-home {
+    display: flex;
+    color: var(--verde);
+    align-items: center;
+    gap: 10px;
+}
+
+.tipo-pagamento-2-home label{
+    font-size: 13px;
+}
+
+.tipo-pagamento-recebimento-home {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    height: 41px;
+    justify-content: center;
+    width: 30%;
+    background-color: var(--cinza-leve);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.tipo-pagamento-recebimento-3-home {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    background-color: var(--cinza-leve);
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.tipo-pagamento-recebimento-3-home h2{
+    font-size: 12px;
+}
+
+.tipo-pagamento-recebimento-3-home label{
+    font-size: 12px;
+}
+
+.remove-forma-paga-home button{
+    background-color: var(--vermelho);
+    color: var(--branco);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px;
+}
+
+
+.receber-add-recebimento-home{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 30%;
+}
+
+.receber-add-recebimento-home button{
+    background-color: var(--verde);
+    color: var(--branco);
+    font-weight: 700;
+    width: 100%;
 }

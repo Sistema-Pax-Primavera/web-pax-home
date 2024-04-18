@@ -1,0 +1,212 @@
+.edit-dados-cobran label {
+  font-size: 18px;
+  color: var(--preto);
+  font-weight: 500;
+}
+
+.edit-dados-cobran {
+  padding: 15px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.nome-cliente-cobran {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.nome-cliente-cobran input {
+  width: 95%;
+  background-color: var(--cinza-leve);
+}
+
+.contato-por-cobran label {
+  font-size: 13px;
+}
+
+.nome-cliente-cobran label {
+  font-size: 13px;
+}
+
+.estado-mun-cobran {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.estado1-mun {
+  display: flex;
+  width: 30%;
+  flex-direction: column;
+}
+
+.estado1-mun label {
+  font-size: 13px;
+}
+
+.estado2-mun label {
+  font-size: 13px;
+}
+.estado1-mun select {
+  width: 100%;
+  background-color: var(--cinza-leve);
+}
+
+.estado2-mun {
+  display: flex;
+  width: 70%;
+  flex-direction: column;
+}
+
+.teste333 button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+}
+
+.estado2-mun select {
+  width: 100%;
+  background-color: var(--cinza-leve);
+}
+
+.tamanho-modal-pequena-cobran {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tamanho-modal-pequena-cobran h1 {
+  color: var(--preto);
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.salva-cancel-cobran {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  align-items: center;
+  justify-content: end;
+}
+
+.salva-cancel-cobran2 {
+  display: flex;
+  width: 60%;
+  gap: 10px;
+  align-items: center;
+}
+
+.uni-cobran3 select {
+  background-color: var(--cinza-leve);
+}
+
+.uni-cobran {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.uni-cobran3 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.uni-cobran2 {
+  width: 70%;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.uni-equipe-cobran {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.uni-equipe-cobran-buttons {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.uni-cobran label {
+  color: var(--preto);
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.uni-cobran select {
+  background-color: var(--cinza-leve);
+  width: 100%;
+}
+
+.container-anexos-cobran {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-pequena {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    opacity: 0;
+    animation: slideDown 0.6s ease forwards;
+  }
+  
+  .modal-pequena.closed {
+    animation: slideUp 0.6s ease forwards;
+  }
+.container-modal-pequena{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.fecha-container-modal-pequena{
+    display: flex;
+    width: 100%;
+    align-content: center;
+    justify-content: end;
+}
+
+.fecha-container-modal-pequena button{
+    background-color: var(--branco);
+    color: var(--vermelho);
+    cursor: pointer;
+}
+
+.conteudo-container-modal{
+    width: 100%;
+}
+
+@keyframes slideDown {
+  from {
+    top: -30%;
+    opacity: 0;
+  }
+  to {
+    top: 0%;
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    top: 0%;
+    opacity: 1;
+  }
+  to {
+    top: -30%;
+    opacity: 0;
+  }
+}

@@ -607,16 +607,7 @@ const Home = () => {
                 </div>
               </MenuItem>
 
-              <MenuItem onClick={handleMenuClose}>
-                <div className="icones-nome">
-                  <label onClick={handleOpen}>
-                    <LockIcon fontSize={"small"} />{" "}
-                    {idioma
-                      ? idiomas.es_PY.menuUsuario.senha
-                      : idiomas.pt_BR.menuUsuario.senha}
-                  </label>
-                </div>
-              </MenuItem>
+              
               {/* Opção: Sair */}
               <MenuItem onClick={Logout}>
                 <div className="icones-nome">
