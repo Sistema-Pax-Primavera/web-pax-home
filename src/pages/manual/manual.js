@@ -1,94 +1,88 @@
-import React, { useState } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import './manual.css';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./manual.css";
 import Logo from "../../../assets/logo-pax-verde.svg";
-import Recebimento from "../../../assets/dinheiro.png";
-import Chat from "../../../assets/chat-pax.png";
-import Atendimento from "../../../assets/atendimento.png";
-import Solicitação from "../../../assets/atendimento2.png";
-
-const manualData = [
-    {
-        title: 'Bem-vindo ao Manual do Sistema!',
-        message: 'Aqui estão algumas instruções importantes...',
-        image: Logo,
-    },
-    {
-        title: 'Como usar o Recebimento..',
-        message: 'Descrição sobre como usar o recebimento...',
-        image: Recebimento,
-    },
-    {
-        title: 'Como usar o Chat..',
-        message: 'Descrição sobre como usar o chat...',
-        image: Chat,
-    },
-    {
-        title: 'Como usar a Central de Solicitação..',
-        message: 'Descrição sobre como usar a Central de Solicitação...',
-        image: Solicitação,
-    },
-    {
-        title: 'Como usar a Central de Atendimento..',
-        message: 'Descrição sobre como usar a Central de Atendimento...',
-        image: Atendimento,
-    },
-];
-
+import Perguntas from "./perguntas";
+import Carregando from "../../components/carregando";
+import SearchIcon from "@mui/icons-material/Search";
+import { Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
 
 const ManualScreen = () => {
-    const navigate = useNavigate();
-    const [activeRoute, setActiveRoute] = useState("");
+  const [query, setQuery] = useState("");
+  const [perguntaSelecionada, setPerguntaSelecionada] = useState(null);
+  const [mostrarCarregando, setMostrarCarregando] = useState(false);
 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-    };
+  const handleQueryChange = (event) => {
+    setQuery(event.target.value.toLowerCase());
+    // Limpa a pergunta selecionada ao alterar a consulta
+    setPerguntaSelecionada(null);
+  };
 
-    const handleMenuClick = (route) => {
-        // Navegar para a rota específica
-        navigate(route);
-        // Salvar a rota no localStorage
-        localStorage.setItem("page", route);
-        // Atualizar a rota ativa
-        setActiveRoute(route);
-    };
+  // Função para lidar com o clique em uma pergunta
+  const handleQuestionClick = (pergunta) => {
+    // Exibe o componente de carregamento
+    setMostrarCarregando(true);
+    // Limpa a pergunta selecionada
+    setPerguntaSelecionada(null);
+    // Simula um tempo de carregamento antes de exibir a pergunta selecionada
+    setTimeout(() => {
+      setPerguntaSelecionada(pergunta);
+      // Oculta o componente de carregamento após o tempo de simulação
+      setMostrarCarregando(false);
+    }, 2000); // Tempo de simulação: 2 segundos
+  };
 
-    return (
-        <div className="manual-screen">
-            <Slider {...settings}>
-                {manualData.map((slide, index) => (
-                    <div
-                        key={index}
-                        className={`slide ${slide.image ? 'slide-image' : 'slide-text'}`}
-                    >
-                        {slide.image ? (
-                            <>
-                                <h2>{slide.title}</h2>
-                                <p>{slide.message}</p>
-                                <img
-                                    src={slide.image}
-                                    alt={`Slide ${index}`}
-                                    style={{ width: '40%', height: '10%' }}
-                                />
-                            </>
-                        ) : (
-                            <>
-                                <h2>{slide.title}</h2>
-                                <p>{slide.message}</p>
-                            </>
-                        )}
-                    </div>
-                ))}
-            </Slider>
+  return (
+    <div className="container-manual">
+      <div className="fundo-container-manual">
+        <div className="pesquisa-manual">
+          <SearchIcon fontSize={"small"} />
+          <input
+            placeholder="Escreva a sua dúvida aqui!"
+            value={query}
+            onChange={handleQueryChange}
+          />
         </div>
-    );
+        {/* Renderiza as instruções se não houver consulta */}
+        {query === "" && (
+          <>
+            <h1>Bem Vindo ao Manual do Sistema!</h1>
+            <label>Aqui estão algumas instruções importantes ...</label>
+            <img src={Logo} alt="Logo" />
+          </>
+        )}
+        {/* Renderiza o componente Perguntas se houver consulta */}
+        {query !== "" && (
+          <Perguntas query={query} onQuestionClick={handleQuestionClick} />
+        )}
+        {/* Renderiza o componente de carregamento */}
+        {mostrarCarregando && (
+          <div className="carregando-manual">
+            <Carregando />
+          </div>
+        )}
+        {/* Renderiza a pergunta selecionada */}
+        {perguntaSelecionada && (
+          <div className="pergunta-selecionada">
+            <h2>{perguntaSelecionada.pergunta}</h2>
+            <p>{perguntaSelecionada.resposta}</p>
+            {/* Renderiza o slideshow com os textos e imagens correspondentes */}
+            <div className="slide-container2">
+              <Slide indicators={true} autoplay={false}>
+                {perguntaSelecionada.imagens.map((imagem, index) => (
+                  <div key={index} className="each-slide2">
+                    <p>{perguntaSelecionada.textos[index]}</p>
+                    <img src={imagem} alt={`Imagem ${index}`} />
+                    {/* Exibe o texto correspondente ao slide atual */}
+                  </div>
+                ))}
+              </Slide>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default ManualScreen;

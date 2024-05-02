@@ -26,6 +26,9 @@ const RoutesApp = () => {
                     <Route exact path="/chat" element={<Chat />} />
                     <Route exact path="/solicitacao" element={<Solicitacao />} />
                     <Route exact path="/perfil" element={<Perfil />} />
+
+
+
                 </Routes>
             </BrowserRouter>
         );
