@@ -330,9 +330,8 @@ const Home = () => {
               alt="Logo"
             ></img>
             <div
-              className={`menus-lateral ${
-                isSidebarCollapsed ? "collapsed" : ""
-              }`}
+              className={`menus-lateral ${isSidebarCollapsed ? "collapsed" : ""
+                }`}
             >
               <label>
                 {idioma
@@ -411,10 +410,28 @@ const Home = () => {
               </button>
               <button
                 onClick={() =>
-                  handleMenuClick("/pax-primavera/gerador-boletos")
+                  handleMenuClick("/pax-primavera/parcelas")
                 }
                 className={
-                  activeRoute === "/pax-primavera/gerador-boletos"
+                  activeRoute === "/pax-primavera/parcelas"
+                    ? "active"
+                    : ""
+                }
+                style={{
+                  display: isItemActive("controle", "parcela") ? "flex" : "none",
+                }}
+              >
+                <AutoAwesomeMosaicIcon fontSize={"small"} />
+                {idioma
+                  ? idiomas.es_PY.menu.controle.botoesAcao.parcela
+                  : idiomas.pt_BR.menu.controle.botoesAcao.parcela}
+              </button>
+              <button
+                onClick={() =>
+                  handleMenuClick("/pax-primavera/boletos")
+                }
+                className={
+                  activeRoute === "/pax-primavera/boletos"
                     ? "active"
                     : ""
                 }
@@ -475,26 +492,26 @@ const Home = () => {
               <div className="perfil-localizacao">
                 {(activeRoute === "/pax-primavera" ||
                   activeRoute === "/pax-primavera/associado") && (
-                  <div className="cidade-home">
-                    <div className="localizacao-unidade">
-                      <label>
-                        <LocationOnIcon fontSize={"small"} />
-                      </label>
-                      <select
-                        value={unidadeAtual}
-                        onChange={(event) =>
-                          setUnidadeAtual(event.target.value)
-                        }
-                      >
-                        {unidades.map((unidade) => (
-                          <option key={unidade.id} value={unidade.id}>
-                            {unidade.nome_unidade}
-                          </option>
-                        ))}
-                      </select>
+                    <div className="cidade-home">
+                      <div className="localizacao-unidade">
+                        <label>
+                          <LocationOnIcon fontSize={"small"} />
+                        </label>
+                        <select
+                          value={unidadeAtual}
+                          onChange={(event) =>
+                            setUnidadeAtual(event.target.value)
+                          }
+                        >
+                          {unidades.map((unidade) => (
+                            <option key={unidade.id} value={unidade.id}>
+                              {unidade.nome_unidade}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
                 <Button
                   id="basic-button"
                   aria-controls={anchorEl2 ? "basic-menu" : undefined}
@@ -569,7 +586,7 @@ const Home = () => {
                 </Menu>
 
                 {activeRoute === "/pax-primavera" ||
-                activeRoute === "/pax-primavera/associado" ? (
+                  activeRoute === "/pax-primavera/associado" ? (
                   <div className="perfil-acessos">
                     <a onClick={handleMenuOpen}>
                       <AccountCircleIcon />
@@ -607,7 +624,7 @@ const Home = () => {
                 </div>
               </MenuItem>
 
-              
+
               {/* Opção: Sair */}
               <MenuItem onClick={Logout}>
                 <div className="icones-nome">
@@ -682,272 +699,282 @@ const Home = () => {
                 ) : activeRoute === "/pax-primavera/financeiro" ? (
                   <Desenvolvimento tela="Financeiro" />
                 ) : // <ParcelWithInactivity
-                //     key={activeRoute}
-                //     config={() => System.import("@pax/pax-financeiro")}
-                // />
-                activeRoute === "/pax-primavera/configuracoes/cadastro" ? (
-                  <ParcelWithInactivity
-                    key={activeRoute}
-                    config={() => System.import("@pax/pax-cadastro")}
-                  />
-                ) : activeRoute === "/pax-primavera/manual-sistema" ? (
-                  <ManualScreen />
-                ) : activeRoute === "/pax-primavera/chat" ? (
-                  <PageChat />
-                ) : activeRoute === "/pax-primavera/perfil" ? (
-                  <Perfil />
-                ) : activeRoute === "/pax-primavera/solicitacao" ? (
-                  <Solicitacao />
-                ) : activeRoute === "/pax-primavera/suporte" ? (
-                  <ParcelWithInactivity
-                    key={activeRoute}
-                    config={() => {
-                      try {
-                        return System.import("@pax/pax-suporte");
-                      } catch (error) {
-                        <Desenvolvimento tela="Suporte" />;
-                      }
-                    }}
-                  />
-                ) : activeRoute === "/pax-primavera/gerador-boletos" ? (
-                  <Desenvolvimento tela="Gerador de Boletos" />
-                ) : activeRoute === "/pax-primavera" ? (
-                  <>
-                    <div className="bem-vindo">
-                      <div className="bem-vindo2">
-                        <h1>
-                          {idioma
-                            ? idiomas.es_PY.message.titulo
-                            : idiomas.pt_BR.message.titulo}{" "}
-                          {usuario.usuario}
-                        </h1>
-                        <label>
-                          {idioma
-                            ? idiomas.es_PY.message.texto
-                            : idiomas.pt_BR.message.texto}
-                        </label>
-                        <br></br>
+                  //     key={activeRoute}
+                  //     config={() => System.import("@pax/pax-financeiro")}
+                  // />
+                  activeRoute === "/pax-primavera/configuracoes/cadastro" ? (
+                    <ParcelWithInactivity
+                      key={activeRoute}
+                      config={() => System.import("@pax/pax-cadastro")}
+                    />
+                  ) : activeRoute === "/pax-primavera/manual-sistema" ? (
+                    <ManualScreen />
+                  ) : activeRoute === "/pax-primavera/chat" ? (
+                    <PageChat />
+                  ) : activeRoute === "/pax-primavera/perfil" ? (
+                    <Perfil />
+                  ) : activeRoute === "/pax-primavera/solicitacao" ? (
+                    <Solicitacao />
+                  ) : activeRoute === "/pax-primavera/suporte" ? (
+                    <ParcelWithInactivity
+                      key={activeRoute}
+                      config={() => {
+                        try {
+                          return System.import("@pax/pax-suporte");
+                        } catch (error) {
+                          <Desenvolvimento tela="Suporte" />;
+                        }
+                      }}
+                    />
+                  ) : activeRoute === "/pax-primavera/boletos" ? (
+                    <ParcelWithInactivity
+                      key={activeRoute}
+                      config={() => {
+                        try {
+                          return System.import("@pax/pax-boletos");
+                        } catch (error) {
+                          <Desenvolvimento tela="Boletos" />;
+                        }
+                      }}
+                    />
+                    // <Desenvolvimento tela="Gerador de Boletos" />
+                  ) : activeRoute === "/pax-primavera" ? (
+                    <>
+                      <div className="bem-vindo">
+                        <div className="bem-vindo2">
+                          <h1>
+                            {idioma
+                              ? idiomas.es_PY.message.titulo
+                              : idiomas.pt_BR.message.titulo}{" "}
+                            {usuario.usuario}
+                          </h1>
+                          <label>
+                            {idioma
+                              ? idiomas.es_PY.message.texto
+                              : idiomas.pt_BR.message.texto}
+                          </label>
+                          <br></br>
+                        </div>
+                        <img src={BemVindo} alt="Bem-vindo"></img>
                       </div>
-                      <img src={BemVindo} alt="Bem-vindo"></img>
-                    </div>
-                    <div className="navegacao-home">
-                      <button onClick={openFloatingWindow}>
-                        <a className="dinheiro-recebimento">
-                          <img src={Dinheiro} alt="Dinheiro"></img>
-                          {idioma
-                            ? idiomas.es_PY.botoesAcao.recebimento
-                            : idiomas.pt_BR.botoesAcao.recebimento}
-                        </a>
-                      </button>
+                      <div className="navegacao-home">
+                        <button onClick={openFloatingWindow}>
+                          <a className="dinheiro-recebimento">
+                            <img src={Dinheiro} alt="Dinheiro"></img>
+                            {idioma
+                              ? idiomas.es_PY.botoesAcao.recebimento
+                              : idiomas.pt_BR.botoesAcao.recebimento}
+                          </a>
+                        </button>
 
-                      {showFloatingWindow && (
-                        <FloatingWindow
-                          onClose={closeFloatingWindow}
-                        ></FloatingWindow>
-                      )}
-                      <button>
-                        <a className="dinheiro-recebimento">
-                          <img src={Atendimento} alt="Atendimento"></img>
-                          {idioma
-                            ? idiomas.es_PY.botoesAcao.atendimento
-                            : idiomas.pt_BR.botoesAcao.atendimento}
-                        </a>
-                      </button>
-                      <button
-                        onClick={() =>
-                          handleMenuClick("/pax-primavera/solicitacao")
-                        }
-                      >
-                        <a className="dinheiro-recebimento">
-                          <img src={Atendimento2} alt="Atendimento2"></img>
-                          {idioma
-                            ? idiomas.es_PY.botoesAcao.solicitacao
-                            : idiomas.pt_BR.botoesAcao.solicitacao}
-                        </a>
-                      </button>
-                      <button
-                        onClick={() => handleMenuClick("/pax-primavera/chat")}
-                      >
-                        <a className="dinheiro-recebimento">
-                          <img src={ChatPax} alt="Atendimento2"></img>
-                          Chat
-                        </a>
-                      </button>
-                      <button
-                        onClick={() =>
-                          handleMenuClick("/pax-primavera/manual-sistema")
-                        }
-                      >
-                        <a className="dinheiro-recebimento">
-                          <img src={Manual} alt="Manual"></img>
-                          {idioma
-                            ? idiomas.es_PY.botoesAcao.manual
-                            : idiomas.pt_BR.botoesAcao.manual}
-                        </a>
-                      </button>
-                      <button>
-                        <a
-                          href="https://paxprimavera.com.br/"
-                          className="dinheiro-recebimento"
-                          target="_blank"
+                        {showFloatingWindow && (
+                          <FloatingWindow
+                            onClose={closeFloatingWindow}
+                          ></FloatingWindow>
+                        )}
+                        <button>
+                          <a className="dinheiro-recebimento">
+                            <img src={Atendimento} alt="Atendimento"></img>
+                            {idioma
+                              ? idiomas.es_PY.botoesAcao.atendimento
+                              : idiomas.pt_BR.botoesAcao.atendimento}
+                          </a>
+                        </button>
+                        <button
+                          onClick={() =>
+                            handleMenuClick("/pax-primavera/solicitacao")
+                          }
                         >
-                          <img src={Site} alt="Manual"></img> Site Pax Primavera
-                        </a>
-                      </button>
-                    </div>
-                    <div className="mixed-chart">
-                      <div className="button-group-container">
-                        <div className="tabela-botao-associado">
-                          <ButtonGroup
-                            disableElevation
-                            variant="contained"
-                            aria-label=" elevation buttons"
-                            style={{ background: "#006b33" }}
+                          <a className="dinheiro-recebimento">
+                            <img src={Atendimento2} alt="Atendimento2"></img>
+                            {idioma
+                              ? idiomas.es_PY.botoesAcao.solicitacao
+                              : idiomas.pt_BR.botoesAcao.solicitacao}
+                          </a>
+                        </button>
+                        <button
+                          onClick={() => handleMenuClick("/pax-primavera/chat")}
+                        >
+                          <a className="dinheiro-recebimento">
+                            <img src={ChatPax} alt="Atendimento2"></img>
+                            Chat
+                          </a>
+                        </button>
+                        <button
+                          onClick={() =>
+                            handleMenuClick("/pax-primavera/manual-sistema")
+                          }
+                        >
+                          <a className="dinheiro-recebimento">
+                            <img src={Manual} alt="Manual"></img>
+                            {idioma
+                              ? idiomas.es_PY.botoesAcao.manual
+                              : idiomas.pt_BR.botoesAcao.manual}
+                          </a>
+                        </button>
+                        <button>
+                          <a
+                            href="https://paxprimavera.com.br/"
+                            className="dinheiro-recebimento"
+                            target="_blank"
                           >
-                            <Button
-                              onClick={() => handleButtonClick("Promoção")}
-                              style={{
-                                border: "3px white",
-                                background: "#006b33",
-                                borderBottom:
-                                  selectedOption === "Promoção"
-                                    ? "3px solid yellow"
-                                    : "",
-                              }}
+                            <img src={Site} alt="Manual"></img> Site Pax Primavera
+                          </a>
+                        </button>
+                      </div>
+                      <div className="mixed-chart">
+                        <div className="button-group-container">
+                          <div className="tabela-botao-associado">
+                            <ButtonGroup
+                              disableElevation
+                              variant="contained"
+                              aria-label=" elevation buttons"
+                              style={{ background: "#006b33" }}
                             >
-                              <div className="adesao-promocao">
-                                <label>Promoções</label>
-                              </div>
-                            </Button>
-                            <Button
-                              onClick={() => handleButtonClick("Adesão")}
-                              style={{
-                                background: "#006b33",
-                                borderBottom:
-                                  selectedOption === "Adesão"
-                                    ? "3px solid yellow"
-                                    : "",
-                              }}
-                            >
-                              <div className="adesao-promocao">
-                                <label>Adesão</label>
-                              </div>
-                            </Button>
-                            <Button
-                              style={{
-                                background: "#006b33",
-                                borderBottom:
-                                  selectedOption === "Adesão"
-                                    ? "3px solid yellow"
-                                    : "",
-                              }}
-                            >
-                              <div className="adesao-promocao">
-                                <select>
-                                  <option>Dourados</option>
-                                  <option>Itaporã</option>
-                                </select>
-                              </div>
-                            </Button>
-                          </ButtonGroup>
-                        </div>
+                              <Button
+                                onClick={() => handleButtonClick("Promoção")}
+                                style={{
+                                  border: "3px white",
+                                  background: "#006b33",
+                                  borderBottom:
+                                    selectedOption === "Promoção"
+                                      ? "3px solid yellow"
+                                      : "",
+                                }}
+                              >
+                                <div className="adesao-promocao">
+                                  <label>Promoções</label>
+                                </div>
+                              </Button>
+                              <Button
+                                onClick={() => handleButtonClick("Adesão")}
+                                style={{
+                                  background: "#006b33",
+                                  borderBottom:
+                                    selectedOption === "Adesão"
+                                      ? "3px solid yellow"
+                                      : "",
+                                }}
+                              >
+                                <div className="adesao-promocao">
+                                  <label>Adesão</label>
+                                </div>
+                              </Button>
+                              <Button
+                                style={{
+                                  background: "#006b33",
+                                  borderBottom:
+                                    selectedOption === "Adesão"
+                                      ? "3px solid yellow"
+                                      : "",
+                                }}
+                              >
+                                <div className="adesao-promocao">
+                                  <select>
+                                    <option>Dourados</option>
+                                    <option>Itaporã</option>
+                                  </select>
+                                </div>
+                              </Button>
+                            </ButtonGroup>
+                          </div>
 
-                        {showTable && selectedOption === "Adesão" && (
-                          <div className="tabela-abaixo-botoes">
-                            <TableContainer
-                              component={Paper}
-                              className="TableContainer"
-                            >
-                              <Table
-                                sx={{ maxWidth: 1100 }}
-                                aria-label="simple table"
+                          {showTable && selectedOption === "Adesão" && (
+                            <div className="tabela-abaixo-botoes">
+                              <TableContainer
+                                component={Paper}
+                                className="TableContainer"
                               >
-                                <TableHead className="TableHead">
-                                  <TableCell align="center">Estado</TableCell>
-                                  {dadosAdesao[0]?.planos.map(
-                                    (plano, index) => (
-                                      <TableCell key={index} align="center">
-                                        {plano.nome}
-                                      </TableCell>
-                                    )
-                                  )}
-                                </TableHead>
-                                <TableBody className="TableBody">
-                                  {dadosAdesao.map((row, index) => (
-                                    <TableRow key={index}>
-                                      <TableCell align="center">
-                                        {row.estado}
-                                      </TableCell>
-                                      {row.planos.map((plano, planoIndex) => (
-                                        <TableCell
-                                          key={planoIndex}
-                                          align="center"
-                                        >
-                                          {plano.valor}
+                                <Table
+                                  sx={{ maxWidth: 1100 }}
+                                  aria-label="simple table"
+                                >
+                                  <TableHead className="TableHead">
+                                    <TableCell align="center">Estado</TableCell>
+                                    {dadosAdesao[0]?.planos.map(
+                                      (plano, index) => (
+                                        <TableCell key={index} align="center">
+                                          {plano.nome}
                                         </TableCell>
-                                      ))}
-                                    </TableRow>
-                                  ))}
-                                </TableBody>
-                              </Table>
-                            </TableContainer>
-                          </div>
-                        )}
-                        {showTable && selectedOption === "Promoção" && (
-                          <div className="tabela-abaixo-botoes">
-                            <TableContainer
-                              component={Paper}
-                              className="TableContainer"
-                            >
-                              <Table
-                                sx={{ maxWidth: 1100 }}
-                                aria-label="simple table"
+                                      )
+                                    )}
+                                  </TableHead>
+                                  <TableBody className="TableBody">
+                                    {dadosAdesao.map((row, index) => (
+                                      <TableRow key={index}>
+                                        <TableCell align="center">
+                                          {row.estado}
+                                        </TableCell>
+                                        {row.planos.map((plano, planoIndex) => (
+                                          <TableCell
+                                            key={planoIndex}
+                                            align="center"
+                                          >
+                                            {plano.valor}
+                                          </TableCell>
+                                        ))}
+                                      </TableRow>
+                                    ))}
+                                  </TableBody>
+                                </Table>
+                              </TableContainer>
+                            </div>
+                          )}
+                          {showTable && selectedOption === "Promoção" && (
+                            <div className="tabela-abaixo-botoes">
+                              <TableContainer
+                                component={Paper}
+                                className="TableContainer"
                               >
-                                <TableHead className="TableHead">
-                                  <TableRow>
-                                    <TableCell align="center">
-                                      Parcela
-                                    </TableCell>
-                                    <TableCell align="center">
-                                      Valor R$
-                                    </TableCell>
-                                  </TableRow>
-                                </TableHead>
-                                <TableBody className="TableBody">
-                                  {dadosPromocao.map((row, index) => (
-                                    <TableRow key={index}>
+                                <Table
+                                  sx={{ maxWidth: 1100 }}
+                                  aria-label="simple table"
+                                >
+                                  <TableHead className="TableHead">
+                                    <TableRow>
                                       <TableCell align="center">
-                                        {row.parcela}
+                                        Parcela
                                       </TableCell>
                                       <TableCell align="center">
-                                        {row.valor}
+                                        Valor R$
                                       </TableCell>
                                     </TableRow>
-                                  ))}
-                                </TableBody>
-                              </Table>
-                            </TableContainer>
+                                  </TableHead>
+                                  <TableBody className="TableBody">
+                                    {dadosPromocao.map((row, index) => (
+                                      <TableRow key={index}>
+                                        <TableCell align="center">
+                                          {row.parcela}
+                                        </TableCell>
+                                        <TableCell align="center">
+                                          {row.valor}
+                                        </TableCell>
+                                      </TableRow>
+                                    ))}
+                                  </TableBody>
+                                </Table>
+                              </TableContainer>
+                            </div>
+                          )}
+                        </div>
+                        <div className="slide-noticias">
+                          <div className="slide-container">
+                            <Slide indicators={true}>
+                              {slideImages.map((each, index) => (
+                                <div key={index} className="each-slide">
+                                  <div
+                                    style={{ backgroundImage: `url(${each})` }}
+                                  />
+                                </div>
+                              ))}
+                            </Slide>
                           </div>
-                        )}
-                      </div>
-                      <div className="slide-noticias">
-                        <div className="slide-container">
-                          <Slide indicators={true}>
-                            {slideImages.map((each, index) => (
-                              <div key={index} className="each-slide">
-                                <div
-                                  style={{ backgroundImage: `url(${each})` }}
-                                />
-                              </div>
-                            ))}
-                          </Slide>
                         </div>
                       </div>
-                    </div>
-                  </>
-                ) : (
-                  <></>
-                )}
+                    </>
+                  ) : (
+                    <></>
+                  )}
               </>
             )}
           </div>

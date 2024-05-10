@@ -13,7 +13,8 @@ const idiomas = {
                 titulo: "Controle",
                 botoesAcao: {
                     cobranca: "Cobrança",
-                    boleto: "Boletos"
+                    boleto: "Boletos",
+                    parcela: "Parcelas"
                 },
             },
             configurações: {
@@ -75,7 +76,8 @@ const idiomas = {
                 titulo: "Control",
                 botoesAcao: {
                     cobranca: "Cargar",
-                    boleto: "Boletos"
+                    boleto: "Boletos",
+                    parcela: "Cuotas"
                 },
             },
             configurações: {
