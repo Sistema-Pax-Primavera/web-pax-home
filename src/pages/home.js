@@ -53,6 +53,9 @@ import Brasil from "../../assets/brasil.png";
 import Paraguai from "../../assets/paraguai.png";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import Perfil from "../pages/perfil/index";
+import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
+import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -403,7 +406,7 @@ const Home = () => {
                     : "none",
                 }}
               >
-                <AutoAwesomeMosaicIcon fontSize={"small"} />
+                <BookmarkAddIcon fontSize={"small"} />
                 {idioma
                   ? idiomas.es_PY.menu.controle.botoesAcao.cobranca
                   : idiomas.pt_BR.menu.controle.botoesAcao.cobranca}
@@ -421,7 +424,7 @@ const Home = () => {
                   display: isItemActive("controle", "parcela") ? "flex" : "none",
                 }}
               >
-                <AutoAwesomeMosaicIcon fontSize={"small"} />
+                <CreateNewFolderIcon fontSize={"small"} />
                 {idioma
                   ? idiomas.es_PY.menu.controle.botoesAcao.parcela
                   : idiomas.pt_BR.menu.controle.botoesAcao.parcela}
@@ -696,7 +699,12 @@ const Home = () => {
                     key={activeRoute}
                     config={() => System.import("@pax/pax-cobranca")}
                   />
-                ) : activeRoute === "/pax-primavera/financeiro" ? (
+                ) : activeRoute === "/pax-primavera/parcelas" ? (
+                  <ParcelWithInactivity
+                    key={activeRoute}
+                    config={() => System.import("@pax/pax-parcelas")}
+                  />
+                ): activeRoute === "/pax-primavera/financeiro" ? (
                   <Desenvolvimento tela="Financeiro" />
                 ) : // <ParcelWithInactivity
                   //     key={activeRoute}
