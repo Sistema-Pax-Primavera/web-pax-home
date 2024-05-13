@@ -11,6 +11,7 @@ import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 import AutoAwesomeMosaicIcon from "@mui/icons-material/AutoAwesomeMosaic";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import AssessmentIcon from '@mui/icons-material/Assessment';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
@@ -160,6 +161,31 @@ const Header = ({ activeRoute, setActiveRoute, idioma, permissao, permissaoGloba
                     {idioma
                         ? idiomas.es_PY.menu.controle.botoesAcao.boleto
                         : idiomas.pt_BR.menu.controle.botoesAcao.boleto}
+                </button>
+                <label>
+                    {idioma
+                        ? idiomas.es_PY.menu.gerencial.titulo
+                        : idiomas.pt_BR.menu.gerencial.titulo}
+                </label>
+                <button
+                    onClick={() =>
+                        handleMenuClick("/pax-primavera/gerencial")
+                    }
+                    className={
+                        activeRoute === "/pax-primavera/gerencial/"
+                            ? "active"
+                            : ""
+                    }
+                    style={{
+                        display: isItemActive("gerencial", "relatorio")
+                            ? "flex"
+                            : "none",
+                    }}
+                >
+                    <AssessmentIcon fontSize={"small"} />
+                    {idioma
+                        ? idiomas.es_PY.menu.gerencial.botoesAcao.relatorio
+                        : idiomas.pt_BR.menu.gerencial.botoesAcao.relatorio}
                 </button>
                 <label>
                     {idioma
