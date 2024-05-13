@@ -55,6 +55,7 @@ import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import Perfil from "../pages/perfil/index";
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
+import Header from "../components/header";
 
 const style = {
   position: "absolute",
@@ -198,14 +199,6 @@ const Home = () => {
     }
   };
 
-  const toggleMostrarSenhaAtual = () => {
-    setMostrarSenhaAtual(!mostrarSenhaAtual);
-  };
-
-  const toggleMostrarSenha = () => {
-    setMostrarSenha(!mostrarSenha);
-  };
-
   const Logout = () => {
     // Limpar o localStorage
     localStorage.clear();
@@ -326,170 +319,13 @@ const Home = () => {
         <ErrorComponent message={errorMessage} errorCode={errorCode} />
       ) : (
         <div className="container-dashboard">
-          <div className="container-menus">
-            <img
-              onClick={() => handleMenuClick("/pax-primavera")}
-              src={Logo}
-              alt="Logo"
-            ></img>
-            <div
-              className={`menus-lateral ${isSidebarCollapsed ? "collapsed" : ""
-                }`}
-            >
-              <label>
-                {idioma
-                  ? idiomas.es_PY.menu.atendimento.titulo
-                  : idiomas.pt_BR.menu.atendimento.titulo}
-              </label>
-              <button
-                key={"atendimento"}
-                onClick={() => handleMenuClick("/pax-primavera/associado")}
-                className={
-                  activeRoute === "/pax-primavera/associado" ? "active" : ""
-                }
-                style={{
-                  display: isItemActive("atendimento", "associado")
-                    ? "flex"
-                    : "none",
-                }}
-              >
-                <AccountCircleIcon fontSize={"small"} />
-                {idioma
-                  ? idiomas.es_PY.menu.atendimento.botoesAcao.associado
-                  : idiomas.pt_BR.menu.atendimento.botoesAcao.associado}
-              </button>
-              <button
-                onClick={() => handleMenuClick("/pax-primavera/vendas")}
-                className={
-                  activeRoute === "/pax-primavera/vendas" ? "active" : ""
-                }
-                style={{
-                  display: isItemActive("atendimento", "vendas")
-                    ? "flex"
-                    : "none",
-                }}
-              >
-                <MonetizationOnIcon fontSize={"small"} />
-                {idioma
-                  ? idiomas.es_PY.menu.atendimento.botoesAcao.webVendedor
-                  : idiomas.pt_BR.menu.atendimento.botoesAcao.webVendedor}
-              </button>
-              <button
-                onClick={() => handleMenuClick("/pax-primavera/financeiro")}
-                className={
-                  activeRoute === "/pax-primavera/financeiro" ? "active" : ""
-                }
-                style={{
-                  display: isItemActive("atendimento", "financeiro")
-                    ? "flex"
-                    : "none",
-                }}
-              >
-                <AddBusinessIcon fontSize={"small"} />
-                {idioma
-                  ? idiomas.es_PY.menu.atendimento.botoesAcao.financeiro
-                  : idiomas.pt_BR.menu.atendimento.botoesAcao.financeiro}
-              </button>
-              <label>
-                {idioma
-                  ? idiomas.es_PY.menu.controle.titulo
-                  : idiomas.pt_BR.menu.controle.titulo}
-              </label>
-              <button
-                onClick={() => handleMenuClick("/pax-primavera/cobranca")}
-                className={
-                  activeRoute === "/pax-primavera/cobranca" ? "active" : ""
-                }
-                style={{
-                  display: isItemActive("controle", "cobranca")
-                    ? "flex"
-                    : "none",
-                }}
-              >
-                <BookmarkAddIcon fontSize={"small"} />
-                {idioma
-                  ? idiomas.es_PY.menu.controle.botoesAcao.cobranca
-                  : idiomas.pt_BR.menu.controle.botoesAcao.cobranca}
-              </button>
-              <button
-                onClick={() =>
-                  handleMenuClick("/pax-primavera/parcelas")
-                }
-                className={
-                  activeRoute === "/pax-primavera/parcelas"
-                    ? "active"
-                    : ""
-                }
-                style={{
-                  display: isItemActive("controle", "parcela") ? "flex" : "none",
-                }}
-              >
-                <CreateNewFolderIcon fontSize={"small"} />
-                {idioma
-                  ? idiomas.es_PY.menu.controle.botoesAcao.parcela
-                  : idiomas.pt_BR.menu.controle.botoesAcao.parcela}
-              </button>
-              <button
-                onClick={() =>
-                  handleMenuClick("/pax-primavera/boletos")
-                }
-                className={
-                  activeRoute === "/pax-primavera/boletos"
-                    ? "active"
-                    : ""
-                }
-                style={{
-                  display: isItemActive("controle", "boleto") ? "flex" : "none",
-                }}
-              >
-                <AutoAwesomeMosaicIcon fontSize={"small"} />
-                {idioma
-                  ? idiomas.es_PY.menu.controle.botoesAcao.boleto
-                  : idiomas.pt_BR.menu.controle.botoesAcao.boleto}
-              </button>
-              <label>
-                {idioma
-                  ? idiomas.es_PY.menu.configurações.titulo
-                  : idiomas.pt_BR.menu.configurações.titulo}
-              </label>
-              <button
-                onClick={() =>
-                  handleMenuClick("/pax-primavera/configuracoes/cadastro")
-                }
-                className={
-                  activeRoute === "/pax-primavera/configuracoes/cadastro"
-                    ? "active"
-                    : ""
-                }
-                style={{
-                  display: isItemActive("configuracoes", "cadastro")
-                    ? "flex"
-                    : "none",
-                }}
-              >
-                <FactCheckIcon fontSize={"small"} />
-                {idioma
-                  ? idiomas.es_PY.menu.configurações.botoesAcao.cadastro
-                  : idiomas.pt_BR.menu.configurações.botoesAcao.cadastro}
-              </button>
-              <button
-                onClick={() => handleMenuClick("/pax-primavera/suporte")}
-                className={
-                  activeRoute === "/pax-primavera/suporte" ? "active" : ""
-                }
-                style={{
-                  display: isItemActive("configuracoes", "suporte")
-                    ? "flex"
-                    : "none",
-                }}
-              >
-                <SupportAgentIcon fontSize={"small"} />
-                {idioma
-                  ? idiomas.es_PY.menu.configurações.botoesAcao.suporte
-                  : idiomas.pt_BR.menu.configurações.botoesAcao.suporte}
-              </button>
-            </div>
-          </div>
+          <Header
+            activeRoute={activeRoute}
+            setActiveRoute={setActiveRoute}
+            idioma={idioma}
+            permissao={permissao}
+            permissaoGlobal={permissaoGlobal}
+          />
           <div className="container-dashboard2">
             <div className="perfil">
               <div className="perfil-localizacao">
@@ -704,7 +540,7 @@ const Home = () => {
                     key={activeRoute}
                     config={() => System.import("@pax/pax-parcelas")}
                   />
-                ): activeRoute === "/pax-primavera/financeiro" ? (
+                ) : activeRoute === "/pax-primavera/financeiro" ? (
                   <Desenvolvimento tela="Financeiro" />
                 ) : // <ParcelWithInactivity
                   //     key={activeRoute}

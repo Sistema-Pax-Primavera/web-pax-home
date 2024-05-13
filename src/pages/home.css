@@ -26,29 +26,6 @@
   /* Adicione esta linha para alinhar as divs independentemente */
 }
 
-.container-menus {
-  width: 10%;
-  height: 100vh;
-  /* background-color: var(--verde); */
-  background-image: url('../../assets/bg-sidebar.webp');
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-}
-
-.container-menus button:hover {
-  transform: translateY(-5px);
-  /* Move para cima 5 pixels */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-}
-
-.menus-lateral {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 .principal-home {
   gap: 10px;
   width: 100%;
@@ -189,24 +166,6 @@
   display: none;
 }
 
-.menus-lateral button {
-  color: var(--branco);
-  display: flex;
-  align-items: center;
-  /* background-color: var(--verde-leve); */
-  background-color: rgba(255, 255, 255, 0.2);
-  cursor: pointer;
-  border-radius: 5px;
-  padding: 5px;
-  text-align: start;
-  padding-left: 5px;
-  padding-right: 10px;
-  gap: 2px;
-  font-size: 12px;
-  font-weight: 500;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
 .slide-noticias {
   width: 45%;
 }
@@ -246,14 +205,7 @@ a {
   text-decoration: none;
 }
 
-.container-menus img {
-  width: 60%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-}
+
 
 .bem-vindo {
   margin-top: 15px;
@@ -316,14 +268,7 @@ a {
   /* Adiciona uma transição suave ao margin-left */
 }
 
-.menus-lateral {
-  display: flex;
-  flex-direction: column;
-  color: #fff;
-  overflow: hidden;
-  transition: width 0.3s;
-  /* Adiciona uma transição suave à largura do menu */
-}
+
 
 .container-dashboard.collapsed {
   margin-left: -8%;
@@ -336,11 +281,7 @@ a {
   /* Reduz a largura do menu para 0 quando recolhido */
 }
 
-.logo {
-  max-width: 80%;
-  transition: max-width 0.3s;
-  /* Adiciona uma transição suave ao max-width da logo */
-}
+
 
 .logo.collapsed {
   max-width: 50px;
@@ -370,10 +311,7 @@ a {
   /* Oculta o texto dentro dos botões quando o menu está recolhido */
 }
 
-.menus-lateral button.active {
-  border-bottom: 3px solid yellow;
-  /* Adapte conforme necessário */
-}
+
 
 .slide-container {
   width: 100%;

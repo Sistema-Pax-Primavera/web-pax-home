@@ -1,0 +1,110 @@
+.container-menus {
+    width: 10%;
+    height: 100vh;
+    /* background-color: var(--verde); */
+    background-image: url('../../../assets/bg-sidebar.webp');
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    transition: width 0.5s ease;
+}
+
+.logo {
+    width: 50% !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: max-width 0.5s ease;
+}
+
+.menus-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: width 0.5s ease;
+}
+
+.menus-lateral {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    overflow: hidden;
+    transition: width 0.5s ease;
+    /* Adiciona uma transição suave à largura do menu */
+}
+
+.menus-lateral button {
+    color: var(--branco);
+    display: flex;
+    align-items: center;
+    /* background-color: var(--verde-leve); */
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: start;
+    padding-left: 5px;
+    padding-right: 10px;
+    gap: 2px;
+    font-size: 12px;
+    font-weight: 500;
+    transition: transform 0.5s, box-shadow 0.2s;
+}
+
+.menus-lateral button:hover {
+    transform: translateY(-5px);
+    /* Move para cima 5 pixels */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.menus-lateral button.active {
+    border-bottom: 3px solid yellow;
+    /* Adapte conforme necessário */
+}
+
+.container-menus-collapsed {
+    width: 3%;
+    transition: all 0.5s ease;
+}
+
+.logo-collapsed {
+    width: 50px !important;
+    transition: all 0.5s ease;
+}
+
+.menus-lateral-collapsed {
+    margin-left: 16%;
+    width: 30px;
+    transition: all 0.5s ease;
+}
+
+.menus-lateral-collapsed label {
+    display: none !important;
+}
+
+.menus-lateral-collapsed button {
+    font-size: 0;
+    padding: 5px;
+}
+
+.toggle-button button {
+    display: flex;
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+    /* Centraliza verticalmente o conteúdo */
+    background-color: white !important;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 10px;
+    left: 9%;
+    transition: all 0.5s ease;
+    color: #006b33;
+}
+
+.toggle-button-collapsed button {
+    left: 1.3%;
+}
