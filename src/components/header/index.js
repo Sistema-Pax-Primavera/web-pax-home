@@ -13,6 +13,8 @@ import FactCheckIcon from "@mui/icons-material/FactCheck";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import RequestPageIcon from '@mui/icons-material/RequestPage';
+import ContactPageIcon from '@mui/icons-material/ContactPage';
 
 const Header = ({ activeRoute, setActiveRoute, idioma, permissao, permissaoGlobal }) => {
     const [isCollapsed, setIsCollapsed] = useState(false);
@@ -120,7 +122,7 @@ const Header = ({ activeRoute, setActiveRoute, idioma, permissao, permissaoGloba
                             : "none",
                     }}
                 >
-                    <BookmarkAddIcon fontSize={"small"} />
+                    <RequestPageIcon fontSize={"small"} />
                     {idioma
                         ? idiomas.es_PY.menu.controle.botoesAcao.cobranca
                         : idiomas.pt_BR.menu.controle.botoesAcao.cobranca}
@@ -138,7 +140,7 @@ const Header = ({ activeRoute, setActiveRoute, idioma, permissao, permissaoGloba
                         display: isItemActive("controle", "parcela") ? "flex" : "none",
                     }}
                 >
-                    <CreateNewFolderIcon fontSize={"small"} />
+                    <ContactPageIcon fontSize={"small"} />
                     {idioma
                         ? idiomas.es_PY.menu.controle.botoesAcao.parcela
                         : idiomas.pt_BR.menu.controle.botoesAcao.parcela}
