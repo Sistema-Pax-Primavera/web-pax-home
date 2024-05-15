@@ -17,6 +17,12 @@ const idiomas = {
                     parcela: "Parcelas"
                 },
             },
+            gerencial: {
+                titulo: "Gerencial",
+                botoesAcao: {
+                    relatorio: "Relatório",
+                },
+            },
             configurações: {
                 titulo: "Configurações",
                 botoesAcao: {
@@ -78,6 +84,12 @@ const idiomas = {
                     cobranca: "Cargar",
                     boleto: "Boletos",
                     parcela: "Cuotas"
+                },
+            },
+            gerencial: {
+                titulo: "Gerencial",
+                botoesAcao: {
+                    relatorio: "Informes",
                 },
             },
             configurações: {

@@ -9,7 +9,7 @@
     transition: width 0.5s ease;
 }
 
-.logo {
+.container-menus .logo {
     width: 50% !important;
     cursor: pointer;
     display: flex;

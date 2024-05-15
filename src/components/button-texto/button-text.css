@@ -7,9 +7,8 @@
 .home-button-text button {
     width: 20%;
     display: flex;
-
+    justify-content: center;
     cursor: pointer;
-
     gap: 10px;
     font-size: 12px;
     background-color: var(--verde);

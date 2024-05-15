@@ -523,22 +523,24 @@ const Home = () => {
                 {activeRoute === "/pax-primavera/associado" ? (
                   <ParcelWithInactivity
                     key={activeRoute}
-                    config={() => System.import("@pax/pax-associado")}
+                    config={() => {
+                      try {
+                        return System.import("@pax/pax-associado")
+                      } catch (error) {
+                        <Desenvolvimento tela="Associados" />;
+                      }
+                    }}
                   />
                 ) : activeRoute === "/pax-primavera/vendas" ? (
                   <ParcelWithInactivity
                     key={activeRoute}
-                    config={() => System.import("@pax/pax-venda")}
-                  />
-                ) : activeRoute === "/pax-primavera/cobranca" ? (
-                  <ParcelWithInactivity
-                    key={activeRoute}
-                    config={() => System.import("@pax/pax-cobranca")}
-                  />
-                ) : activeRoute === "/pax-primavera/parcelas" ? (
-                  <ParcelWithInactivity
-                    key={activeRoute}
-                    config={() => System.import("@pax/pax-parcelas")}
+                    config={() => {
+                      try {
+                        return System.import("@pax/pax-venda")
+                      } catch (error) {
+                        <Desenvolvimento tela="Web Vendedor" />;
+                      }
+                    }}
                   />
                 ) : activeRoute === "/pax-primavera/financeiro" ? (
                   <Desenvolvimento tela="Financeiro" />
@@ -546,27 +548,25 @@ const Home = () => {
                   //     key={activeRoute}
                   //     config={() => System.import("@pax/pax-financeiro")}
                   // />
-                  activeRoute === "/pax-primavera/configuracoes/cadastro" ? (
-                    <ParcelWithInactivity
-                      key={activeRoute}
-                      config={() => System.import("@pax/pax-cadastro")}
-                    />
-                  ) : activeRoute === "/pax-primavera/manual-sistema" ? (
-                    <ManualScreen />
-                  ) : activeRoute === "/pax-primavera/chat" ? (
-                    <PageChat />
-                  ) : activeRoute === "/pax-primavera/perfil" ? (
-                    <Perfil />
-                  ) : activeRoute === "/pax-primavera/solicitacao" ? (
-                    <Solicitacao />
-                  ) : activeRoute === "/pax-primavera/suporte" ? (
+                  activeRoute === "/pax-primavera/cobranca" ? (
                     <ParcelWithInactivity
                       key={activeRoute}
                       config={() => {
                         try {
-                          return System.import("@pax/pax-suporte");
+                          return System.import("@pax/pax-cobranca")
                         } catch (error) {
-                          <Desenvolvimento tela="Suporte" />;
+                          <Desenvolvimento tela="Cobrança" />;
+                        }
+                      }}
+                    />
+                  ) : activeRoute === "/pax-primavera/parcelas" ? (
+                    <ParcelWithInactivity
+                      key={activeRoute}
+                      config={() => {
+                        try {
+                          return System.import("@pax/pax-parcelas")
+                        } catch (error) {
+                          <Desenvolvimento tela="Parcelas" />;
                         }
                       }}
                     />
@@ -581,7 +581,38 @@ const Home = () => {
                         }
                       }}
                     />
-                    // <Desenvolvimento tela="Gerador de Boletos" />
+                  ) : activeRoute === "/pax-primavera/gerencial" ? (
+                    <Desenvolvimento tela="Gerencial" />
+                  ) : activeRoute === "/pax-primavera/configuracoes/cadastro" ? (
+                    <ParcelWithInactivity
+                      key={activeRoute}
+                      config={() => {
+                        try {
+                          return System.import("@pax/pax-cadastro")
+                        } catch (error) {
+                          <Desenvolvimento tela="Cadastro" />;
+                        }
+                      }}
+                    />
+                  ) : activeRoute === "/pax-primavera/suporte" ? (
+                    <ParcelWithInactivity
+                      key={activeRoute}
+                      config={() => {
+                        try {
+                          return System.import("@pax/pax-suporte");
+                        } catch (error) {
+                          <Desenvolvimento tela="Suporte" />;
+                        }
+                      }}
+                    />
+                  ) : activeRoute === "/pax-primavera/manual-sistema" ? (
+                    <ManualScreen />
+                  ) : activeRoute === "/pax-primavera/chat" ? (
+                    <PageChat />
+                  ) : activeRoute === "/pax-primavera/perfil" ? (
+                    <Perfil />
+                  ) : activeRoute === "/pax-primavera/solicitacao" ? (
+                    <Solicitacao />
                   ) : activeRoute === "/pax-primavera" ? (
                     <>
                       <div className="bem-vindo">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ButtonText from '../button-texto';
 import { useNavigate } from 'react-router-dom';
+import Error from "../../../assets/404.gif";
 
 const ErrorComponent = ({ message, errorCode }) => {
     const [titulo, setTitulo] = useState('');
@@ -26,7 +27,10 @@ const ErrorComponent = ({ message, errorCode }) => {
 
     return (
         <div style={{ textAlign: 'center', marginTop: '50px' }}>
-            <h2>Erro {errorCode}</h2>
+            <img
+                src={Error}
+                style={{ width: '30%', height: 'auto' }}
+            />
             <p>{message}</p>
             <ButtonText title={titulo} funcao={() => Redirecionar()} />
         </div>
