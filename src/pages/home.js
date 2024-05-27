@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Logo from "../../assets/logo-pax-branco.svg";
-import BoletoBranco from "../../assets/boleto-branco.svg";
 import "./home.css";
 import { toast } from "react-toastify";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import FactCheckIcon from "@mui/icons-material/FactCheck";
-import AutoAwesomeMosaicIcon from "@mui/icons-material/AutoAwesomeMosaic";
-import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-import AddBusinessIcon from "@mui/icons-material/AddBusiness";
 import { Menu, MenuItem } from "@mui/material";
 import FloatingWindow from "../components/modal/recebimento";
 import BemVindo from "../../assets/bem-vindo.png";
@@ -45,18 +39,14 @@ import { useUnidade } from "../services/api-config";
 import Carregando from "../components/carregando";
 import InactivityHOC from "../services/inactivityHOC";
 import ErrorComponent from "../components/show-message";
-import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import Desenvolvimento from "../components/em-desenvolvimento";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Brasil from "../../assets/brasil.png";
 import Paraguai from "../../assets/paraguai.png";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import Perfil from "../pages/perfil/index";
-import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
-import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 import Header from "../components/header";
-import RequestPageIcon from '@mui/icons-material/RequestPage';
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -426,7 +416,7 @@ const Home = () => {
 
                 {activeRoute === "/pax-primavera" ||
                   activeRoute === "/pax-primavera/associado" ? (
-                  <div className="perfil-acessos">
+                  <div className="perfil-acessos3">
                     <a onClick={handleMenuOpen}>
                       <AccountCircleIcon />
                     </a>
@@ -543,11 +533,12 @@ const Home = () => {
                     }}
                   />
                 ) : activeRoute === "/pax-primavera/financeiro" ? (
-                  <Desenvolvimento tela="Financeiro" />
-                ) : // <ParcelWithInactivity
-                  //     key={activeRoute}
-                  //     config={() => System.import("@pax/pax-financeiro")}
-                  // />
+                  // <Desenvolvimento tela="Financeiro" />
+                  <ParcelWithInactivity
+                     key={activeRoute}
+                       config={() => System.import("@pax/pax-financeiro")}
+                   />
+                ) : 
                   activeRoute === "/pax-primavera/cobranca" ? (
                     <ParcelWithInactivity
                       key={activeRoute}
@@ -816,9 +807,9 @@ const Home = () => {
                                     </TableRow>
                                   </TableHead>
                                   <TableBody className="TableBody">
-                                    {dadosPromocao.map((row, index) => (
+                                    {dadosPromocao.map((row, index) => ( 
                                       <TableRow key={index}>
-                                        <TableCell align="center">
+                                        <TableCell align="center"> 
                                           {row.parcela}
                                         </TableCell>
                                         <TableCell align="center">
@@ -841,7 +832,7 @@ const Home = () => {
                                     style={{ backgroundImage: `url(${each})` }}
                                   />
                                 </div>
-                              ))}
+                              ))} 
                             </Slide>
                           </div>
                         </div>

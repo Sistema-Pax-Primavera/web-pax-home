@@ -31,8 +31,10 @@
   width: 100%;
 }
 
+
+
 .container-dashboard2 {
-  width: 90%;
+  width: 97%;
   height: 100%;
   overflow: auto;
   height: 100vh;
@@ -80,8 +82,8 @@
 }
 
 .localizacao-unidade select {
-  font-weight: 800;
-  font-size: 15px;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 .perfil-acessos {
@@ -92,13 +94,26 @@
   justify-content: center;
 }
 
+
 .perfil-acessos a {
   background-image: url('../../assets/bg-sidebar.webp');
 }
 
+.perfil-acessos3 {
+  display: flex;
+  margin-left: 10px;
+  align-items: baseline;
+  color: var(--branco);
+  justify-content: center;
+}
+
+
+.perfil-acessos3 a {
+  color: white;
+}
+
 .cidade-home select {
   width: 100%;
-  font-weight: 600;
   border-radius: 10px;
 }
 

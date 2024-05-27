@@ -107,4 +107,7 @@
 
 .toggle-button-collapsed button {
     left: 1.3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
