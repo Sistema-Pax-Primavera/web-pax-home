@@ -70,10 +70,17 @@
     transition: all 0.5s ease;
 }
 
-.logo-collapsed {
-    width: 50px !important;
-    transition: all 0.5s ease;
+
+.container-menus-collapsed .logo-collapsed {
+    width: 100% !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: max-width 0.5s ease;
 }
+
 
 .menus-lateral-collapsed {
     margin-left: 16%;

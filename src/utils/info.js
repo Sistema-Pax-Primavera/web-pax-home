@@ -5,7 +5,7 @@ const idiomas = {
                 titulo: "Atendimento",
                 botoesAcao: {
                     associado: "Associados",
-                    webVendedor: "Web Vendedor",
+                    webVendedor: "Vendas",
                     financeiro: "Financeiro",
                 },
             },
@@ -74,7 +74,7 @@ const idiomas = {
                 titulo: "Servicio",
                 botoesAcao: {
                     associado: "Asociados",
-                    webVendedor: "Vendedor web",
+                    webVendedor: "Vendas",
                     financeiro: "Financiero",
                 },
             },
