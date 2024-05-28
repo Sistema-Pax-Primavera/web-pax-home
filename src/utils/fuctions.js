@@ -88,3 +88,9 @@ export function converterDataParaFormatoISO(dataString) {
 
   return dataFormatoISO;
 }
+
+export function formatCPF(cpf) {
+  const cpfDigits = cpf.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+  const formattedCPF = cpfDigits.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+  return formattedCPF;
+}

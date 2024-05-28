@@ -1,0 +1,79 @@
+.pesquisa {
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pesquisa input {
+    background-color: var(--cinza-leve);
+    width: 40%;
+    padding: 10px;
+    font-weight: 500;
+}
+
+.pesquisa button {
+    background-color: var(--verde);
+    color: var(--branco);
+    padding-left: 35px;
+    padding-right: 35px;
+    transform: none;
+    width: 15%;
+}
+
+.container-tele {
+    border-color: var(--cinza-leve);
+    margin-top: 1%;
+    width: 95%;
+    height: 98%;
+}
+
+.container-tele .cliente-cobran-nome {
+    width: 54%;
+    display: flex;
+    padding: 10px;
+    color: var(--verde);
+    align-items: center;
+    gap: 10px;
+}
+
+.container-tele .atender-clientes {
+    margin-left: 12%;
+    margin-right: 2%;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.container-tele .atender-clientes button {
+    color: var(--branco);
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    font-size: 12px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.container-tele .contador-cobranca {
+    width: 10%;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.container-tele .contador-cobranca p {
+    color: var(--vermelho);
+    font-size: 20px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.container-tele .button-prox-cliente {
+    width: 5%;
+    font-size: 20px;
+    font-weight: 700;
+}

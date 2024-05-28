@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./home.css";
 import { toast } from "react-toastify";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { Menu, MenuItem } from "@mui/material";
+import { IconButton, Menu, MenuItem } from "@mui/material";
 import FloatingWindow from "../components/modal/recebimento";
 import BemVindo from "../../assets/bem-vindo.png";
 import Dinheiro from "../../assets/dinheiro.png";
@@ -46,6 +46,7 @@ import Paraguai from "../../assets/paraguai.png";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import Perfil from "../pages/perfil/index";
 import Header from "../components/header";
+import Telemarketing from "../components/telemarketing";
 
 const style = {
   position: "absolute",
@@ -58,8 +59,25 @@ const style = {
   p: 4,
 };
 
+const styleAtendimento = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "90%",
+  height: "85%",
+  maxHeight: "90vh",
+  bgcolor: "background.paper",
+  borderRadius: 5,
+  p: 4,
+  overflowY: "auto",
+  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)"
+};
+
+
 const Home = () => {
   const { getUnidades, alterarSenha } = useUnidade();
+  const [atendimentoClose, setAtendimentoClose] = useState(true);
   const [usuario, setUsuario] = useState("");
   const [idioma, setIdioma] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -74,7 +92,6 @@ const Home = () => {
   const [selectedOption, setSelectedOption] = useState("Adesão");
   const [showTable, setShowTable] = useState(true);
   const [open, setOpen] = React.useState(false);
-  const [open2, setOpen2] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -85,7 +102,8 @@ const Home = () => {
   const [mostrarSenhaAtual, setMostrarSenhaAtual] = useState(false);
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [anchorEl2, setAnchorEl2] = useState(null);
-  const [lingua, setLingua] = useState("BR"); // Estado inicial definido como "brasil"
+  const [lingua, setLingua] = useState("BR");
+  const [isAtendimentoModal, setIsAtendimentoModal] = useState(false);
   const navigate = useNavigate();
 
   const handleMenuLingua = (event) => {
@@ -170,6 +188,18 @@ const Home = () => {
   const closeFloatingWindow = () => {
     setShowFloatingWindow(false);
   };
+
+  const openModalAtendimento = () => {
+    setIsAtendimentoModal(true);
+  };
+
+  const closeAtendimento = () => {
+    if (atendimentoClose) {
+      setIsAtendimentoModal(false);
+    } else {
+      toast.warning('Não é possível fechar a modal agora.');
+    }
+  }
 
   const atualizaSenha = async () => {
     try {
@@ -452,8 +482,6 @@ const Home = () => {
                   </a>
                 </div>
               </MenuItem>
-
-
               {/* Opção: Sair */}
               <MenuItem onClick={Logout}>
                 <div className="icones-nome">
@@ -535,10 +563,10 @@ const Home = () => {
                 ) : activeRoute === "/pax-primavera/financeiro" ? (
                   // <Desenvolvimento tela="Financeiro" />
                   <ParcelWithInactivity
-                     key={activeRoute}
-                       config={() => System.import("@pax/pax-financeiro")}
-                   />
-                ) : 
+                    key={activeRoute}
+                    config={() => System.import("@pax/pax-financeiro")}
+                  />
+                ) :
                   activeRoute === "/pax-primavera/cobranca" ? (
                     <ParcelWithInactivity
                       key={activeRoute}
@@ -638,7 +666,7 @@ const Home = () => {
                             onClose={closeFloatingWindow}
                           ></FloatingWindow>
                         )}
-                        <button>
+                        <button onClick={openModalAtendimento}>
                           <a className="dinheiro-recebimento">
                             <img src={Atendimento} alt="Atendimento"></img>
                             {idioma
@@ -646,6 +674,18 @@ const Home = () => {
                               : idiomas.pt_BR.botoesAcao.atendimento}
                           </a>
                         </button>
+
+                        <Modal
+                          open={isAtendimentoModal}
+                          onClose={closeAtendimento}
+                          aria-labelledby="modal-modal-title"
+                          aria-describedby="modal-modal-description"
+                        >
+                          <Box sx={styleAtendimento}>
+                            <Telemarketing
+                              setAtendimentoClose={setAtendimentoClose} />
+                          </Box>
+                        </Modal>
                         <button
                           onClick={() =>
                             handleMenuClick("/pax-primavera/solicitacao")
@@ -807,9 +847,9 @@ const Home = () => {
                                     </TableRow>
                                   </TableHead>
                                   <TableBody className="TableBody">
-                                    {dadosPromocao.map((row, index) => ( 
+                                    {dadosPromocao.map((row, index) => (
                                       <TableRow key={index}>
-                                        <TableCell align="center"> 
+                                        <TableCell align="center">
                                           {row.parcela}
                                         </TableCell>
                                         <TableCell align="center">
@@ -832,7 +872,7 @@ const Home = () => {
                                     style={{ backgroundImage: `url(${each})` }}
                                   />
                                 </div>
-                              ))} 
+                              ))}
                             </Slide>
                           </div>
                         </div>

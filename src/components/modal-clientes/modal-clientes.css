@@ -1,0 +1,855 @@
+.sidebar-cobranca {
+
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.cliente-cobran-nome {
+    width: 65%;
+    display: flex;
+    padding: 10px;
+    color: var(--verde);
+    align-items: center;
+    gap: 10px;
+}
+
+.nomes-cobranca {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.custom-modal {
+    padding: 0 !important;
+    /* Sobrescreve o padding do arquivo CSS externo */
+}
+
+.nomes-cobranca label {
+    font-size: 18px;
+    color: black;
+    font-weight: 500;
+
+}
+
+.nomes-cobranca p {
+    font-size: 12px;
+    color: black;
+    font-weight: 200;
+
+}
+
+
+.sidebar-cobranca .atender-cliente {
+    margin-left: 12%;
+    margin-right: 2%;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.sidebar-cobranca .atender-cliente button {
+    color: var(--branco);
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    font-size: 12px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.contador-cobranca {
+    width: 15%;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.contador-cobranca p {
+    color: var(--vermelho);
+    font-size: 20px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.like-deslike-atendimento {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.container-modal-cobran {
+    z-index: 5;
+    padding-left: 10px;
+    width: 100%;
+}
+
+.like-atendimento {
+    color: var(--verde);
+    cursor: pointer;
+}
+
+.deslike-atendimento {
+    color: var(--vermelho);
+    cursor: pointer;
+}
+
+.dados-basico-cobran2 {
+    width: 94%;
+    padding: 5px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: var(--cinza-leve);
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.dados-basico-cobran3 {
+    width: 50%;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.alert-dados-basico-cobran {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+}
+
+.origin-lead-cobran {
+    display: flex;
+    align-items: end;
+    gap: 5px;
+    width: 100%;
+}
+
+.origin-lead-cobran2 {
+    display: flex;
+    gap: 5px;
+}
+
+.alert-dados-basico-cobran button {
+    color: var(--verde);
+}
+
+.alert-dados-basico-cobran label {
+    color: black;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.infor-modal-cobrancas {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+}
+
+.lead-origin-cobran {
+    display: flex;
+    flex-direction: column;
+}
+
+.lead-origin-cobran label {
+    font-size: 11px;
+    color: var(--preto);
+    font-weight: 500;
+}
+
+.tipo-atendimento-cobran {
+    width: 95%;
+    display: flex;
+    border: 1px solid rgba(0, 0, 0, .6);
+    border-radius: 5px;
+    padding: 10px;
+    flex-direction: column;
+}
+
+.historicof9 {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+
+.historicof9 h1 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--verde);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.historicof9-close {
+    display: flex;
+    align-items: center;
+
+}
+
+.historicof9-close h1 {
+    width: 95%;
+}
+
+.historicof9-close button {
+    color: var(--vermelho);
+}
+
+.historicof9-campos {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 20px;
+}
+
+.campos-tiposf9 {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+.campos-tiposf9 label {
+    font-size: 12px;
+    color: var(--preto);
+    font-weight: 500;
+
+}
+
+.campos-tiposf9 p {
+    background-color: var(--cinza-leve);
+    border-radius: 5px;
+    font-weight: 500;
+    width: 90%;
+    padding: 10px;
+    color: var(--preto);
+
+}
+
+.campos-tiposf92 {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.campos-tiposf92 label {
+    font-size: 12px;
+    color: var(--preto);
+    font-weight: 500;
+
+}
+
+.campos-tiposf92 p {
+    background-color: var(--cinza-leve);
+    border-radius: 5px;
+    font-weight: 500;
+    width: 90%;
+    padding: 10px;
+    color: var(--preto);
+
+}
+
+.campos-tiposf923 {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.campos-tiposf923 label {
+    font-size: 12px;
+    color: var(--preto);
+    font-weight: 500;
+
+}
+
+.campos-tiposf923 a {
+    font-size: 12px;
+    color: var(--preto);
+    font-weight: 500;
+    background-color: var(--cinza-leve);
+    border-radius: 5px;
+    height: 100px;
+
+}
+
+.tipo-atendimento-cobran label {
+    color: var(--preto);
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.historicof9 p {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.aten-whatsapp {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.aten-whatsapp label {
+    font-size: 12px;
+    color: var(--verde);
+    font-weight: 500;
+}
+
+.dados-contato-cobran {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.dados-contato-cobran p {
+    color: var(--preto);
+    font-weight: 500;
+    font-size: 13px;
+    margin-left: 45px;
+}
+
+.container-linhas-cobranças2 {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.container-linhas-cobranças2 label {
+    font-weight: 500;
+}
+
+.container-linhas-cobran {
+
+    gap: 10px;
+}
+
+.container-linhas-cobran label {
+    color: var(--preto);
+    font-weight: 500;
+}
+
+.container-linhas-cobran2 {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.container-linhas-dowload-cobran label {
+    color: var(--preto);
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.container-linhas-dowload-cobran {
+    display: flex;
+    gap: 10px;
+}
+
+.container-linhas-cobran {
+    display: flex;
+    gap: 1px;
+    align-items: center;
+}
+
+.tarefa-data-cobran {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    width: 21%;
+}
+
+
+
+.agenda-etiqueta-cobran {
+    width: 55%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+.tipos-status-cobran {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.tipos-status-cobran label {
+    font-size: 10px;
+}
+
+.acoes-cobranca {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.obs-cobranca-dados {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+
+}
+
+.icon-buton-cobran {
+    margin-top: 3px;
+    display: flex;
+    border-radius: 5px;
+    align-items: star;
+    width: 100%;
+}
+
+.icon-buton-cobran button {
+    width: 100%;
+}
+
+.button-acoes-cobran {
+    width: 90%;
+    gap: 5px;
+}
+
+.obs-cobran-lead {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+}
+
+.obs-cobranca-f9 {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+}
+
+.obs-cobranca-f9 textarea {
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    height: 125px;
+    width: 100%;
+}
+
+.obs-cobran-lead textarea {
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    height: 125px;
+    width: 100%;
+    background-color: var(--cinza-leve);
+}
+
+.atividade-cobranca {
+    display: flex;
+    flex-direction: column;
+    width: 88%;
+}
+
+.icon-atividade-cobran {
+    display: flex;
+    align-items: center;
+}
+
+.icon-atividade-cobran label {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--preto);
+}
+
+.campos-atividade-cobranca {
+    display: flex;
+    gap: 5px;
+    width: 100%;
+}
+
+.campos-atividade-cobranca select {
+    width: 100%;
+    background-color: var(--cinza-leve);
+    font-weight: 500;
+}
+
+.atividade-cobranca input {
+    background-color: var(--cinza-leve);
+    margin-top: -10px;
+    width: 80%;
+    justify-content: end;
+}
+
+.select-text-area-cobran {
+    gap: 3px;
+    border-radius: 5px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.select-text-area-cobran textarea {
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: var(--cinza-leve);
+    width: 94%;
+    padding: 10px;
+}
+
+.select-text-area-cobran label {
+    font-weight: 500;
+}
+
+.add-comentario-cobran {
+    width: 30%;
+}
+
+.close-modal-cobran {
+    width: 5%;
+}
+
+
+.historico-cobranca-comentarios {
+    display: flex;
+    width: 76%;
+    gap: 5px;
+    margin-left: 40px;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+
+.tipos-comentarios-cobran {
+    width: 100%;
+    margin-bottom: 3px;
+    z-index: 0;
+}
+
+
+
+.historico-cobranca-comentarios label {
+    font-size: 12px;
+    font-weight: 500;
+    max-width: 100%;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+}
+
+.comentario2-cobranca {
+    display: flex;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: var(--cinza-leve);
+}
+
+.comentario2-cobranca p {
+    font-size: 12px;
+
+}
+
+.add-contato-cobran {
+    display: flex;
+    overflow: hidden;
+    padding: 15px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.call-add-pro {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.call-add-pro label {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    gap: 10px;
+    color: var(--preto);
+}
+
+
+.estado3-mun label {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.estado3-mun select {
+    width: 100%;
+    font-weight: 500;
+    margin-top: -2px;
+    background-color: var(--cinza-leve);
+}
+
+.estado3-mun {
+    gap: 0px;
+    width: 50%;
+}
+
+.estado2-mun label {
+    font-weight: 500;
+}
+
+.estado2-mun input {
+    padding: 8px;
+    font-weight: 500;
+    background-color: var(--cinza-leve);
+}
+
+.cell-delet-cobran {
+    display: flex;
+    background-color: var(--cinza-leve);
+    padding: 5px;
+    align-items: center;
+    gap: 50px;
+    width: 97%;
+    border-radius: 5px;
+}
+
+.cell-delet-cobran label {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.espaco-contatos {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.icon-cell-cobranca {
+    width: 15%;
+}
+
+.cell-delet-cobran label {
+    width: 70%;
+}
+
+.tipos-arquivos-anexos {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: var(--verde);
+    justify-content: center;
+    width: 20%;
+    margin-left: 50px;
+    flex-direction: column;
+}
+
+.tipos-arquivos-anexos2 {
+    display: flex;
+    gap: 10px;
+    background-color: var(--cinza-leve);
+    border-radius: 5px;
+    padding: 10px;
+    align-items: center;
+    color: var(--verde);
+    justify-content: center;
+    width: 20%;
+    flex-direction: column;
+}
+
+.tipos-arquivos-anexos2 a {
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+    font-weight: 700;
+}
+
+tipos-arquivos-anexos a {
+    font-size: 10px;
+    width: 100%;
+    font-weight: 700;
+}
+
+.selecione-arquivo-cobran {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selecione-arquivo-cobran label {
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.container-linhas-cobran3 {
+    display: flex;
+    gap: 10px;
+}
+
+.download-delet-cobran {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.calendar-cobran {
+    display: flex;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.linha-calendarios-cobran {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.horario-calenda-cobran {
+    display: flex;
+    width: 35%;
+    flex-direction: column;
+}
+
+.horario-calenda-cobran label {
+    color: var(--preto);
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.horario-calenda-cobran input {
+    background-color: var(--cinza-leve);
+}
+
+.horario-calenda-cobran select {
+    background-color: var(--cinza-leve);
+}
+
+.data-clock-cobran label {
+    font-size: 12px;
+    color: var(--preto);
+    font-weight: 500;
+}
+
+.data-clock-cobran {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 60%;
+}
+
+.horario-calenda-cobran3 {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.horario-calenda-cobran3 label {
+    color: var(--preto);
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.horario-calenda-cobran3 select {
+    background-color: var(--cinza-leve);
+}
+
+.linha-calendarios-cobran4 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.linha-calendarios-cobran4 label {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.linha-calendarios-cobran4 textarea {
+    background-color: var(--cinza-leve);
+    border: none;
+    overflow-wrap: break-word;
+    /* Para navegadores modernos */
+    word-wrap: break-word;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 95%;
+}
+
+
+.tarefa-agendada-cobran {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.tarefa-agendada-cobran h1 {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+.horario-cliente-cobran {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.horario-cliente-cobran label {
+    color: var(--preto);
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.horario-cliente-cobran input {
+    background-color: var(--cinza-leve);
+}
+
+.fecha-modal-tarefa-cobra {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.opcoes-modal-cobranca {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+}
+
+.opcoes-modal-cobranca button {
+    width: 18%;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border: 1px solid var(--verde)
+}
+
+.botao-ativo {
+    color: var(--verde);
+    border: var(--verde)
+}
