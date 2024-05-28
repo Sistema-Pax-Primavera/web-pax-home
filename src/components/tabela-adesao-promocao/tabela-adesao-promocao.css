@@ -1,0 +1,36 @@
+.button-group-container {
+    display: flex;
+    width: 50%;
+    flex-shrink: 0;
+}
+
+.tabela-botao-associado {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.adesao-promocao label {
+    font-size: 10px;
+    font-size: 800;
+    cursor: pointer;
+}
+
+.adesao-promocao select {
+    font-weight: 700;
+    background-color: var(--verde);
+    color: var(--branco);
+}
+
+.adesao-promocao option {
+    color: var(--preto);
+    border: none;
+    padding: 5px;
+    outline: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.tabela-abaixo-botoes {
+    width: 100%;
+}

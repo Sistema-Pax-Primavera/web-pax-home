@@ -1,16 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import Manutencao from "../../../assets/manutencao.svg";
+import { toast } from "react-toastify";
 import idiomas from '../../utils/info';
-import Dinheiro from "../../../assets/dinheiro.png";
-import Atendimento from "../../../assets/atendimento.png";
-import Atendimento2 from "../../../assets/atendimento2.png";
-import Manual from "../../../assets/manual.png";
-import BemVindo from "../../../assets/bem-vindo.png";
-import Site from "../../../assets/site.png";
-import ChatPax from "../../../assets/chat-pax.png";
+import Dinheiro from "../../../assets/png/dinheiro.png";
+import Atendimento from "../../../assets/png/atendimento.png";
+import Atendimento2 from "../../../assets/png/atendimento2.png";
+import Manual from "../../../assets/png/manual.png";
+import BemVindo from "../../../assets/png/bem-vindo.png";
+import Site from "../../../assets/png/site.png";
+import ChatPax from "../../../assets/png/chat-pax.png";
 import './acesso-rapido.css';
+import { Modal, Box } from "@mui/material";
+import FloatingWindow from '../modal/recebimento';
+import Telemarketing from '../telemarketing';
 
-const AcessoRapido = ({ idioma, setShowFloatingWindow, setIsAtendimentoModal, handleMenuClick, usuario }) => {
+const styleAtendimento = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "90%",
+    height: "85%",
+    maxHeight: "90vh",
+    bgcolor: "background.paper",
+    borderRadius: 5,
+    p: 4,
+    overflowY: "auto",
+    boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)"
+};
+
+
+const AcessoRapido = ({ idioma, handleMenuClick, usuario }) => {
+    const [showFloatingWindow, setShowFloatingWindow] = useState(false);
+    const [isAtendimentoModal, setIsAtendimentoModal] = useState(false);
+    const [atendimentoClose, setAtendimentoClose] = useState(true);
+
     const openFloatingWindow = () => {
         setShowFloatingWindow(true);
     };
@@ -18,6 +41,18 @@ const AcessoRapido = ({ idioma, setShowFloatingWindow, setIsAtendimentoModal, ha
     const openModalAtendimento = () => {
         setIsAtendimentoModal(true);
     };
+
+    const closeFloatingWindow = () => {
+        setShowFloatingWindow(false);
+    };
+
+    const closeAtendimento = () => {
+        if (atendimentoClose) {
+            setIsAtendimentoModal(false);
+        } else {
+            toast.warning('Não é possível fechar a modal agora.');
+        }
+    }
 
     return (
         <>
@@ -93,6 +128,22 @@ const AcessoRapido = ({ idioma, setShowFloatingWindow, setIsAtendimentoModal, ha
                     </a>
                 </button>
             </div>
+            {showFloatingWindow && (
+                <FloatingWindow
+                    onClose={closeFloatingWindow}
+                />
+            )}
+            <Modal
+                open={isAtendimentoModal}
+                onClose={closeAtendimento}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={styleAtendimento}>
+                    <Telemarketing
+                        setAtendimentoClose={setAtendimentoClose} />
+                </Box>
+            </Modal>
         </>
     )
 }

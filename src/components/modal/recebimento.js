@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./recebimento.css";
 import SearchIcon from "@mui/icons-material/Search";
-import Pesquisar from "../../../assets/pesquisar.png";
+import Pesquisar from "../../../assets/png/pesquisar.png";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -79,9 +79,9 @@ const rows = [
 ];
 
 function tabela(
-  parcela, valor, datapagamento, 
+  parcela, valor, datapagamento,
 ) {
-  return { parcela, valor, datapagamento,   };
+  return { parcela, valor, datapagamento, };
 }
 
 const tabelaValores = [
@@ -355,8 +355,8 @@ ADERBAL TESTE<br>
     setTotalPagar(valorComDescontoFormatado);
     setReceberDisponivel(true);
   };
-  
-  
+
+
 
   const handleNovaParcelaChange = (campo, valor) => {
     setNovaParcela({
@@ -687,11 +687,11 @@ ADERBAL TESTE<br>
                                 {["PIX", "Cheque"].includes(
                                   parcela.formaPagamento
                                 ) && (
-                                  <div className="tipo-pagamento-recebimento-3-home">
-                                    <h2> Conta</h2>
-                                    <label>{parcela.conta}</label>
-                                  </div>
-                                )}
+                                    <div className="tipo-pagamento-recebimento-3-home">
+                                      <h2> Conta</h2>
+                                      <label>{parcela.conta}</label>
+                                    </div>
+                                  )}
                                 <div className="remove-forma-paga-home">
                                   <button
                                     onClick={() => handleRemoverParcela(index)}
@@ -760,7 +760,7 @@ ADERBAL TESTE<br>
                       )}
                     </div>
 
-                     <div className="acordion-recebimento">
+                    <div className="acordion-recebimento">
                       <div>
                         <TableContainer
                           component={Paper}
@@ -796,7 +796,8 @@ ADERBAL TESTE<br>
                                 </TableCell>
                                 <TableCell
                                   align="center"
-                                  sx={{backgroundColor: "#006b33",
+                                  sx={{
+                                    backgroundColor: "#006b33",
                                     fontSize: 5,
                                     color: "#ffff",
                                     paddingY: 1,
@@ -834,8 +835,8 @@ ADERBAL TESTE<br>
                                   >
                                     {tabelaValore.datapagamento}
                                   </TableCell>
-                                  
-                                  
+
+
                                 </TableRow>
                               ))}
                             </TableBody>

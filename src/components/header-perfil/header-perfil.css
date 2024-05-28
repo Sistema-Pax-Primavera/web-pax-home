@@ -110,10 +110,6 @@
     justify-content: center;
 }
 
-.perfil-acessos a {
-    background-image: url('../../../assets/bg-sidebar.webp');
-}
-
 .alterar-senha {
     display: flex;
     flex-direction: column;

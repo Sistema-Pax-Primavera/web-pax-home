@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "./manual.css";
-import Logo from "../../../assets/logo-pax-verde.svg";
+import Logo from "../../../assets/svg/logo-pax-verde.svg";
 import Perguntas from "./perguntas";
 import Carregando from "../../components/carregando";
 import SearchIcon from "@mui/icons-material/Search";
 import { Slide } from "react-slideshow-image";
-import "react-slideshow-image/dist/styles.css";
 
 const ManualScreen = () => {
   const [query, setQuery] = useState("");

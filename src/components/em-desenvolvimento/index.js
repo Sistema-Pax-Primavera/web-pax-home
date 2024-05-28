@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Manutencao from "../../../assets/manutencao.svg";
+import Manutencao from "../../../assets/svg/manutencao.svg";
 import "./em-desenvolvimento.css";
 
 const Desenvolvimento = ({ tela }) => {

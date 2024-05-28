@@ -1,36 +1,31 @@
-// NewsTicker.js
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './new-ticker.css';
-import Noticia from '../../../assets/logo-pax-verde.svg'
+import ChatPax from "../../../assets/png/chat-pax.png";
+import Manual from "../../../assets/png/manual.png";
+import Site from "../../../assets/png/site.png"
+import noticia1 from "../../../assets/png/exemploNoticia1.png";
+import noticia2 from "../../../assets/png/exemploNoticia2.png";
+import { Slide } from "react-slideshow-image";
 
-const NewsTicker = ({ news }) => {
-    const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
+const Noticias = ({ }) => {
 
-    useEffect(() => {
-        const tickerInterval = setInterval(() => {
-            setCurrentNewsIndex((prevIndex) =>
-                prevIndex === news.length - 1 ? 0 : prevIndex + 1
-            );
-        }, 10000); // Reduzi o intervalo para tornar a rolagem mais rápida
-
-        return () => clearInterval(tickerInterval);
-    }, [news]);
+    const slideImages = [ChatPax, noticia1, Manual, noticia2, Site];
 
     return (
-        <div className="news-ticker-container">
-            <div className="news-ticker">
-                <div className="ticker-content">
-                    {news.map((item, index) => (
-                        <div key={index} className="ticker-item">
-                            <h3 className="news-title">{item.title}</h3>
-                            <p className="news-text">{item.text}</p>
-                            <img src={Noticia} alt="Noticia"></img>
+        <div className="slide-noticias">
+            <div className="slide-container">
+                <Slide indicators={true}>
+                    {slideImages.map((each, index) => (
+                        <div key={index} className="each-slide">
+                            <div
+                                style={{ backgroundImage: `url(${each})` }}
+                            />
                         </div>
                     ))}
-                </div>
+                </Slide>
             </div>
-        </div >
+        </div>
     );
 };
 
-export default NewsTicker;
+export default Noticias;

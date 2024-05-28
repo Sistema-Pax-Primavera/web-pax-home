@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./perguntas.css";
-import ChatPax from "../../../../assets/chat-pax.png";
-import Recebimento01 from "../../../../assets/manual-recebimento-01.png";
-import Recebimento02 from "../../../../assets/manual-recebimento-02.png";
-import Recebimento04 from "../../../../assets/manual-recebimento-04.png";
-import Recebimento05 from "../../../../assets/manual-recebimento-05.png";
-import Recebimento06 from "../../../../assets/manual-recebimento-06.png";
-import Recebimento07 from "../../../../assets/manual-recebimento-07.png";
-import Recebimento08 from "../../../../assets/manual-recebimento-08.png";
-import Manual from "../../../../assets/manual.png";
-import Site from "../../../../assets/site.png";
+import ChatPax from "../../../../assets/png/chat-pax.png";
+import Recebimento01 from "../../../../assets/png/manual-recebimento-01.png";
+import Recebimento02 from "../../../../assets/png/manual-recebimento-02.png";
+import Recebimento04 from "../../../../assets/png/manual-recebimento-04.png";
+import Recebimento05 from "../../../../assets/png/manual-recebimento-05.png";
+import Recebimento06 from "../../../../assets/png/manual-recebimento-06.png";
+import Recebimento07 from "../../../../assets/png/manual-recebimento-07.png";
+import Recebimento08 from "../../../../assets/png/manual-recebimento-08.png";
+import Manual from "../../../../assets/png/manual.png";
+import Site from "../../../../assets/png/site.png";
 import { Slide } from "react-slideshow-image";
-import "react-slideshow-image/dist/styles.css";
+
 
 const Perguntas = ({ query, onQuestionClick }) => {
   const [imagensCarregadas, setImagensCarregadas] = useState(false);
@@ -40,12 +40,12 @@ const Perguntas = ({ query, onQuestionClick }) => {
           <p>2. Clicando em Associados; </p>
         </div>,
         <div className="textos-duvidas-manual">
-          <label>Atalho de Recebimento na home</label>      
+          <label>Atalho de Recebimento na home</label>
           <p>3. Você pode procurar o cliente pelo Nº do Contrato, Nome ou CPF;</p>
           <p>4. Clique em Pesquisar; </p>
           <p>5. Selecione o Cliente; </p>
         </div>,
-        <div className="textos-duvidas-manual">         
+        <div className="textos-duvidas-manual">
           <p>6. Informe a quantidade de parcelas, total a pagar e o desconto;</p>
           <p>7. Clique em Aplicar Desconto;</p>
         </div>,
@@ -61,8 +61,8 @@ const Perguntas = ({ query, onQuestionClick }) => {
           <p>12. Selecione o Cliente; </p>
         </div>,
         <div className="textos-duvidas-manual">
-        <p>13. Selecione o botão Recebimento;</p>
-      </div>,
+          <p>13. Selecione o botão Recebimento;</p>
+        </div>,
         <div className="textos-duvidas-manual">
           <p>14. Informe a quantidade de parcelas, total a pagar e o desconto;</p>
           <p>15. Clique em Aplicar Desconto; </p>
@@ -90,27 +90,27 @@ const Perguntas = ({ query, onQuestionClick }) => {
     },
     // Adicione mais perguntas conforme necessário
   ];
-// Filtra as perguntas com base na consulta
-const filteredPerguntas = perguntas.filter((pergunta) => {
-  const perguntaLowerCase = pergunta.pergunta.toLowerCase();
-  const queryWords = query.toLowerCase().split(' ');
+  // Filtra as perguntas com base na consulta
+  const filteredPerguntas = perguntas.filter((pergunta) => {
+    const perguntaLowerCase = pergunta.pergunta.toLowerCase();
+    const queryWords = query.toLowerCase().split(' ');
 
-  // Verifica se alguma palavra da consulta está presente na pergunta ou em suas palavras-chave
-  return queryWords.some((word) => {
-    return (
-      perguntaLowerCase.includes(word) ||
-      (pergunta.palavrasChave &&
-        pergunta.palavrasChave.some((palavra) =>
-          palavra.toLowerCase().includes(word)
-        ))
-    );
+    // Verifica se alguma palavra da consulta está presente na pergunta ou em suas palavras-chave
+    return queryWords.some((word) => {
+      return (
+        perguntaLowerCase.includes(word) ||
+        (pergunta.palavrasChave &&
+          pergunta.palavrasChave.some((palavra) =>
+            palavra.toLowerCase().includes(word)
+          ))
+      );
+    });
   });
-});
 
-  
-  
 
-  
+
+
+
   useEffect(() => {
     // Verifica se todas as imagens foram carregadas
     const todasAsImagensCarregadas = perguntas.every((pergunta) =>

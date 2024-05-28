@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './header.css';
 import idiomas from '../../utils/info';
 import { useNavigate } from "react-router-dom";
-import Logo from "../../../assets/logo-pax-branco.svg";
+import Logo from "../../../assets/svg/logo-pax-branco.svg";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import AddBusinessIcon from "@mui/icons-material/AddBusiness";

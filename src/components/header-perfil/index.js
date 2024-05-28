@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './header-perfil.css';
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import Brasil from "../../../assets/brasil.png";
-import Paraguai from "../../../assets/paraguai.png";
+import Brasil from "../../../assets/png/brasil.png";
+import Paraguai from "../../../assets/png/paraguai.png";
 import idiomas from '../../utils/info';
 import { useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";

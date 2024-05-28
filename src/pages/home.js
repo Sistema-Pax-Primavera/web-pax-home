@@ -1,30 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./home.css";
-import { toast } from "react-toastify";
-import FloatingWindow from "../components/modal/recebimento";
 import { useNavigate } from "react-router-dom";
 import Parcel from "single-spa-react/parcel";
-import ButtonGroup from "@mui/material/ButtonGroup";
-import Button from "@mui/material/Button";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import ChatPax from "../../assets/chat-pax.png";
-import Manual from "../../assets/manual.png";
-import Site from "../../assets/site.png";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
+
 import ManualScreen from "./manual/manual";
 import PageChat from "./chat/chat";
 import Solicitacao from "./solicitação";
-import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import Switch from "@mui/material/Switch";
-import idiomas from "../utils/info";
 import { useUnidade } from "../services/api-config";
 import Carregando from "../components/carregando";
 import InactivityHOC from "../services/inactivityHOC";
@@ -32,29 +15,15 @@ import ErrorComponent from "../components/show-message";
 import Desenvolvimento from "../components/em-desenvolvimento";
 import Perfil from "../pages/perfil/index";
 import Header from "../components/header";
-import Telemarketing from "../components/telemarketing";
 import AcessoRapido from "../components/menu-acesso-rapido";
 import HeaderPerfil from "../components/header-perfil";
-
-const styleAtendimento = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "90%",
-  height: "85%",
-  maxHeight: "90vh",
-  bgcolor: "background.paper",
-  borderRadius: 5,
-  p: 4,
-  overflowY: "auto",
-  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)"
-};
-
+import Noticias from "../components/noticias";
+import Valores from "../components/tabela-adesao-promocao";
+import { Box, Skeleton } from "@mui/material";
 
 const Home = () => {
   const { getUnidades } = useUnidade();
-  const [atendimentoClose, setAtendimentoClose] = useState(true);
+  const [carregando, setCarregando] = useState(true);
   const [usuario, setUsuario] = useState("");
   const [idioma, setIdioma] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -64,76 +33,21 @@ const Home = () => {
   const [permissaoGlobal, setPermissaoGlobal] = useState([]);
   const [unidadeAtual, setUnidadeAtual] = useState(null);
   const [activeRoute, setActiveRoute] = useState("");
-  const [selectedOption, setSelectedOption] = useState("Adesão");
-  const [showTable, setShowTable] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorCode, setErrorCode] = useState(null);
   const ParcelWithInactivity = InactivityHOC(Parcel);
-  const [isAtendimentoModal, setIsAtendimentoModal] = useState(false);
+
   const navigate = useNavigate();
-
-  const dadosAdesao = [
-    {
-      estado: "MS",
-      planos: [
-        { nome: "Plano 1", valor: 120.0 },
-        { nome: "Plano 2", valor: 180.0 },
-        { nome: "Plano 3" },
-      ],
-    },
-    {
-      estado: "PR",
-      planos: [
-        { nome: "Plano 1", valor: 130.0 },
-        { nome: "Plano 2", valor: 110.0 },
-        { nome: "Plano 3", valor: 160.0 },
-      ],
-    },
-    {
-      estado: "GO",
-      planos: [{ nome: "Plano 1", valor: 160.0 }],
-    },
-  ];
-
-  const slideImages = [ChatPax, Manual, Site];
-
-  const dadosPromocao = [
-    { parcela: 1, valor: 10.0 },
-    { parcela: 2, valor: 13.0 },
-  ];
 
   const SwitchIdioma = () => {
     setIdioma(!idioma);
   };
 
-  const handleButtonClick = (option) => {
-    setSelectedOption(option);
-    setShowTable(true);
-  };
-
   const handleMenuClick = (route) => {
-    // Navegar para a rota específica
     navigate(route);
-    // Salvar a rota no localStorage
     localStorage.setItem("page", route);
-    // Atualizar a rota ativa
     setActiveRoute(route);
   };
-
-  //janela flutuante do recebimento
-  const [showFloatingWindow, setShowFloatingWindow] = useState(false);
-
-  const closeFloatingWindow = () => {
-    setShowFloatingWindow(false);
-  };
-
-  const closeAtendimento = () => {
-    if (atendimentoClose) {
-      setIsAtendimentoModal(false);
-    } else {
-      toast.warning('Não é possível fechar a modal agora.');
-    }
-  }
 
   const isItemActive = (moduleName, item) => {
     const modulePermission =
@@ -204,6 +118,9 @@ const Home = () => {
         setIsLoading(false);
       }
     }
+    setTimeout(() => {
+      setCarregando(false);
+    }, 3000);
   }, []);
 
   useEffect(() => {
@@ -256,7 +173,6 @@ const Home = () => {
             permissaoGlobal={permissaoGlobal}
           />
           <div className="container-dashboard2">
-
             <HeaderPerfil
               activeRoute={activeRoute}
               unidadeAtual={unidadeAtual}
@@ -369,178 +285,52 @@ const Home = () => {
                     <Solicitacao />
                   ) : activeRoute === "/pax-primavera" ? (
                     <>
-                      <AcessoRapido
-                        idioma={idioma}
-                        setShowFloatingWindow={setShowFloatingWindow}
-                        setIsAtendimentoModal={setIsAtendimentoModal}
-                        handleMenuClick={handleMenuClick}
-                        usuario={usuario.usuario}
-                      />
-                      {showFloatingWindow && (
-                        <FloatingWindow
-                          onClose={closeFloatingWindow}
-                        ></FloatingWindow>
-                      )}
-                      <Modal
-                        open={isAtendimentoModal}
-                        onClose={closeAtendimento}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
-                      >
-                        <Box sx={styleAtendimento}>
-                          <Telemarketing
-                            setAtendimentoClose={setAtendimentoClose} />
-                        </Box>
-                      </Modal>
-                      <div className="mixed-chart">
-                        <div className="button-group-container">
-                          <div className="tabela-botao-associado">
-                            <ButtonGroup
-                              disableElevation
-                              variant="contained"
-                              aria-label=" elevation buttons"
-                              style={{ background: "#006b33" }}
-                            >
-                              <Button
-                                onClick={() => handleButtonClick("Promoção")}
-                                style={{
-                                  border: "3px white",
-                                  background: "#006b33",
-                                  borderBottom:
-                                    selectedOption === "Promoção"
-                                      ? "3px solid yellow"
-                                      : "",
-                                }}
-                              >
-                                <div className="adesao-promocao">
-                                  <label>Promoções</label>
-                                </div>
-                              </Button>
-                              <Button
-                                onClick={() => handleButtonClick("Adesão")}
-                                style={{
-                                  background: "#006b33",
-                                  borderBottom:
-                                    selectedOption === "Adesão"
-                                      ? "3px solid yellow"
-                                      : "",
-                                }}
-                              >
-                                <div className="adesao-promocao">
-                                  <label>Adesão</label>
-                                </div>
-                              </Button>
-                              <Button
-                                style={{
-                                  background: "#006b33",
-                                  borderBottom:
-                                    selectedOption === "Adesão"
-                                      ? "3px solid yellow"
-                                      : "",
-                                }}
-                              >
-                                <div className="adesao-promocao">
-                                  <select>
-                                    <option>Dourados</option>
-                                    <option>Itaporã</option>
-                                  </select>
-                                </div>
-                              </Button>
-                            </ButtonGroup>
-                          </div>
+                      {carregando ?
+                        <Box sx={{ width: '100%' }}>
+                          {/* Skeleton grande que ocupa toda a largura */}
+                          <Skeleton
+                            variant="rectangular"
+                            width="100%"
+                            height={150} // Aumentado para 120
+                            sx={{ marginBottom: 2, borderRadius: 2 }} // Bordas arredondadas
+                          />
 
-                          {showTable && selectedOption === "Adesão" && (
-                            <div className="tabela-abaixo-botoes">
-                              <TableContainer
-                                component={Paper}
-                                className="TableContainer"
-                              >
-                                <Table
-                                  sx={{ maxWidth: 1100 }}
-                                  aria-label="simple table"
-                                >
-                                  <TableHead className="TableHead">
-                                    <TableCell align="center">Estado</TableCell>
-                                    {dadosAdesao[0]?.planos.map(
-                                      (plano, index) => (
-                                        <TableCell key={index} align="center">
-                                          {plano.nome}
-                                        </TableCell>
-                                      )
-                                    )}
-                                  </TableHead>
-                                  <TableBody className="TableBody">
-                                    {dadosAdesao.map((row, index) => (
-                                      <TableRow key={index}>
-                                        <TableCell align="center">
-                                          {row.estado}
-                                        </TableCell>
-                                        {row.planos.map((plano, planoIndex) => (
-                                          <TableCell
-                                            key={planoIndex}
-                                            align="center"
-                                          >
-                                            {plano.valor}
-                                          </TableCell>
-                                        ))}
-                                      </TableRow>
-                                    ))}
-                                  </TableBody>
-                                </Table>
-                              </TableContainer>
-                            </div>
-                          )}
-                          {showTable && selectedOption === "Promoção" && (
-                            <div className="tabela-abaixo-botoes">
-                              <TableContainer
-                                component={Paper}
-                                className="TableContainer"
-                              >
-                                <Table
-                                  sx={{ maxWidth: 1100 }}
-                                  aria-label="simple table"
-                                >
-                                  <TableHead className="TableHead">
-                                    <TableRow>
-                                      <TableCell align="center">
-                                        Parcela
-                                      </TableCell>
-                                      <TableCell align="center">
-                                        Valor R$
-                                      </TableCell>
-                                    </TableRow>
-                                  </TableHead>
-                                  <TableBody className="TableBody">
-                                    {dadosPromocao.map((row, index) => (
-                                      <TableRow key={index}>
-                                        <TableCell align="center">
-                                          {row.parcela}
-                                        </TableCell>
-                                        <TableCell align="center">
-                                          {row.valor}
-                                        </TableCell>
-                                      </TableRow>
-                                    ))}
-                                  </TableBody>
-                                </Table>
-                              </TableContainer>
-                            </div>
-                          )}
-                        </div>
-                        <div className="slide-noticias">
-                          <div className="slide-container">
-                            <Slide indicators={true}>
-                              {slideImages.map((each, index) => (
-                                <div key={index} className="each-slide">
-                                  <div
-                                    style={{ backgroundImage: `url(${each})` }}
-                                  />
-                                </div>
-                              ))}
-                            </Slide>
-                          </div>
-                        </div>
-                      </div>
+                          {/* Container para os 6 Skeletons menores */}
+                          <Box sx={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
+                            {[...Array(6)].map((_, index) => (
+                              <Skeleton
+                                key={index}
+                                variant="rectangular"
+                                width="15%"
+                                height={60}
+                                sx={{ borderRadius: 2 }}
+                              />
+                            ))}
+                          </Box>
+
+                          {/* Container para os 2 Skeletons adicionais */}
+                          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                            {[...Array(2)].map((_, index) => (
+                              <Skeleton
+                                key={index}
+                                variant="rectangular"
+                                width="48%" // Largura de 48% para dois Skeletons
+                                height={190} // Aumentado para 60
+                                sx={{ borderRadius: 2 }} // Bordas arredondadas
+                              />
+                            ))}
+                          </Box>
+                        </Box>
+                        :
+                        <><AcessoRapido
+                          idioma={idioma}
+                          handleMenuClick={handleMenuClick}
+                          usuario={usuario.usuario} /><div className="mixed-chart">
+                            <Valores />
+                            <Noticias />
+                          </div></>
+                      }
+
                     </>
                   ) : (
                     <></>
