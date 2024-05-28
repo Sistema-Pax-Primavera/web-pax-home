@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./home.css";
 import { toast } from "react-toastify";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { IconButton, Menu, MenuItem } from "@mui/material";
 import FloatingWindow from "../components/modal/recebimento";
 import { useNavigate } from "react-router-dom";
 import Parcel from "single-spa-react/parcel";
@@ -18,12 +16,8 @@ import Paper from "@mui/material/Paper";
 import ChatPax from "../../assets/chat-pax.png";
 import Manual from "../../assets/manual.png";
 import Site from "../../assets/site.png";
-import LockIcon from "@mui/icons-material/Lock";
-import LogoutIcon from "@mui/icons-material/Logout";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import HttpsIcon from "@mui/icons-material/Https";
 import ManualScreen from "./manual/manual";
 import PageChat from "./chat/chat";
 import Solicitacao from "./solicitação";
@@ -36,25 +30,11 @@ import Carregando from "../components/carregando";
 import InactivityHOC from "../services/inactivityHOC";
 import ErrorComponent from "../components/show-message";
 import Desenvolvimento from "../components/em-desenvolvimento";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import Brasil from "../../assets/brasil.png";
-import Paraguai from "../../assets/paraguai.png";
-import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import Perfil from "../pages/perfil/index";
 import Header from "../components/header";
 import Telemarketing from "../components/telemarketing";
 import AcessoRapido from "../components/menu-acesso-rapido";
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 250,
-  bgcolor: "background.paper",
-  borderRadius: 5,
-  p: 4,
-};
+import HeaderPerfil from "../components/header-perfil";
 
 const styleAtendimento = {
   position: "absolute",
@@ -73,7 +53,7 @@ const styleAtendimento = {
 
 
 const Home = () => {
-  const { getUnidades, alterarSenha } = useUnidade();
+  const { getUnidades } = useUnidade();
   const [atendimentoClose, setAtendimentoClose] = useState(true);
   const [usuario, setUsuario] = useState("");
   const [idioma, setIdioma] = useState(false);
@@ -83,39 +63,14 @@ const Home = () => {
   const [permissao, setPermissao] = useState([]);
   const [permissaoGlobal, setPermissaoGlobal] = useState([]);
   const [unidadeAtual, setUnidadeAtual] = useState(null);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [activeRoute, setActiveRoute] = useState("");
   const [selectedOption, setSelectedOption] = useState("Adesão");
   const [showTable, setShowTable] = useState(true);
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorCode, setErrorCode] = useState(null);
   const ParcelWithInactivity = InactivityHOC(Parcel);
-  const [senha, setSenha] = useState("");
-  const [senhaAtual, setSenhaAtual] = useState("");
-  const [mostrarSenhaAtual, setMostrarSenhaAtual] = useState(false);
-  const [mostrarSenha, setMostrarSenha] = useState(false);
-  const [anchorEl2, setAnchorEl2] = useState(null);
-  const [lingua, setLingua] = useState("BR");
   const [isAtendimentoModal, setIsAtendimentoModal] = useState(false);
   const navigate = useNavigate();
-
-  const handleMenuLingua = (event) => {
-    setAnchorEl2(event.currentTarget);
-  };
-
-  const handleCloseLingua = () => {
-    setAnchorEl2(null);
-  };
-
-  const handleSelectPais = (pais) => {
-    setLingua(pais);
-    setIdioma(!idioma);
-    handleCloseLingua();
-  };
 
   const dadosAdesao = [
     {
@@ -165,24 +120,12 @@ const Home = () => {
     setActiveRoute(route);
   };
 
-  // Função para abrir o menu suspenso
-  const handleMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  // Função para fechar o menu suspenso
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
-
   //janela flutuante do recebimento
   const [showFloatingWindow, setShowFloatingWindow] = useState(false);
-
 
   const closeFloatingWindow = () => {
     setShowFloatingWindow(false);
   };
-
 
   const closeAtendimento = () => {
     if (atendimentoClose) {
@@ -191,31 +134,6 @@ const Home = () => {
       toast.warning('Não é possível fechar a modal agora.');
     }
   }
-
-  const atualizaSenha = async () => {
-    try {
-      const response = await alterarSenha(senhaAtual, senha, usuario.usuario);
-      if (response.ok) {
-        // Senha alterada com sucesso
-        toast.success("Senha alterada com sucesso");
-        // Limpa os campos de senha após a alteração bem-sucedida
-        setSenha("");
-        setSenhaAtual("");
-      } else {
-        // Tratar erro de alteração de senha
-        toast.error("Erro ao alterar senha");
-      }
-    } catch (error) {
-      toast.error("Erro ao realizar solicitação");
-    }
-  };
-
-  const Logout = () => {
-    // Limpar o localStorage
-    localStorage.clear();
-    // Redirecionar para a tela de login
-    navigate("/login");
-  };
 
   const isItemActive = (moduleName, item) => {
     const modulePermission =
@@ -338,188 +256,17 @@ const Home = () => {
             permissaoGlobal={permissaoGlobal}
           />
           <div className="container-dashboard2">
-            <div className="perfil">
-              <div className="perfil-localizacao">
-                {(activeRoute === "/pax-primavera" ||
-                  activeRoute === "/pax-primavera/associado") && (
-                    <div className="cidade-home">
-                      <div className="localizacao-unidade">
-                        <label>
-                          <LocationOnIcon fontSize={"small"} />
-                        </label>
-                        <select
-                          value={unidadeAtual}
-                          onChange={(event) =>
-                            setUnidadeAtual(event.target.value)
-                          }
-                        >
-                          {unidades.map((unidade) => (
-                            <option key={unidade.id} value={unidade.id}>
-                              {unidade.nome_unidade}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-                  )}
-                <Button
-                  id="basic-button"
-                  aria-controls={anchorEl2 ? "basic-menu" : undefined}
-                  aria-haspopup="true"
-                  className="botao-br-py"
-                  onClick={handleMenuLingua}
-                  style={{ textTransform: "none" }} // Evita que o texto do botão seja capitalizado
-                >
-                  {lingua === "BR" && (
-                    <img
-                      src={Brasil}
-                      alt="BR"
-                      style={{
-                        width: "30px",
-                        height: "20px",
-                        borderRadius: "3px",
-                      }}
-                    />
-                  )}
-                  {lingua === "PY" && (
-                    <img
-                      src={Paraguai}
-                      alt="Paraguai"
-                      style={{
-                        width: "30px",
-                        height: "20px",
-                        borderRadius: "3px",
-                      }}
-                    />
-                  )}
-                </Button>
-                <Menu
-                  id="basic-menu"
-                  anchorEl={anchorEl2}
-                  open={Boolean(anchorEl2)}
-                  onClose={handleCloseLingua}
-                  MenuListProps={{
-                    "aria-labelledby": "basic-button",
-                  }}
-                  transformOrigin={{
-                    vertical: "top",
 
-                    horizontal: "right",
-                  }}
-                  style={{
-                    // Ajusta a distância do topo
-                    marginLeft: "47px", // Ajusta a distância da direita
-                    width: "200px", // Define a largura do menu
-                  }}
-                >
-                  <MenuItem onClick={() => handleSelectPais("BR")}>
-                    <div className="pais-lingua">
-                      <img
-                        src={Brasil}
-                        alt="Brasil"
-                        style={{ width: "35px", height: "20px" }}
-                      />
-                      <label>Brasil</label>
-                    </div>
-                  </MenuItem>
-                  <MenuItem onClick={() => handleSelectPais("PY")}>
-                    <div className="pais-lingua">
-                      <img
-                        src={Paraguai}
-                        alt="Paraguai"
-                        style={{ width: "33px", height: "20px" }}
-                      />
-                      <label>Paraguai</label>
-                    </div>
-                  </MenuItem>
-                </Menu>
-                {activeRoute === "/pax-primavera" ||
-                  activeRoute === "/pax-primavera/associado" ? (
-                  <div className="perfil-acessos3">
-                    <a onClick={handleMenuOpen}>
-                      <AccountCircleIcon />
-                    </a>
-                  </div>
-                ) : (
-                  <>
-                    <div className="perfil-acessos">
-                      <a onClick={handleMenuOpen}>
-                        <AccountCircleIcon />
-                      </a>
-                    </div>
-
-                    <p style={{ color: "white" }}>{usuario.usuario}</p>
-                  </>
-                )}
-              </div>
-            </div>
-            <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleMenuClose}
-            >
-              <MenuItem onClick={handleMenuClose}>
-                <div className="icones-nome">
-                  <a onClick={() => handleMenuClick("/pax-primavera/perfil")}>
-                    <label>
-                      <PersonAddAlt1Icon fontSize={"small"} />{" "}
-                      {idioma
-                        ? idiomas.es_PY.menuUsuario.perfil
-                        : idiomas.pt_BR.menuUsuario.perfil}
-                    </label>
-                  </a>
-                </div>
-              </MenuItem>
-              {/* Opção: Sair */}
-              <MenuItem onClick={Logout}>
-                <div className="icones-nome">
-                  <label>
-                    <LogoutIcon fontSize={"small"} />{" "}
-                    {idioma
-                      ? idiomas.es_PY.menuUsuario.sair
-                      : idiomas.pt_BR.menuUsuario.sair}
-                  </label>
-                </div>
-              </MenuItem>
-            </Menu>
-            <Modal
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-            >
-              <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
-                  <div className="icones-nome">
-                    <label>
-                      <HttpsIcon fontSize={"small"} />
-                      Alterar Senha
-                    </label>
-                  </div>
-                </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                  <div className="alterar-senha">
-                    <div className="campos-alterasenha">
-                      <label>Senha Atual</label>
-                      <input
-                        value={senhaAtual}
-                        type={mostrarSenhaAtual ? "text" : "password"}
-                        onChange={(e) => setSenhaAtual(e.target.value)}
-                      />
-                    </div>
-                    <div className="campos-alterasenha">
-                      <label>Nova Senha</label>
-                      <input
-                        value={senha}
-                        type={mostrarSenha ? "text" : "password"}
-                        onChange={(e) => setSenha(e.target.value)}
-                      />
-                    </div>
-                    <button onClick={atualizaSenha}>CONFIRMAR</button>
-                  </div>
-                </Typography>
-              </Box>
-            </Modal>
+            <HeaderPerfil
+              activeRoute={activeRoute}
+              unidadeAtual={unidadeAtual}
+              setUnidadeAtual={setUnidadeAtual}
+              unidades={unidades}
+              idioma={idioma}
+              setIdioma={setIdioma}
+              usuario={usuario.usuario}
+              handleMenuClick={handleMenuClick}
+            />
             {isFilial ? (
               <div className="loading">
                 <Carregando />
