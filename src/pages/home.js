@@ -4,10 +4,6 @@ import { toast } from "react-toastify";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { IconButton, Menu, MenuItem } from "@mui/material";
 import FloatingWindow from "../components/modal/recebimento";
-import BemVindo from "../../assets/bem-vindo.png";
-import Dinheiro from "../../assets/dinheiro.png";
-import Atendimento from "../../assets/atendimento.png";
-import Atendimento2 from "../../assets/atendimento2.png";
 import { useNavigate } from "react-router-dom";
 import Parcel from "single-spa-react/parcel";
 import ButtonGroup from "@mui/material/ButtonGroup";
@@ -47,6 +43,7 @@ import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import Perfil from "../pages/perfil/index";
 import Header from "../components/header";
 import Telemarketing from "../components/telemarketing";
+import AcessoRapido from "../components/menu-acesso-rapido";
 
 const style = {
   position: "absolute",
@@ -181,17 +178,11 @@ const Home = () => {
   //janela flutuante do recebimento
   const [showFloatingWindow, setShowFloatingWindow] = useState(false);
 
-  const openFloatingWindow = () => {
-    setShowFloatingWindow(true);
-  };
 
   const closeFloatingWindow = () => {
     setShowFloatingWindow(false);
   };
 
-  const openModalAtendimento = () => {
-    setIsAtendimentoModal(true);
-  };
 
   const closeAtendimento = () => {
     if (atendimentoClose) {
@@ -402,7 +393,6 @@ const Home = () => {
                     />
                   )}
                 </Button>
-
                 <Menu
                   id="basic-menu"
                   anchorEl={anchorEl2}
@@ -443,7 +433,6 @@ const Home = () => {
                     </div>
                   </MenuItem>
                 </Menu>
-
                 {activeRoute === "/pax-primavera" ||
                   activeRoute === "/pax-primavera/associado" ? (
                   <div className="perfil-acessos3">
@@ -464,7 +453,6 @@ const Home = () => {
                 )}
               </div>
             </div>
-
             <Menu
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
@@ -634,100 +622,29 @@ const Home = () => {
                     <Solicitacao />
                   ) : activeRoute === "/pax-primavera" ? (
                     <>
-                      <div className="bem-vindo">
-                        <div className="bem-vindo2">
-                          <h1>
-                            {idioma
-                              ? idiomas.es_PY.message.titulo
-                              : idiomas.pt_BR.message.titulo}{" "}
-                            {usuario.usuario}
-                          </h1>
-                          <label>
-                            {idioma
-                              ? idiomas.es_PY.message.texto
-                              : idiomas.pt_BR.message.texto}
-                          </label>
-                          <br></br>
-                        </div>
-                        <img src={BemVindo} alt="Bem-vindo"></img>
-                      </div>
-                      <div className="navegacao-home">
-                        <button onClick={openFloatingWindow}>
-                          <a className="dinheiro-recebimento">
-                            <img src={Dinheiro} alt="Dinheiro"></img>
-                            {idioma
-                              ? idiomas.es_PY.botoesAcao.recebimento
-                              : idiomas.pt_BR.botoesAcao.recebimento}
-                          </a>
-                        </button>
-
-                        {showFloatingWindow && (
-                          <FloatingWindow
-                            onClose={closeFloatingWindow}
-                          ></FloatingWindow>
-                        )}
-                        <button onClick={openModalAtendimento}>
-                          <a className="dinheiro-recebimento">
-                            <img src={Atendimento} alt="Atendimento"></img>
-                            {idioma
-                              ? idiomas.es_PY.botoesAcao.atendimento
-                              : idiomas.pt_BR.botoesAcao.atendimento}
-                          </a>
-                        </button>
-
-                        <Modal
-                          open={isAtendimentoModal}
-                          onClose={closeAtendimento}
-                          aria-labelledby="modal-modal-title"
-                          aria-describedby="modal-modal-description"
-                        >
-                          <Box sx={styleAtendimento}>
-                            <Telemarketing
-                              setAtendimentoClose={setAtendimentoClose} />
-                          </Box>
-                        </Modal>
-                        <button
-                          onClick={() =>
-                            handleMenuClick("/pax-primavera/solicitacao")
-                          }
-                        >
-                          <a className="dinheiro-recebimento">
-                            <img src={Atendimento2} alt="Atendimento2"></img>
-                            {idioma
-                              ? idiomas.es_PY.botoesAcao.solicitacao
-                              : idiomas.pt_BR.botoesAcao.solicitacao}
-                          </a>
-                        </button>
-                        <button
-                          onClick={() => handleMenuClick("/pax-primavera/chat")}
-                        >
-                          <a className="dinheiro-recebimento">
-                            <img src={ChatPax} alt="Atendimento2"></img>
-                            Chat
-                          </a>
-                        </button>
-                        <button
-                          onClick={() =>
-                            handleMenuClick("/pax-primavera/manual-sistema")
-                          }
-                        >
-                          <a className="dinheiro-recebimento">
-                            <img src={Manual} alt="Manual"></img>
-                            {idioma
-                              ? idiomas.es_PY.botoesAcao.manual
-                              : idiomas.pt_BR.botoesAcao.manual}
-                          </a>
-                        </button>
-                        <button>
-                          <a
-                            href="https://paxprimavera.com.br/"
-                            className="dinheiro-recebimento"
-                            target="_blank"
-                          >
-                            <img src={Site} alt="Manual"></img> Site Pax Primavera
-                          </a>
-                        </button>
-                      </div>
+                      <AcessoRapido
+                        idioma={idioma}
+                        setShowFloatingWindow={setShowFloatingWindow}
+                        setIsAtendimentoModal={setIsAtendimentoModal}
+                        handleMenuClick={handleMenuClick}
+                        usuario={usuario.usuario}
+                      />
+                      {showFloatingWindow && (
+                        <FloatingWindow
+                          onClose={closeFloatingWindow}
+                        ></FloatingWindow>
+                      )}
+                      <Modal
+                        open={isAtendimentoModal}
+                        onClose={closeAtendimento}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+                        <Box sx={styleAtendimento}>
+                          <Telemarketing
+                            setAtendimentoClose={setAtendimentoClose} />
+                        </Box>
+                      </Modal>
                       <div className="mixed-chart">
                         <div className="button-group-container">
                           <div className="tabela-botao-associado">

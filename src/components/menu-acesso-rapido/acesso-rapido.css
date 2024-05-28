@@ -1,0 +1,40 @@
+.navegacao-home {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 98%;
+}
+
+.navegacao-home button {
+    cursor: pointer;
+    background-color: var(--cinza-leve);
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.bem-vindo {
+    margin-top: 15px;
+    width: 95%;
+    background-color: var(--cinza-leve);
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.bem-vindo img {
+    width: 7%;
+}
+
+.bem-vindo2 h1 {
+    color: var(--verde);
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.bem-vindo2 label {
+    color: var(--verde);
+    font-size: 15px;
+    font-weight: 700;
+}
