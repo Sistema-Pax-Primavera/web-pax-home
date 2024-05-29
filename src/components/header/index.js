@@ -69,6 +69,9 @@ const Header = ({ activeRoute, setActiveRoute, idioma, permissao, permissaoGloba
                             ? "flex"
                             : "none",
                     }}
+                    title={idioma
+                        ? idiomas.es_PY.menu.atendimento.botoesAcao.associado
+                        : idiomas.pt_BR.menu.atendimento.botoesAcao.associado}
                 >
                     <AccountCircleIcon fontSize={"small"} />
                     {idioma
@@ -85,6 +88,9 @@ const Header = ({ activeRoute, setActiveRoute, idioma, permissao, permissaoGloba
                             ? "flex"
                             : "none",
                     }}
+                    title={idioma
+                        ? idiomas.es_PY.menu.atendimento.botoesAcao.webVendedor
+                        : idiomas.pt_BR.menu.atendimento.botoesAcao.webVendedor}
                 >
                     <MonetizationOnIcon fontSize={"small"} />
                     {idioma
@@ -101,6 +107,9 @@ const Header = ({ activeRoute, setActiveRoute, idioma, permissao, permissaoGloba
                             ? "flex"
                             : "none",
                     }}
+                    title={idioma
+                        ? idiomas.es_PY.menu.atendimento.botoesAcao.financeiro
+                        : idiomas.pt_BR.menu.atendimento.botoesAcao.financeiro}
                 >
                     <AddBusinessIcon fontSize={"small"} />
                     {idioma
@@ -122,6 +131,9 @@ const Header = ({ activeRoute, setActiveRoute, idioma, permissao, permissaoGloba
                             ? "flex"
                             : "none",
                     }}
+                    title={idioma
+                        ? idiomas.es_PY.menu.controle.botoesAcao.cobranca
+                        : idiomas.pt_BR.menu.controle.botoesAcao.cobranca}
                 >
                     <RequestPageIcon fontSize={"small"} />
                     {idioma
@@ -140,6 +152,9 @@ const Header = ({ activeRoute, setActiveRoute, idioma, permissao, permissaoGloba
                     style={{
                         display: isItemActive("controle", "parcela") ? "flex" : "none",
                     }}
+                    title={idioma
+                        ? idiomas.es_PY.menu.controle.botoesAcao.parcela
+                        : idiomas.pt_BR.menu.controle.botoesAcao.parcela}
                 >
                     <ContactPageIcon fontSize={"small"} />
                     {idioma
@@ -158,6 +173,9 @@ const Header = ({ activeRoute, setActiveRoute, idioma, permissao, permissaoGloba
                     style={{
                         display: isItemActive("controle", "boleto") ? "flex" : "none",
                     }}
+                    title={idioma
+                        ? idiomas.es_PY.menu.controle.botoesAcao.boleto
+                        : idiomas.pt_BR.menu.controle.botoesAcao.boleto}
                 >
                     <AutoAwesomeMosaicIcon fontSize={"small"} />
                     {idioma
@@ -183,6 +201,9 @@ const Header = ({ activeRoute, setActiveRoute, idioma, permissao, permissaoGloba
                             ? "flex"
                             : "none",
                     }}
+                    title={idioma
+                        ? idiomas.es_PY.menu.gerencial.botoesAcao.relatorio
+                        : idiomas.pt_BR.menu.gerencial.botoesAcao.relatorio}
                 >
                     <AssessmentIcon fontSize={"small"} />
                     {idioma
@@ -208,6 +229,9 @@ const Header = ({ activeRoute, setActiveRoute, idioma, permissao, permissaoGloba
                             ? "flex"
                             : "none",
                     }}
+                    title={idioma
+                        ? idiomas.es_PY.menu.configurações.botoesAcao.cadastro
+                        : idiomas.pt_BR.menu.configurações.botoesAcao.cadastro}
                 >
                     <FactCheckIcon fontSize={"small"} />
                     {idioma
@@ -224,6 +248,9 @@ const Header = ({ activeRoute, setActiveRoute, idioma, permissao, permissaoGloba
                             ? "flex"
                             : "none",
                     }}
+                    title={idioma
+                        ? idiomas.es_PY.menu.configurações.botoesAcao.suporte
+                        : idiomas.pt_BR.menu.configurações.botoesAcao.suporte}
                 >
                     <SupportAgentIcon fontSize={"small"} />
                     {idioma
@@ -231,7 +258,9 @@ const Header = ({ activeRoute, setActiveRoute, idioma, permissao, permissaoGloba
                         : idiomas.pt_BR.menu.configurações.botoesAcao.suporte}
                 </button>
                 <div className={`toggle-button ${isCollapsed ? 'toggle-button-collapsed' : ''}`} >
-                    <button onClick={toggleCollapse}>
+                    <button
+                        onClick={toggleCollapse}
+                        title={isCollapsed ? "Expandir" : "Recolher"}>
                         {
                             isCollapsed ?
                                 <ArrowForwardIosIcon fontSize={"small"} />
