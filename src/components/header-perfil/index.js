@@ -30,7 +30,6 @@ const HeaderPerfil = (
     const { alterarSenha } = useUnidade();
     const [anchorEl, setAnchorEl] = useState(null);
     const [anchorEl2, setAnchorEl2] = useState(null);
-    const [lingua, setLingua] = useState("BR");
     const [open, setOpen] = useState(false);
     const [senha, setSenha] = useState("");
     const [senhaAtual, setSenhaAtual] = useState("");
@@ -45,8 +44,7 @@ const HeaderPerfil = (
         setAnchorEl2(null);
     };
 
-    const handleSelectPais = (pais) => {
-        setLingua(pais);
+    const handleSelectPais = () => {
         setIdioma(!idioma);
         handleCloseLingua();
     };
@@ -114,17 +112,7 @@ const HeaderPerfil = (
                         onClick={handleMenuLingua}
                         style={{ textTransform: "none" }} // Evita que o texto do botão seja capitalizado
                     >
-                        {lingua === "BR" && (
-                            <img
-                                src={Brasil}
-                                alt="BR"
-                                style={{
-                                    width: "30px",
-                                    height: "20px",
-                                    borderRadius: "3px",
-                                }} />
-                        )}
-                        {lingua === "PY" && (
+                        {idioma ?
                             <img
                                 src={Paraguai}
                                 alt="Paraguai"
@@ -133,7 +121,16 @@ const HeaderPerfil = (
                                     height: "20px",
                                     borderRadius: "3px",
                                 }} />
-                        )}
+                            :
+                            <img
+                                src={Brasil}
+                                alt="BR"
+                                style={{
+                                    width: "30px",
+                                    height: "20px",
+                                    borderRadius: "3px",
+                                }} />
+                        }
                     </Button>
                     <Menu
                         id="basic-menu"
@@ -154,7 +151,7 @@ const HeaderPerfil = (
                             width: "200px", // Define a largura do menu
                         }}
                     >
-                        <MenuItem onClick={() => handleSelectPais("BR")}>
+                        <MenuItem onClick={() => handleSelectPais()}>
                             <div className="pais-lingua">
                                 <img
                                     src={Brasil}
@@ -163,7 +160,7 @@ const HeaderPerfil = (
                                 <label>Brasil</label>
                             </div>
                         </MenuItem>
-                        <MenuItem onClick={() => handleSelectPais("PY")}>
+                        <MenuItem onClick={() => handleSelectPais()}>
                             <div className="pais-lingua">
                                 <img
                                     src={Paraguai}

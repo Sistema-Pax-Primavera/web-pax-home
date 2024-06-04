@@ -49,8 +49,9 @@ const Header = ({ activeRoute, setActiveRoute, idioma, permissao, permissaoGloba
                 onClick={() => handleMenuClick("/pax-primavera")}
                 src={Logo}
                 alt="Logo"
+                title="Clique para acessar a Home"
                 className={`logo ${isCollapsed ? 'logo-collapsed' : ''}`}
-            ></img>
+            />
             <div
                 className={`menus-lateral  ${isCollapsed ? 'menus-lateral-collapsed' : ''}`}>
                 <label>

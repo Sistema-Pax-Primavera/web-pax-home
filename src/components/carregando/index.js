@@ -3,13 +3,13 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import './carregando.css'
 
-const Carregando = () => {
+const Carregando = ({ message }) => {
     return (
         <div className='carregando '>
             <Box sx={{ display: 'flex' }}>
                 <CircularProgress color="success" />
             </Box>
-            <label>Carregando</label>
+            <label>{message}</label>
         </div>
 
     )

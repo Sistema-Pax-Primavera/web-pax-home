@@ -16,7 +16,7 @@ const Home = () => {
   const { getUnidades } = useUnidade();
   const [carregando, setCarregando] = useState(true);
   const [usuario, setUsuario] = useState("");
-  const [idioma, setIdioma] = useState(false);
+  const [idioma, setIdioma] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isFilial, setIsFilial] = useState(true);
   const [unidades, setUnidades] = useState([]);
@@ -26,13 +26,7 @@ const Home = () => {
   const [activeRoute, setActiveRoute] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [errorCode, setErrorCode] = useState(null);
-  const ParcelWithInactivity = InactivityHOC(Parcel);
-
   const navigate = useNavigate();
-
-  const SwitchIdioma = () => {
-    setIdioma(!idioma);
-  };
 
   const handleMenuClick = (route) => {
     navigate(route);
@@ -141,7 +135,7 @@ const Home = () => {
     <>
       {isLoading ? (
         <div className="loading">
-          <Carregando />
+          <Carregando message={idioma ? 'Cargando' : 'Carregando'} />
         </div>
       ) : errorMessage ? (
         <ErrorComponent message={errorMessage} errorCode={errorCode} />
