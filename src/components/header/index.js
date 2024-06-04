@@ -189,10 +189,10 @@ const Header = ({ activeRoute, setActiveRoute, idioma, permissao, permissaoGloba
                 </label>
                 <button
                     onClick={() =>
-                        handleMenuClick("/pax-primavera/gerencial")
+                        handleMenuClick("/pax-primavera/relatorios")
                     }
                     className={
-                        activeRoute === "/pax-primavera/gerencial/"
+                        activeRoute === "/pax-primavera/relatorios"
                             ? "active"
                             : ""
                     }
